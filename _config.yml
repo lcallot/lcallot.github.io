@@ -36,8 +36,8 @@ owner:
 #
 analytics :
 provider : google
-google :
-        tracking_id : 'UA-45973351-1'
+google : 
+tracking_id : 'UA-45972660-1'
 getclicky :
 site_id :
 

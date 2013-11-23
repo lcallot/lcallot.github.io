@@ -25,10 +25,22 @@ owner:
   google_plus:    
 
 # Analytics and webmaster tools stuff goes here
-google_analytics:   
-google_verify:      
+#google_analytics:   
+#google_verify:      
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:         
+#bing_verify:         
+
+# Settings for analytics helper
+# Set 'provider' to the analytics provider you want to use.
+# Set 'provider' to false to turn analytics off globally.
+#
+analytics :
+provider : google
+google :
+        tracking_id : 'UA-45973351-1'
+getclicky :
+site_id :
+
 
 # Links to include in top navigation
 # For external links add external: true

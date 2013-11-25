@@ -13,7 +13,6 @@ tags: [CV]
 
 Downlad my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
 
-
 ## The short version.
 
 ### Current position:

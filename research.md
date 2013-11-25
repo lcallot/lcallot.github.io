@@ -10,7 +10,6 @@ image:
   credit: Laurent Callot 
 ---
 
-
 {% for post in site.categories.papers limit:20 %} 
 <article>
 <h3><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h3>

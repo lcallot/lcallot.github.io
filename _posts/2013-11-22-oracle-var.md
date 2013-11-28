@@ -4,7 +4,7 @@ title: "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and 
 description: ""
 category: "papers"
 tags: [working paper, Panel, Co-integration, Bootstrap]
-status: 'Re-submitted.'
+status: 'Revised version submitted.'
 coauthor: Anders Bredahl Kock
 ---
 

@@ -46,7 +46,7 @@ google_analytics:  'UA-45972660-1'
 # For external links add external: true
 links:
   - title: Home
-    url: /
+    url: 
   - title: Papers 
     url: /papers
   - title: Code 

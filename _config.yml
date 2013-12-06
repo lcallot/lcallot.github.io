@@ -45,9 +45,6 @@ google_analytics:  'UA-45972660-1'
 # Links to include in top navigation
 # For external links add external: true
 links:
-  - title: Home
-    url: http://lcallot.github.io
-    external: true
   - title: Papers 
     url: /papers
   - title: Code 
@@ -56,7 +53,10 @@ links:
     url: /teaching
   - title: Curriculum Vitae
     url: /cv
-
+  - title: Home
+    url: http://lcallot.github.io
+    external: true
+    
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Europe/Amsterdam
 future:      true

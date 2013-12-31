@@ -4,7 +4,7 @@ title: "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs."
 description: ""
 category: "papers"
 tags: [working paper, Panel, Co-integration, Bootstrap]
-status: 'Updated version forthcoming.'
+status: 'Submitted.'
 coauthor: 
 ---
 

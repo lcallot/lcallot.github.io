@@ -2,116 +2,116 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Laurent's Research Page</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2014-01-11T22:35:23+01:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://lcallot.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="http://lcallot.github.io" />
+<updated>2014-01-11T22:39:28+01:00</updated>
+<id>http://lcallot.github.io/</id>
 <author>
   <name>Laurent Callot</name>
-  <uri>/</uri>
+  <uri>http://lcallot.github.io/</uri>
   <email>lcallot@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.]]></title>
-  <link>/papers/oracle-var</link>
-  <id>/papers/oracle-var</id>
+  <link>http://lcallot.github.io/papers/oracle-var</link>
+  <id>http://lcallot.github.io/papers/oracle-var</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri></uri>
+    <uri>http://lcallot.github.io</uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Revised version submitted.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Download the paper &lt;a href=&quot;/papers/oracle_var.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/oracle_var.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 
 &lt;p&gt;This paper establishes non-asymptotic oracle inequalities for the prediction error and estimation accuracy of the LASSO in stationary vector autoregressive models. These inequalities are used to establish consistency of the LASSO even when the number of parameters is of a much larger order of magnitude than the sample size. We also give conditions under which no relevant variables are excluded. Next, non-asymptotic probabilities are given for the Adaptive LASSO to select the correct sparsity pattern. We then give conditions under which the Adaptive LASSO reveals the correct sparsity pattern asymptotically. We establish that the estimates of the non-zero coefficients are asymptotically equivalent to the oracle assisted least squares estimator. This is used to show that the rate of convergence of the estimates of the non-zero coefficients is identical to the one of least squares only including the relevant covariates.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/papers/oracle-var&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/oracle-var&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.]]></title>
-  <link>/papers/oracle-forecasting</link>
-  <id>/papers/oracle-forecasting</id>
+  <link>http://lcallot.github.io/papers/oracle-forecasting</link>
+  <id>http://lcallot.github.io/papers/oracle-forecasting</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri></uri>
+    <uri>http://lcallot.github.io</uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Forthcoming as: Callot, Laurent A. F., and Anders Bredahl Kock, 2014, Oracle Efficient Estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions, in N. Haldrup, M. Meitz, and P. Saikkonen (eds.), Essays in Nonlinear Time Series Econometrics, Oxford University Press.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Download the paper &lt;a href=&quot;/papers/oracle_forecast.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/oracle_forecast.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 &lt;p&gt;We show that the adaptive Lasso (aLasso) and the adaptive group Lasso (agLasso) are oracle efficient in stationary vector autoregressions where the number of parameters per equation is smaller than the number of observations. In particular, this means that the parameters are estimated consistently at a √T -rate, that the truly zero parameters are classified as such asymptotically and that the non-zero parameters are estimated as efficiently as if only the relevant variables had been included in the model from the outset. The group adaptive Lasso differs from the adaptive Lasso by dividing the covariates into groups whose members are all relevant or all irrelevant. Both estimators have the property that they perform variable selection and estimation in one step. We evaluate the forecasting accuracy of these estimators for a large set of macroeconomic variables. The plain Lasso is found to be the most precise procedure overall. The adaptive and the adaptive group Lasso are less stable but mostly perform at par with common factor models.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/papers/oracle-forecasting&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/oracle-forecasting&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.]]></title>
-  <link>/papers/CCS</link>
-  <id>/papers/CCS</id>
+  <link>http://lcallot.github.io/papers/CCS</link>
+  <id>http://lcallot.github.io/papers/CCS</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri></uri>
+    <uri>http://lcallot.github.io</uri>
     <email>lcallot@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Download the paper &lt;a href=&quot;/papers/pcvar_ccs.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/pcvar_ccs.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 &lt;p&gt;This paper proposes a maximum likelihood estimator for a common co-integration space in large panels of co-integrated Vector Autoregressive models. The method pioneered by Pesaran (2006) and further refined in Dees, Mauro, Pesaran, and Smith (2007) is used to reduce the dimension of the parameter space of the model and control for cross section dependence. The common co-integration space is estimated using standard optimization methods.. Test statistics for the existence of a common co-integration space against the hypothesis of heterogeneous co-integration spaces are derived. A bootstrap algorithm to generat pseudo data under the hypothesis of a common co-integration space is proposed, and bootstrap test statistics are derived. Identification of the co-integration vectors of the panel is also discussed.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/papers/CCS&quot;&gt;Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/CCS&quot;&gt;Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.]]></title>
-  <link>/papers/a-bootstrap-panel-co-integration-rank-test</link>
-  <id>/papers/a-bootstrap-panel-co-integration-rank-test</id>
+  <link>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</link>
+  <id>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</id>
   <published>2013-11-21T00:00:00+01:00</published>
   <updated>2013-11-21T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri></uri>
+    <uri>http://lcallot.github.io</uri>
     <email>lcallot@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Download the paper: &lt;a href=&quot;/papers/pcvar_rank.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Download the paper: &lt;a href=&quot;http://lcallot.github.io/papers/pcvar_rank.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Download the replication material: &lt;a href=&quot;/papers/pcvar-replication.zip&quot;&gt;zip (9 MB)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the replication material: &lt;a href=&quot;http://lcallot.github.io/papers/pcvar-replication.zip&quot;&gt;zip (9 MB)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 
 &lt;p&gt;This paper proposes a sequential procedure to determine the co-integration rank of panels of co-integrated VAR models. The rank is defined as the number of co-integration vectors within an individual system and between that system and the rest of the panel. The method proposed by Pesaran (2006) is used to control for cross section dependence and reduce the dimension of the parameter space. A bootstrap procedure derived from the bootstrap rank test of Cavaliere, Rahbek, and Taylor (2012) is used to compute the empirical distribution of the trace test statistics and construct a panel trace test statistic based on pooling of the individual p-values. The small sample properties of these tests are documented by means of Monte Carlo. An empirical application illustrates the usefulness of this tests.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/papers/a-bootstrap-panel-co-integration-rank-test&quot;&gt;A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 21, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test&quot;&gt;A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 21, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syntax Highlighting Post]]></title>
-  <link>/articles/code-highlighting-post</link>
-  <id>/articles/code-highlighting-post</id>
+  <link>http://lcallot.github.io/articles/code-highlighting-post</link>
+  <id>http://lcallot.github.io/articles/code-highlighting-post</id>
   <published>2013-08-16T00:00:00+02:00</published>
   <updated>2013-08-16T00:00:00+02:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri></uri>
+    <uri>http://lcallot.github.io</uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -224,7 +224,7 @@
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/articles/code-highlighting-post&quot;&gt;Syntax Highlighting Post&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/articles/code-highlighting-post&quot;&gt;Syntax Highlighting Post&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

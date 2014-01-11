@@ -6,10 +6,15 @@ category: "papers"
 tags: [working paper, Panel, Co-integration, Bootstrap]
 status: 'Submitted.'
 coauthor: 
+image:
+  feature: kili-lq.jpg
+  credit: Laurent Callot 
 ---
 
 
-Download the paper [pdf]({{ site.url }}/papers/pcvar_rank.pdf).
+Download the paper: [pdf]({{ site.url }}/papers/pcvar_rank.pdf).
+
+Download the replication material: [zip (9 MB)]({{ site.url }}/papers/pcvar-replication.zip).
 
 ## Abstract:
 

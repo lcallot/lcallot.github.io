@@ -88,6 +88,12 @@
 				 
 			</li>
 	        
+			<li>
+				
+					<a href="/">Home</a>
+				 
+			</li>
+	        
 	        <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
 	        <li class="dosearch"><i class="icon-search"></i> Search</li>
 	    </ul>
@@ -105,9 +111,6 @@
 </div><!-- ./search-wrapper -->
 
 <header class="masthead" itemscope itemtype="http://schema.org/Organization">
-	<div class="wrap">
-		<a href="" class="site-logo" rel="home" title="Laurent's Research Page" itemprop="url"><img src="/images/site-logo.png" width="100" height="100" alt="Laurent's Research Page logo" class="animated bounceInDown" itemprop="logo"></a>
-	</div>
 </header><!-- /.masthead -->
 
 
@@ -119,18 +122,11 @@
       <header class="entry-header">
         <span class="entry-tags"><a href="/tags.html#sample post" title="Pages tagged sample post" rel="tag">sample post</a>&nbsp;&bull;&nbsp;<a href="/tags.html#code" title="Pages tagged code" rel="tag">code</a>&nbsp;&bull;&nbsp;<a href="/tags.html#highlighting" title="Pages tagged highlighting" rel="tag">highlighting</a></span>
         
-          <h1 class="entry-title" itemprop="headline">Syntax Highlighting Post</h1>
+          <h3 class="entry-title" itemprop="headline">Syntax Highlighting Post</h3>
         
       </header>
-      <footer class="entry-meta">
-        <span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">By <span itemprop="name" class="fn"><a href="/about" title="About Laurent Callot" itemprop="url">Laurent Callot</a></span></span>
-        <span class="entry-date date published"><time datetime="2013-08-16T00:00:00+02:00" itemprop="datePublished"><i class="icon-calendar-empty"></i> August 16, 2013</time></span>
-        
-        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-        <span><a href="/articles/code-highlighting-post" rel="bookmark" title="Syntax Highlighting Post" itemprop="url"><i class="icon-link"></i> Permalink</a></span>
-      </footer>
-      <div class="entry-content" itemprop="description">
-        <p>Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+            <div class="entry-content" itemprop="description">
+        <p>Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
 
 <h3 id="pygments-code-blocks">Pygments Code Blocks</h3>
 
@@ -188,45 +184,54 @@
 
 <p>To modify styling and highlight colors edit <code>/assets/less/coderay.less</code> and compile <code>main.less</code> with your favorite preprocessor. Or edit <code>main.css</code> if that’s your thing, the classes you want to modify all begin with <code>.coderay</code>. Line numbers and a few other things can be modified in <code>_config.yml</code> under <code>coderay</code>.</p>
 
-<pre><code class="language-css">#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
-}
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">#container</span> {
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    <span style="color:#606">float</span>: <span style="color:#088">left</span>;
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#606">margin</span>: <span style="color:#60E">0</span> <span style="color:#60E">-240px</span> <span style="color:#60E">0</span> <span style="color:#60E">0</span>;
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>    <span style="color:#606">width</span>: <span style="color:#60E">100%</span>;
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>}
+</pre></div>
+</div>
+</div>
 
-<pre><code class="language-html">&lt;nav class="pagination" role="navigation"&gt;
-    {% if page.previous %}
-        &lt;a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}"&gt;Previous article&lt;/a&gt;
-    {% endif %}
-    {% if page.next %}
-        &lt;a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}"&gt;Next article&lt;/a&gt;
-    {% endif %}
-&lt;/nav&gt;&lt;!-- /.pagination --&gt;
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070">&lt;nav</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pagination</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">role</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">navigation</span><span style="color:#710">&quot;</span></span><span style="color:#070">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    {% if page.previous %}
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>        <span style="color:#070">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ site.url }}{{ page.previous.url }}</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">btn</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">title</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ page.previous.title }}</span><span style="color:#710">&quot;</span></span><span style="color:#070">&gt;</span>Previous article<span style="color:#070">&lt;/a&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>    {% endif %}
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>    {% if page.next %}
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>        <span style="color:#070">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ site.url }}{{ page.next.url }}</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">btn</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">title</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ page.next.title }}</span><span style="color:#710">&quot;</span></span><span style="color:#070">&gt;</span>Next article<span style="color:#070">&lt;/a&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>    {% endif %}
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070">&lt;/nav&gt;</span><span style="color:#777">&lt;!-- /.pagination --&gt;</span>
+</pre></div>
+</div>
+</div>
 
-<pre><code class="language-ruby">module Jekyll
-  class TagIndex &lt; Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Jekyll</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TagIndex</span> &lt; <span style="color:#036;font-weight:bold">Page</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(site, base, dir, tag)
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#33B">@site</span> = site
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>      <span style="color:#33B">@base</span> = base
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>      <span style="color:#33B">@dir</span> = dir
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>      <span style="color:#33B">@name</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">index.html</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>      <span style="color:#069">self</span>.process(<span style="color:#33B">@name</span>)
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>      <span style="color:#069">self</span>.read_yaml(<span style="color:#036;font-weight:bold">File</span>.join(base, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">_layouts</span><span style="color:#710">'</span></span>), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tag_index.html</span><span style="color:#710">'</span></span>)
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>      <span style="color:#069">self</span>.data[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tag</span><span style="color:#710">'</span></span>] = tag
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>      tag_title_prefix = site.config[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tag_title_prefix</span><span style="color:#710">'</span></span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Tagged: </span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>      tag_title_suffix = site.config[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tag_title_suffix</span><span style="color:#710">'</span></span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&amp;#8211;</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>      <span style="color:#069">self</span>.data[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">title</span><span style="color:#710">'</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tag_title_prefix<span style="font-weight:bold;color:#666">}</span></span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tag<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>      <span style="color:#069">self</span>.data[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">description</span><span style="color:#710">'</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">An archive of posts tagged </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tag<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p><a href="http://en.wikipedia.org/wiki/Syntax_highlighting">http://en.wikipedia.org/wiki/Syntax_highlighting</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p><a href="http://en.wikipedia.org/wiki/Syntax_highlighting">http://en.wikipedia.org/wiki/Syntax_highlighting</a><a href="#fnref:1" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -239,18 +244,19 @@ end
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    <span>&copy; 2013 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
+    <span>&copy; 2014 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
 	
 	
+	<a href="http://stackoverflow.com/users/1416977/lcallot" title="Laurent Callot on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
 	
 	
-	
-	
+	<a href="http://github.com/lcallot" title="Laurent Callot on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
 	
 </div><!-- /.social-icons -->
+
   </footer>
 </div><!-- /.footer-wrapper -->
 
@@ -294,6 +300,22 @@ end
   })( jQuery, window );
 </script>
 
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-45972660-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

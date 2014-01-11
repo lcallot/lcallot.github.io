@@ -88,6 +88,12 @@
 				 
 			</li>
 	        
+			<li>
+				
+					<a href="/">Home</a>
+				 
+			</li>
+	        
 	        <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
 	        <li class="dosearch"><i class="icon-search"></i> Search</li>
 	    </ul>
@@ -105,10 +111,6 @@
 </div><!-- ./search-wrapper -->
 
 <header class="masthead" itemscope itemtype="http://schema.org/Organization">
-	<div class="wrap">
-		<a href="" class="site-logo" rel="home" title="Laurent's Research Page" itemprop="url"><img src="/images/site-logo.png" width="100" height="100" alt="Laurent's Research Page logo" class="animated fadeInUp" itemprop="logo"></a>
-		<h1 class="site-title animated fadeIn"><a href="">Laurent's Research Page</a></h1>
-		<h2 class="site-description animated fadeIn" itemprop="description"></h2> 	</div>
 </header><!-- /.masthead -->
 
 
@@ -119,7 +121,7 @@
   <article class="entry" itemscope>
         <div class="entry-wrapper">
       <header class="entry-header">
-        <h2 class="entry-title" itemprop="name">Theme Setup</h2>
+        <h4 class="entry-title" itemprop="name">Theme Setup</h4>
       </header>
       <div class="entry-content" itemprop="description">
         <p>General notes and suggestions for customizing <strong>So Simple Theme</strong>.</p>
@@ -236,7 +238,7 @@
 
 <h3 id="configyml">_config.yml</h3>
 
-<p>Most of the variables found here are used in the .html files found in <code>_includes</code> if you need to add or remove anything. A good place to start would be to change the title, tagline, description, and url of your site. When working locally comment out <code>url</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> or else you will get a bunch of broken links because they are absolute and prefixed with <code>{{ site.url }}</code> in the various <code>_includes</code> and <code>_layouts</code>. Just remember to uncomment <code>url</code> when building for deployment or pushing to <strong>gh-pages</strong>…</p>
+<p>Most of the variables found here are used in the .html files found in <code>_includes</code> if you need to add or remove anything. A good place to start would be to change the title, tagline, description, and url of your site. When working locally comment out <code>url</code><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> or else you will get a bunch of broken links because they are absolute and prefixed with <code>{{ site.url }}</code> in the various <code>_includes</code> and <code>_layouts</code>. Just remember to uncomment <code>url</code> when building for deployment or pushing to <strong>gh-pages</strong>…</p>
 
 <h4 id="disqus-comments">Disqus Comments</h4>
 
@@ -376,7 +378,7 @@
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Used to generate absolute urls in <em>sitemap.xml</em>, <em>feed.xml</em>, and for canonical urls in <em>head.html</em>. Don’t include a trailing <code>/</code> in your base url ie: http://mademistakes.com. When developing locally remove or comment out this line so local CSS, JS, and image assets are used. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Used to generate absolute urls in <em>sitemap.xml</em>, <em>feed.xml</em>, and for canonical urls in <em>head.html</em>. Don’t include a trailing <code>/</code> in your base url ie: http://mademistakes.com. When developing locally remove or comment out this line so local CSS, JS, and image assets are used.<a href="#fnref:1" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -388,18 +390,19 @@
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    <span>&copy; 2013 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
+    <span>&copy; 2014 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
 	
 	
+	<a href="http://stackoverflow.com/users/1416977/lcallot" title="Laurent Callot on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
 	
 	
-	
-	
+	<a href="http://github.com/lcallot" title="Laurent Callot on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
 	
 </div><!-- /.social-icons -->
+
   </footer>
 </div><!-- /.footer-wrapper -->
 
@@ -443,6 +446,22 @@
   })( jQuery, window );
 </script>
 
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-45972660-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
 

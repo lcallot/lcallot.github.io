@@ -88,6 +88,12 @@
 				 
 			</li>
 	        
+			<li>
+				
+					<a href="/">Home</a>
+				 
+			</li>
+	        
 	        <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
 	        <li class="dosearch"><i class="icon-search"></i> Search</li>
 	    </ul>
@@ -105,9 +111,6 @@
 </div><!-- ./search-wrapper -->
 
 <header class="masthead" itemscope itemtype="http://schema.org/Organization">
-	<div class="wrap">
-		<a href="" class="site-logo" rel="home" title="Laurent's Research Page" itemprop="url"><img src="/images/site-logo.png" width="100" height="100" alt="Laurent's Research Page logo" class="animated bounceInDown" itemprop="logo"></a>
-	</div>
 </header><!-- /.masthead -->
 
 
@@ -119,21 +122,21 @@
   <article class="entry" itemscope>
         <div class="entry-wrapper">
       <header class="entry-header">
-        <h2 class="entry-title" itemprop="name">Research Papers</h2>
+        <h4 class="entry-title" itemprop="name">Research Papers</h4>
       </header>
       <div class="entry-content" itemprop="description">
         
 <article>
 <h3><a href="/papers/oracle-var">Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.</a></h3>
 <!---<span class="entry-date"><time datetime="2013-11-22T00:00:00+01:00">November 2013</time></span>-->
-Joint work with Anders Bredahl Kock.<br />
-Re-submitted.
+Joint work with Anders Bredahl Kock.
+Revised version submitted.
 </article>
 
 <article>
 <h3><a href="/papers/oracle-forecasting">Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.</a></h3>
 <!---<span class="entry-date"><time datetime="2013-11-22T00:00:00+01:00">November 2013</time></span>-->
-Joint work with Anders Bredahl Kock.<br />
+Joint work with Anders Bredahl Kock.
 Forthcoming in: Essays in Nonlinear Time Series Econometrics, Oxford University Press.
 </article>
 
@@ -148,7 +151,7 @@ Working Paper.
 <h3><a href="/papers/a-bootstrap-panel-co-integration-rank-test">A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.</a></h3>
 <!---<span class="entry-date"><time datetime="2013-11-21T00:00:00+01:00">November 2013</time></span>-->
 
-Updated version forthcoming.
+Submitted.
 </article>
 
 
@@ -159,18 +162,19 @@ Updated version forthcoming.
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    <span>&copy; 2013 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
+    <span>&copy; 2014 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
 	
 	
+	<a href="http://stackoverflow.com/users/1416977/lcallot" title="Laurent Callot on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
 	
 	
-	
-	
+	<a href="http://github.com/lcallot" title="Laurent Callot on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
 	
 </div><!-- /.social-icons -->
+
   </footer>
 </div><!-- /.footer-wrapper -->
 
@@ -214,6 +218,22 @@ Updated version forthcoming.
   })( jQuery, window );
 </script>
 
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-45972660-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
 

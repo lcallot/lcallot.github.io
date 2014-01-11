@@ -1,6 +1,7 @@
 title:            Laurent's Research Page  
 description:      
-logo:             lcallot-photo.jpg # Logo is really just my face used in the cv page (and layout).
+logo:             lcallot-photo.jpg
+# Logo is really just my face used in the cv page (and layout).
 disqus_shortname: lcallot 
 search:           true
 #Change url to your domain. Leave localhost server or blank when working locally.

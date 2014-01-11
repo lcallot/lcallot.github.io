@@ -1,5 +1,5 @@
 ---
-layout: pagecv
+layout: page_cv
 permalink: /cv/index.html
 title: Curriculum Vitae 
 description: "cv"

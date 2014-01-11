@@ -1,17 +1,14 @@
 ---
-layout: page
+layout: page_cv
 permalink: /cv/index.html
 title: Curriculum Vitae 
-description: "bla"
+description: "cv"
 modified: 2013-11-19
 tags: [CV]
 ---
-
-![author-photo]({{ site.url }}/images/{{ site.owner.avatar }})
-{:.pull-left style='display: block; width: 150px; height: 150px; margin-bottom: 10px; margin-right: 20px; border-radius: 150px'}
-
-
 Downlad my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
+
+
 
 ## The short version.
 

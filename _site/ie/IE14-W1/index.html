@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Matrix Algebra and Multiple Regressions. &#8211; Laurent's Research Page</title>
-<meta name="description" content="Matrix Algebra and Multiple Regressions">
+<title>Week 1: Multiple Regressions and Matrix Notation. &#8211; Laurent's Research Page</title>
+<meta name="description" content="Week 1: Multiple Regressions and Matrix Notation.">
 <meta name="keywords" content="IE14, teaching, week1">
 
 
@@ -14,16 +14,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Matrix Algebra and Multiple Regressions.">
-<meta property="og:description" content="Matrix Algebra and Multiple Regressions">
-<meta property="og:url" content="http://lcallot.github.io/teaching/IE14-Week1">
+<meta property="og:title" content="Week 1: Multiple Regressions and Matrix Notation.">
+<meta property="og:description" content="Week 1: Multiple Regressions and Matrix Notation.">
+<meta property="og:url" content="http://lcallot.github.io/ie/IE14-W1">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="http://lcallot.github.io/teaching/IE14-Week1">
+<link rel="canonical" href="http://lcallot.github.io/ie/IE14-W1">
 <link href="http://lcallot.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -121,24 +121,35 @@
       <header class="entry-header">
         <span class="entry-tags"><a href="http://lcallot.github.io/tags.html#IE14" title="Pages tagged IE14" rel="tag">IE14</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#teaching" title="Pages tagged teaching" rel="tag">teaching</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#week1" title="Pages tagged week1" rel="tag">week1</a></span>
         
-          <h3 class="entry-title" itemprop="headline">Matrix Algebra and Multiple Regressions.</h3>
+          <h3 class="entry-title" itemprop="headline">Week 1: Multiple Regressions and Matrix Notation.</h3>
         
       </header>
             <div class="entry-content" itemprop="description">
-        <h1 id="multiple-regression-model-in-matrix-form">Multiple regression Model in matrix form</h1>
+        <h1 id="regressions-with-multiple-variables-and-matrix-notation">Regressions with multiple variables and matrix notation</h1>
 
-<div class="highlight"><pre><code class="text">## Error: object &#39;base.url&#39; not found
-</code></pre></div>
+<p>The plan for this week is:</p>
 
-<div class="highlight"><pre><code class="text">## Error: object &#39;input&#39; not found
-</code></pre></div>
+<ul>
+  <li>Regressions with multiple variables.</li>
+  <li>Get familiar working with matrices.</li>
+  <li>Derive the OLS estimator and its properties using matrix notation.</li>
+</ul>
 
-<div class="highlight"><pre><code class="text">## Error: object &#39;fig.path&#39; not found
-</code></pre></div>
+<h3 id="generating-data-following-a-regression-model-with-multiple-variables">Generating data following a regression model with multiple variables</h3>
+<p>Let us assume the response variable <em>y</em> follows a regression model with 3 explanatory variables:</p>
 
-<h2 id="ols-estimation-with-matrix-algebra-in-r">OLS estimation with matrix algebra in R</h2>
+<script type="math/tex; mode=display">% <![CDATA[
+ 
+	\begin{aligned}
+	y & = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \epsilon \\
+	y & = (\iota,x_1,x_2,x_3)\beta + \epsilon \\
+	y & = X\beta + \epsilon
+	\end{aligned}
+ %]]></script>
 
-<p>Let’s look at a regression model with <em>k=3</em> regressors and <em>n=100</em> observations. We can generate a matrix <em>X</em> of dimensions \(n\times k\) filled with random normal values. For that we need the following <em>R</em> functions:</p>
+<p>where \( \epsilon_i \sim \mathcal{N}(0,1)\), \( \iota \) is a vector of ones (<em>i.e.</em> the constant), and \( \beta = (1,0.5,1,-1)’\) is the \(4\times 1\) vector of parameters.</p>
+
+<p>We want to generate data following this regression model with <em>k=3</em> regressors (plus the constant) and <em>n=100</em> observations. We generate a matrix <em>X</em> of dimensions \(n\times k\) filled with random normal values. For that we need the following <em>R</em> functions:</p>
 
 <ul>
   <li><em>matrix()</em> to generate a matrix.</li>
@@ -154,7 +165,10 @@ k <span class="o">&lt;-</span> <span class="m">3</span>
 n <span class="o">&lt;-</span> <span class="m">100</span>
 
 <span class="c1"># Creating the matrix of regressors:</span>
-X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>k <span class="o">*</span> n<span class="p">),</span> ncol <span class="o">=</span> <span class="m">3</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">100</span><span class="p">)</span>
+X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>k <span class="o">*</span> n<span class="p">),</span> ncol <span class="o">=</span> k<span class="p">,</span> nrow <span class="o">=</span> n<span class="p">)</span>
+
+<span class="c1"># Creating the vector of parameters beta:</span>
+beta <span class="o">&lt;-</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">),</span> ncol <span class="o">=</span> <span class="m">1</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
 
 <span class="c1"># printing the dimensions of X:</span>
 dim<span class="p">(</span>X<span class="p">)</span>
@@ -163,24 +177,13 @@ dim<span class="p">(</span>X<span class="p">)</span>
 <div class="highlight"><pre><code class="text">## [1] 100   3
 </code></pre></div>
 
-<p>Now let’s assume the response variable follows a regression model:</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
- 
-	\begin{aligned}
-	y & = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \epsilon \\
-	y & = 1 + 0.5 x_1 + x_2 - x_3 + \epsilon \\
-	y & = X\beta + \epsilon
-	\end{aligned}
- %]]></script>
-
-<p>where \( \epsilon_i \sim \mathcal{N}(0,1)\). We can now generate the variable <em>y</em> using the matrix multiplication operator <em>%*%</em></p>
+<p>We can now generate the variable <em>y</em> using the matrix multiplication operator <em>%*%</em></p>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># First I generate the innovations:</span>
 eps <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">)</span>
 
 <span class="c1"># Then y:</span>
-y <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">+</span> X <span class="o">%*%</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">),</span> ncol <span class="o">=</span> <span class="m">1</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span> eps
+y <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">+</span> X <span class="o">%*%</span> beta <span class="o">+</span> eps
 
 <span class="c1"># And check that the dimensions make sense</span>
 dim<span class="p">(</span>y<span class="p">)</span>
@@ -188,6 +191,8 @@ dim<span class="p">(</span>y<span class="p">)</span>
 
 <div class="highlight"><pre><code class="text">## [1] 100   1
 </code></pre></div>
+
+<h3 id="estimating-beta-by-ols">Estimating \(\beta\) by OLS</h3>
 
 <p>The generic function to estimate OLS in <em>R</em> is called <em>lm()</em>, notice that it automatically adds a constant to our model.</p>
 
@@ -245,32 +250,28 @@ print<span class="p">(</span>beta.hat<span class="p">)</span>
 
 <p>The estimates of \(\hat{\beta}\) are the same using both methods, that is nice. </p>
 
-<hr />
-
-<h2 id="question">Question:</h2>
-<p>Compute the standard errors of the residuals and of the OLS estimator. To do this, you will need to:</p>
-
-<ol>
-  <li>Compute the OLS residuals:</li>
-</ol>
-
-<ul>
-  <li>compute the fit \( \hat{y}=X\hat{\beta} \),</li>
-  <li>compute the residuals \( \hat{\epsilon} = y - \hat{y} \). This should be a vector of the same length as <em>y</em>.
-    <ol>
-      <li>Compute \(  \hat{\sigma}^2=\frac{\hat{\epsilon}’\hat{\epsilon}}{n-(k+1)}  \), to get the standard error you need to use the <em>sqrt()</em> function on \(\hat{\sigma}^2\)</li>
-      <li>Get the individual standard errors:</li>
-    </ol>
-  </li>
-  <li>Get the diagonal of \((X’X)^{-1}\) using <em>diag()</em>.</li>
-  <li>Scale its square-root by \(\hat{\sigma}\). You should get a vector of standard errors of the same length as <em>beta.hat</em>.</li>
-</ul>
-
-<p>You can compare your results with those you get running <em>lm()</em> as above.</p>
-
 <blockquote>
-  <p>Do not compare your results with those in this page. Replicate the calculation above on your machine, and compare the output of <em>lm()</em> with that of your code.</p>
+  <h2 id="question">Question:</h2>
+  <p>Compute the standard errors of the residuals and of the OLS estimator. To do this, you will need to:</p>
+
+  <ol>
+    <li>Compute the OLS residuals:
+      <ul>
+        <li>compute the fit \( \hat{y}=X\hat{\beta} \),</li>
+        <li>compute the residuals \( \hat{\epsilon} = y - \hat{y} \). This should be a vector of the same length as <em>y</em>.</li>
+      </ul>
+    </li>
+    <li>Compute \(  \hat{\sigma}^2=\frac{\hat{\epsilon}’\hat{\epsilon}}{n-(k+1)}  \), to get the standard error you need to use the <em>sqrt()</em> function on \(\hat{\sigma}^2\)</li>
+    <li>Get the individual standard errors:
+      <ul>
+        <li>Get the diagonal of \((X’X)^{-1}\) using <em>diag()</em>.</li>
+        <li>Scale its square-root by \(\hat{\sigma}\). You should get a vector of standard errors of the same length as <em>beta.hat</em>.</li>
+      </ul>
+    </li>
+  </ol>
 </blockquote>
+
+<p><strong>To compare the output on your machine with the one in this post, make sure you have set the same seed as I have.</strong></p>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># Computing the residuals</span>
 y.hat <span class="o">&lt;-</span> X <span class="o">%*%</span> beta.hat
@@ -295,9 +296,9 @@ print<span class="p">(</span>beta.se<span class="p">)</span>
 <div class="highlight"><pre><code class="text">## [1] 0.09869 0.09717 0.08813 0.09863
 </code></pre></div>
 
-<hr />
+<h3 id="visualizing-the-results">Visualizing the results.</h3>
 
-<p>Let evaluate visualy the quality of our model. To do that we can look at a scatter plot of the observed values and the residuals.</p>
+<p>Let evaluate the quality of our model graphically. To do that we can look at a scatter plot of the observed values and the residuals.</p>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># Creating a data frame with the resituals, and the observed and fitted</span>
 <span class="c1"># values.</span>
@@ -310,7 +311,21 @@ sqplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span c
 <div class="highlight"><pre><code class="r">print<span class="p">(</span>sqplot<span class="p">)</span>
 </code></pre></div>
 
-<p><img src="figure/fig-sq.png" alt="center" /> </p>
+<p><img src="/figs/2014-01-27-IE14-W1_rmd/fig-sq.png" alt="center" /> </p>
+
+<p>we can also look at the density of our residuals.</p>
+
+<div class="highlight"><pre><code class="r">densplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">()</span>
+print<span class="p">(</span>densplot<span class="p">)</span>
+</code></pre></div>
+
+<p><img src="/figs/2014-01-27-IE14-W1_rmd/fig-dens.png" alt="center" /> </p>
+
+<blockquote>
+  <h2 id="question-1">Question:</h2>
+
+  <p>Does this look like a Gaussian density to you? What happens when you re-run the code increasing the sample size <em>n</em> to 1000?</p>
+</blockquote>
 
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->

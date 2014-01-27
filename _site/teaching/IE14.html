@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Curriculum Vitae &#8211; Laurent's Research Page</title>
-<meta name="description" content="cv">
-<meta name="keywords" content="CV">
+<title>Introductory Econometrics ( inleiding econometrie 1) 2014 &#8211; Laurent's Research Page</title>
+<meta name="description" content="">
+<meta name="keywords" content="IE14, teaching">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Curriculum Vitae">
-<meta property="og:description" content="cv">
-<meta property="og:url" content="http://lcallot.github.io/cv/index.html">
+<meta property="og:title" content="Introductory Econometrics ( inleiding econometrie 1) 2014">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://lcallot.github.io/teaching/IE14.html">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="http://lcallot.github.io/cv/">
+<link rel="canonical" href="http://lcallot.github.io/teaching/IE14.html">
 <link href="http://lcallot.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -58,7 +58,7 @@
 
 </head>
 
-<body id="page" itemscope itemtype="http://schema.org/WebPage">
+<body id="post" itemscope itemtype="http://schema.org/WebPage">
 
 <div class="navigation-wrapper">
 	<nav role="navigation" id="site-nav" class="animated drop" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -111,51 +111,45 @@
 </div><!-- ./search-wrapper -->
 
 <header class="masthead" itemscope itemtype="http://schema.org/Organization">
-	<div class="wrap">
-		<a href="http://lcallot.github.io" class="site-logo" rel="home" title="Laurent's Research Page" itemprop="url"><img src="http://lcallot.github.io/images/lcallot-photo.jpg" width="100" height="100" alt="Laurent's Research Page logo" class="animated fadeInUp" itemprop="logo"></a>
-		<h1 class="site-title animated fadeIn"><a href="http://lcallot.github.io">Laurent's Research Page</a></h1>
-		<h2 class="site-description animated fadeIn" itemprop="description"></h2> 	</div>
 </header><!-- /.masthead -->
 
 
-
-
-
-<div id="main" role="main" itemprop="mainContentOfPage">
-  <article class="entry" itemscope>
-        <div class="entry-wrapper">
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+  <article class="hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="entry-wrapper">
       <header class="entry-header">
-        <h4 class="entry-title" itemprop="name">Curriculum Vitae</h4>
+        <span class="entry-tags"><a href="http://lcallot.github.io/tags.html#IE14" title="Pages tagged IE14" rel="tag">IE14</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#teaching" title="Pages tagged teaching" rel="tag">teaching</a></span>
+        
+          <h3 class="entry-title" itemprop="headline">Introductory Econometrics ( inleiding econometrie 1) 2014</h3>
+        
       </header>
-      <div class="entry-content" itemprop="description">
-        <p>Downlad my curriculum vitae <a href="http://lcallot.github.io/cv/cv_lcallot.pdf">pdf</a>.</p>
+            <div class="entry-content" itemprop="description">
+        <p>I will publish every week a post summarizing the material covered in the week with some extra questions and a focus on computing.</p>
 
-<h2 id="the-short-version">The short version.</h2>
-
-<h3 id="current-position">Current position:</h3>
-
-<p><strong>Post-Doctoral Researcher</strong>, <a href="http://www.feweb.vu.nl/en/departments-and-institutes/econometrics-and-or/index.asp">Department of Econometrics &amp; OR</a>, Vrije Universiteit (VU) Amsterdam. Since November 2012.</p>
-
-<h3 id="education">Education:</h3>
-
-<p><strong>PhD</strong>, September 2012, <a href="http://www.creates.au.dk">CREATES</a> and Aarhus University.</p>
+<p>All the code in these posts is <em>R</em> code. I realize <em>R</em> is most likely new to you and that you’d rather not have to discover another language. However <em>R</em> allows me to easily share code which you can run and modify. The simplest way to do that is:</p>
 
 <ul>
-  <li>Title: Large Panels and High Dimensional VARs.</li>
-  <li>Adviser: Niels Haldrup</li>
-  <li>Visiting PhD studend at the Economics department, <a href="http://www.princeton.edu/economics/">Princeton University</a>, Fall 2011. </li>
+  <li>Install <a href="http://www.rstudio.com">Rstudio</a> (free, open source, compatible with all platform),</li>
+  <li>Copy/paste the pieces of code below in Rstudio’s console,</li>
 </ul>
 
-<p><strong>MSc in Economics</strong> <a href="http://www.econ.au.dk">Aarhus University</a> 2009.</p>
+<p>that’s it. </p>
 
-<p><strong>BSc in Economics</strong> Université <a href="http://www.u-paris10.fr">Paris X</a>, Nanterre La Défense, 2007.</p>
+<p>These post also contains some extra questions that are mostly about implementing on a computer what we have discussed in class. I encourage you to give these questions a try: if you really understand something, then you should be able to explain it to a computer.   </p>
 
-<p><strong>BSc in Mathematics</strong> Université <a href="http://www.upmc.fr">Paris VI</a>, Pierre et Marie Curie, 2007.</p>
+<p>Finally, you’ll notice that I have enabled comments. I encourage you to use those to ask questions regarding the content of the post and the class in general. I’ll check the comments and reply to those regularly, but feel free to reply to open questions if you know the answer. The comments are anonymous and not necessarily linked to your <em>vu</em> email, please keep it clean.  </p>
+
+<article>
+<h3><a href="http://lcallot.github.io/ie/IE14-W1">Week 1: Multiple Regressions and Matrix Notation.</a></h3>
+<!---<span class="entry-date"><time datetime="2014-01-27T00:00:00+01:00">January 2014</time></span>-->
+</article>
 
 
+        
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
-  </article>
+      </article>
 </div><!-- /#main -->
 
 <div class="footer-wrapper">
@@ -237,7 +231,7 @@
 
 
 
-          
+	        
 
 </body>
 </html>

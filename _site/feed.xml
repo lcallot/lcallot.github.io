@@ -2,32 +2,242 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Laurent's Research Page</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://lcallot.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="http://lcallot.github.io" />
-<updated>2014-01-28T00:42:52+01:00</updated>
-<id>http://lcallot.github.io/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-02-19T02:16:54+01:00</updated>
+<id>/</id>
 <author>
   <name>Laurent Callot</name>
-  <uri>http://lcallot.github.io/</uri>
+  <uri>/</uri>
   <email>lcallot@gmail.com</email>
 </author>
 
 
 <entry>
-  <title type="html"><![CDATA[Introductory Econometrics ( inleiding econometrie 1) 2014]]></title>
-  <link>http://lcallot.github.io/teaching/IE14.html</link>
-  <id>http://lcallot.github.io/teaching/IE2014_main</id>
+  <title type="html"><![CDATA[Week 2-3: R squared, Testing, and Monte Carlo.]]></title>
+  <link>/ie/IE14-W23</link>
+  <id>/ie/IE14-W23</id>
+  <published>2014-02-17T00:00:00+01:00</published>
+  <updated>2014-02-17T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri></uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;regressions-with-multiple-variables-and-matrix-notation&quot;&gt;Regressions with multiple variables and matrix notation&lt;/h1&gt;
+
+&lt;p&gt;These last 2 weeks we discussed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The R squared.&lt;/li&gt;
+  &lt;li&gt;Test for linear restrictions.&lt;/li&gt;
+  &lt;li&gt;Asymptotic properties of the OLS  estimator.&lt;/li&gt;
+  &lt;li&gt;Omitted variable bias.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This post will focus on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Estimate empirical distributions of the OLS estimator.&lt;/li&gt;
+  &lt;li&gt;Investigate the finite sample size and power of tests. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;r-squared-with-increasing-number-of-regressors&quot;&gt;R Squared with increasing number of regressors&lt;/h3&gt;
+
+&lt;p&gt;Below the code used to generate the R squared plots in the homework slides of Week 2&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# loading the plotting library&lt;/span&gt;
+library&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ggplot2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# setting the seed&lt;/span&gt;
+set.seed&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Number of observations&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# y is just white noise&lt;/span&gt;
+y &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# a vector with the number of control variables&lt;/span&gt;
+k.all &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; seq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;from &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; to &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; by &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; round&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# storage initialization&lt;/span&gt;
+r2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;k.all&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;r2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; k.all
+rownames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;r2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;R2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adjusted R2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# counter&lt;/span&gt;
+i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# looping over the numbers of controls.&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;k &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; k.all&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# creating the controls with a constant&lt;/span&gt;
+    
+    X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; cbind&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ifelse&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;k &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ifelse&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;k &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; 
+        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# regression + computation of summary statistics&lt;/span&gt;
+    slm &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# Storage of the resuts&lt;/span&gt;
+    r2&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; slm&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;r.squared
+    r2&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; slm&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;adj.r.squared
+    
+    &lt;span class=&quot;c1&quot;&gt;# increment the counter&lt;/span&gt;
+    i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; i &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# plotting the results:&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# preparing the data&lt;/span&gt;
+mr2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;r2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+names&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mr2&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;mesure&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;k&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# plotting&lt;/span&gt;
+gr2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mr2&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; colour &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mesure&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gr2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## Warning: Removed 1 rows containing missing values (geom_path).
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-02-17-IE14-W23_rmd/plotr2.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;finite-sample-distribution-of-the-ols-estimator&quot;&gt;Finite sample distribution of the OLS estimator&lt;/h2&gt;
+
+&lt;p&gt;\( \hat{\beta} \) is normaly distruted if the residuals are Gaussian, but it is asymptotically normal under weaker assumptions. How good is the gaussian approximation? We evaluate this using a Monte Carlo experiment. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Let&amp;#39;s create a function returning the mc estimates of beta Inputs: - n the&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# number of observations - mc the number of monte carlo iterations - k the&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# number of control variables - tdf the degrees of freedom of the t&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# distribution Output:&lt;/span&gt;
+mcbeta &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# We use the same set of controls for every experiment&lt;/span&gt;
+    X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# storage matrix&lt;/span&gt;
+    bN &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    bT &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;m &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;mc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        epsN &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; sqrt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tdf&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tdf &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# standard normal innovations&lt;/span&gt;
+        epsT &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; rt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;#t(1) innovations&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# the true beta is 1 in both cases&lt;/span&gt;
+        yN &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; X &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; epsN
+        yT &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; X &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; epsT
+        
+        &lt;span class=&quot;c1&quot;&gt;# Storing the estimated beta, discarding the constant&lt;/span&gt;
+        bN&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; coef&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;yN &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;))[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        bT&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; coef&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;yT &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;))[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# returning a list with the results&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;list&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Normal &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bN&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; Student &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bT&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let’s run a first experiment with a very small sample of n=10 and plot the results as two overlapping histograms:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# nbr of Monte Carlo iterations&lt;/span&gt;
+mc &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# nbr of controls&lt;/span&gt;
+k &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# degrees of freedom&lt;/span&gt;
+tdf &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+
+mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcbeta&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;iteration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;residuals&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fill &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; residuals&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_histogram&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;binwidth &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; position &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;identity&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-02-17-IE14-W23_rmd/mc10.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;\(\hat{\beta} \) is estimated to be somewhere between -1 and 4 when the innovations are &lt;em&gt;t(3)&lt;/em&gt;, while when they are &lt;em&gt;N(0,3)&lt;/em&gt; the range is around [0,2.5]. The &lt;em&gt;t&lt;/em&gt; distributed innovations produce many extreme estimates of \( \beta \). Because we seek to minimize the squared residuals, OLS is very sensitive to extreme observations.&lt;/p&gt;
+
+&lt;p&gt;What happens when we increase the number of observations to 100?  &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;
+mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcbeta&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;iteration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;residuals&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fill &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; residuals&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_histogram&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;binwidth &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; position &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;identity&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-02-17-IE14-W23_rmd/mc100.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Both distributions are closer to the true value, but the &lt;em&gt;t&lt;/em&gt; distribution still produces many more outliers. Now with 1000 observations:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;
+mc1000 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcbeta&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mc1000 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc1000&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc1000&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;iteration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;residuals&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc1000 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc1000&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fill &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; residuals&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_histogram&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;binwidth &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; position &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;identity&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc1000&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-02-17-IE14-W23_rmd/mc1000.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;With 1000 observations the distribution the two distributions are similar, in this case the normal approximation is good but we still have more extreme observations with the &lt;em&gt;t&lt;/em&gt; innovations.&lt;/p&gt;
+
+&lt;p&gt;Let’s keep 1000 observation but increase the number of degrees of freedoms of the &lt;em&gt;t&lt;/em&gt; distributions so that it generates fewer extreme innovations:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+tdf &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;
+
+mcdf10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcbeta&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tdf&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mcdf10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mcdf10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mcdf10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;iteration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;residuals&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mcdf10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mcdf10&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; value&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fill &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; residuals&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_histogram&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;binwidth &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; position &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;identity&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mcdf10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-02-17-IE14-W23_rmd/mcdf10.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;With 10 degrees of freedom, the two distributions are almost overlapping, the normal approximation is a good one in this case.&lt;/p&gt;
+
+&lt;h2 id=&quot;question&quot;&gt;Question:&lt;/h2&gt;
+&lt;p&gt;Can you setup a similar experiment to evaluate the size and the power of the &lt;em&gt;t&lt;/em&gt; test?&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/ie/IE14-W23&quot;&gt;Week 2-3: R squared, Testing, and Monte Carlo.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on February 17, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Introductory Econometrics (inleiding econometrie 1) 2014]]></title>
+  <link>/teaching/IE14.html</link>
+  <id>/teaching/IE2014_main</id>
   <updated>2014-01-27T00:00:00-00:00</updated>
   <published>2014-01-27T00:00:00+01:00</published>
   
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;I will publish every week a post summarizing the material covered in the week with some extra questions and a focus on computing.&lt;/p&gt;
 
-&lt;p&gt;All the code in these posts is &lt;em&gt;R&lt;/em&gt; code. I realize &lt;em&gt;R&lt;/em&gt; is most likely new to you and that you’d rather not have to discover another language. However &lt;em&gt;R&lt;/em&gt; allows me to easily share code which you can run and modify. The simplest way to do that is:&lt;/p&gt;
+&lt;p&gt;All the code in these posts is &lt;em&gt;R&lt;/em&gt; code. &lt;em&gt;R&lt;/em&gt; allows me to easily share code with you, which you can run and modify. The simplest way to do that is:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Install &lt;a href=&quot;http://www.rstudio.com&quot;&gt;Rstudio&lt;/a&gt; (free, open source, compatible with all platform),&lt;/li&gt;
@@ -36,40 +246,60 @@
 
 &lt;p&gt;that’s it. &lt;/p&gt;
 
-&lt;p&gt;These post also contains some extra questions that are mostly about implementing on a computer what we have discussed in class. I encourage you to give these questions a try: if you really understand something, then you should be able to explain it to a computer.   &lt;/p&gt;
+&lt;p&gt;These post also contains some computational questions. I encourage you to give these questions a try: if you really understand something, then you should be able to program it. Use whichever language/package you feel most comfortable with.    &lt;/p&gt;
 
-&lt;p&gt;Finally, you’ll notice that I have enabled comments. I encourage you to use those to ask questions regarding the content of the post and the class in general. I’ll check the comments and reply to those regularly, but feel free to reply to open questions if you know the answer. The comments are anonymous and not necessarily linked to your &lt;em&gt;vu&lt;/em&gt; email, please keep it clean.  &lt;/p&gt;
+&lt;p&gt;I have enabled comments. I encourage you to use those to ask questions and reply to open questions if you know the answer. The comments are anonymous and not necessarily linked to your &lt;em&gt;vu&lt;/em&gt; email, please keep it clean.  &lt;/p&gt;
 
 &lt;article&gt;
-&lt;h3&gt;&lt;a href=&quot;http://lcallot.github.io/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a href=&quot;/ie/IE14-W23&quot;&gt;Week 2-3: R squared, Testing, and Monte Carlo.&lt;/a&gt;&lt;/h3&gt;
+&lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-02-17T00:00:00+01:00&quot;&gt;February 2014&lt;/time&gt;&lt;/span&gt;--&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+&lt;h3&gt;&lt;a href=&quot;/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt;&lt;/h3&gt;
 &lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-01-27T00:00:00+01:00&quot;&gt;January 2014&lt;/time&gt;&lt;/span&gt;--&gt;
 &lt;/article&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/teaching/IE14.html&quot;&gt;Introductory Econometrics ( inleiding econometrie 1) 2014&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/teaching/IE14.html&quot;&gt;Introductory Econometrics (inleiding econometrie 1) 2014&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Week 1: Multiple Regressions and Matrix Notation.]]></title>
-  <link>http://lcallot.github.io/ie/IE14-W1</link>
-  <id>http://lcallot.github.io/ie/IE14-W1</id>
+  <link>/ie/IE14-W1</link>
+  <id>/ie/IE14-W1</id>
   <published>2014-01-27T00:00:00+01:00</published>
   <updated>2014-01-27T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;regressions-with-multiple-variables-and-matrix-notation&quot;&gt;Regressions with multiple variables and matrix notation&lt;/h1&gt;
 
-&lt;p&gt;The plan for this week is:&lt;/p&gt;
+&lt;p&gt;This week we discussed:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Regressions with multiple variables.&lt;/li&gt;
-  &lt;li&gt;Get familiar working with matrices.&lt;/li&gt;
-  &lt;li&gt;Derive the OLS estimator and its properties using matrix notation.&lt;/li&gt;
+  &lt;li&gt;The OLS in natrix notation.&lt;/li&gt;
+  &lt;li&gt;Properties of the OLS  estimator.&lt;/li&gt;
+  &lt;li&gt;Omitted variable bias.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;This post will focus on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Generating artificial data.&lt;/li&gt;
+  &lt;li&gt;Use matrices in the code.&lt;/li&gt;
+  &lt;li&gt;Estimate the OLS using built in functions&lt;/li&gt;
+  &lt;li&gt;Manually estimate the OLS.&lt;/li&gt;
+  &lt;li&gt;Calculate the parameters standard errors.&lt;/li&gt;
+  &lt;li&gt;Plot the density of the residuals.&lt;/li&gt;
+  &lt;li&gt;Load the wage data and compute regressions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can get help on any function by typing &lt;em&gt;?FunctionName&lt;/em&gt; in the &lt;em&gt;R&lt;/em&gt; console, try &lt;em&gt;?dim&lt;/em&gt; for example. &lt;/p&gt;
 
 &lt;h3 id=&quot;generating-data-following-a-regression-model-with-multiple-variables&quot;&gt;Generating data following a regression model with multiple variables&lt;/h3&gt;
 &lt;p&gt;Let us assume the response variable &lt;em&gt;y&lt;/em&gt; follows a regression model with 3 explanatory variables:&lt;/p&gt;
@@ -132,7 +362,9 @@ dim&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y&lt;span class=&quot;p&quot;&g
 
 &lt;p&gt;The generic function to estimate OLS in &lt;em&gt;R&lt;/em&gt; is called &lt;em&gt;lm()&lt;/em&gt;, notice that it automatically adds a constant to our model.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;ols.lm &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# estimate the model.&lt;/span&gt;
+ols.lm &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# print the results.&lt;/span&gt;
 summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ols.lm&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -186,26 +418,24 @@ print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta.hat&lt;span class=&quot;
 
 &lt;p&gt;The estimates of \(\hat{\beta}\) are the same using both methods, that is nice. &lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;h2 id=&quot;question&quot;&gt;Question:&lt;/h2&gt;
-  &lt;p&gt;Compute the standard errors of the residuals and of the OLS estimator. To do this, you will need to:&lt;/p&gt;
+&lt;h2 id=&quot;question&quot;&gt;Question:&lt;/h2&gt;
+&lt;p&gt;Compute the standard errors of the residuals and of the OLS estimator. To do this, you will need to:&lt;/p&gt;
 
-  &lt;ol&gt;
-    &lt;li&gt;Compute the OLS residuals:
-      &lt;ul&gt;
-        &lt;li&gt;compute the fit \( \hat{y}=X\hat{\beta} \),&lt;/li&gt;
-        &lt;li&gt;compute the residuals \( \hat{\epsilon} = y - \hat{y} \). This should be a vector of the same length as &lt;em&gt;y&lt;/em&gt;.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Compute \(  \hat{\sigma}^2=\frac{\hat{\epsilon}’\hat{\epsilon}}{n-(k+1)}  \), to get the standard error you need to use the &lt;em&gt;sqrt()&lt;/em&gt; function on \(\hat{\sigma}^2\)&lt;/li&gt;
-    &lt;li&gt;Get the individual standard errors:
-      &lt;ul&gt;
-        &lt;li&gt;Get the diagonal of \((X’X)^{-1}\) using &lt;em&gt;diag()&lt;/em&gt;.&lt;/li&gt;
-        &lt;li&gt;Scale its square-root by \(\hat{\sigma}\). You should get a vector of standard errors of the same length as &lt;em&gt;beta.hat&lt;/em&gt;.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;ol&gt;
+  &lt;li&gt;Compute the OLS residuals:
+    &lt;ul&gt;
+      &lt;li&gt;compute the fit \( \hat{y}=X\hat{\beta} \),&lt;/li&gt;
+      &lt;li&gt;compute the residuals \( \hat{\epsilon} = y - \hat{y} \). This should be a vector of the same length as &lt;em&gt;y&lt;/em&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Compute \(  \hat{\sigma}^2=\frac{\hat{\epsilon}’\hat{\epsilon}}{n-(k+1)}  \), to get the standard error you need to use the &lt;em&gt;sqrt()&lt;/em&gt; function on \(\hat{\sigma}^2\)&lt;/li&gt;
+  &lt;li&gt;Get the individual standard errors:
+    &lt;ul&gt;
+      &lt;li&gt;Get the diagonal of \((X’X)^{-1}\) using &lt;em&gt;diag()&lt;/em&gt;.&lt;/li&gt;
+      &lt;li&gt;Scale its square-root by \(\hat{\sigma}\). You should get a vector of standard errors of the same length as &lt;em&gt;beta.hat&lt;/em&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;To compare the output on your machine with the one in this post, make sure you have set the same seed as I have.&lt;/strong&gt;&lt;/p&gt;
 
@@ -216,20 +446,21 @@ e.hat &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; y &lt;span class=&q
 &lt;span class=&quot;c1&quot;&gt;# Residual standard error&lt;/span&gt;
 sig2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;e.hat&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; e.hat&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;k &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 res.se &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; sqrt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sig2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;res.se&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+cat&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;\n residual standard errors:&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; res.se&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sep &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;##        [,1]
-## [1,] 0.9785
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## 
+##  residual standard errors:0.9785
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Parameter std. err.&lt;/span&gt;
 diag.xx &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; diag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;solve&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 beta.se &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; res.se &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; sqrt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;diag.xx&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta.se&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+cat&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;\n Parameters standard errors:&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; beta.se&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sep &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## [1] 0.09869 0.09717 0.08813 0.09863
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## 
+##  Parameters standard errors:0.098690.097170.088130.09863
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;visualizing-the-results&quot;&gt;Visualizing the results.&lt;/h3&gt;
@@ -257,116 +488,203 @@ print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;densplot&lt;span class=&quot;
 
 &lt;p&gt;&lt;img src=&quot;/figs/2014-01-27-IE14-W1_rmd/fig-dens.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;h2 id=&quot;question-1&quot;&gt;Question:&lt;/h2&gt;
+&lt;h2 id=&quot;question-1&quot;&gt;Question:&lt;/h2&gt;
 
-  &lt;p&gt;Does this look like a Gaussian density to you? What happens when you re-run the code increasing the sample size &lt;em&gt;n&lt;/em&gt; to 1000?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Does this look like a Gaussian density to you? What happens when you re-run the code increasing the sample size &lt;em&gt;n&lt;/em&gt; to 1000?&lt;/p&gt;
 
+&lt;h3 id=&quot;multiple-regression-with-the-wage-data&quot;&gt;Multiple regression with the wage data.&lt;/h3&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
+&lt;p&gt;First we load the data and check that it looks as expected.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Loading the data.&lt;/span&gt;
+wage &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; read.csv&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;../data/wages.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Printing the first rows of wage.&lt;/span&gt;
+head&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;wage&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;##   X EXPER MALE SCHOOL  WAGE
+## 1 1     9    0     13 6.315
+## 2 2    12    0     12 5.480
+## 3 3    11    0     11 3.642
+## 4 4     9    0     14 4.593
+## 5 5     8    0     14 2.418
+## 6 6     9    0     14 2.094
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we can regress &lt;em&gt;WAGE&lt;/em&gt; on &lt;em&gt;SCHOOL&lt;/em&gt; and &lt;em&gt;EXPER&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# regression of wage on school and exper.&lt;/span&gt;
+mod1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;WAGE &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; SCHOOL &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; EXPER&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; wage&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# printing the results of the regression.&lt;/span&gt;
+summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mod1&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## 
+## Call:
+## lm(formula = WAGE ~ SCHOOL + EXPER, data = wage)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -6.88  -1.99  -0.52   1.39  34.91 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  -2.4767     0.4700   -5.27  1.5e-07 ***
+## SCHOOL        0.5992     0.0334   17.94  &amp;lt; 2e-16 ***
+## EXPER         0.1573     0.0242    6.51  8.9e-11 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 3.12 on 3291 degrees of freedom
+## Multiple R-squared:  0.0915,	Adjusted R-squared:  0.0909 
+## F-statistic:  166 on 2 and 3291 DF,  p-value: &amp;lt;2e-16
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;question-2&quot;&gt;Question:&lt;/h2&gt;
+&lt;p&gt;Try estimating other models using different combination of variables.  &lt;/p&gt;
+
+&lt;h3 id=&quot;transformations-of-the-data&quot;&gt;Transformations of the data&lt;/h3&gt;
+
+&lt;p&gt;Maybe the number of years at school does not enter linearily in the model. We can expand the model with a quadratic term:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Create a variable with the square of the number of school years.&lt;/span&gt;
+wage&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;SCHOOL2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; wage&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;SCHOOL&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Estimating the model and printing the results.&lt;/span&gt;
+mod2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;WAGE &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; SCHOOL &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; SCHOOL2 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; EXPER&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; wage&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mod2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;## 
+## Call:
+## lm(formula = WAGE ~ SCHOOL + SCHOOL2 + EXPER, data = wage)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -7.33  -1.96  -0.51   1.38  34.97 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)   3.1149     1.5475    2.01  0.04421 *  
+## SCHOOL       -0.3840     0.2614   -1.47  0.14201    
+## SCHOOL2       0.0433     0.0114    3.79  0.00015 ***
+## EXPER         0.1409     0.0245    5.75  9.8e-09 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 3.11 on 3290 degrees of freedom
+## Multiple R-squared:  0.0954,	Adjusted R-squared:  0.0946 
+## F-statistic:  116 on 3 and 3290 DF,  p-value: &amp;lt;2e-16
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;question-3&quot;&gt;Question:&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Interpret the results above.&lt;/li&gt;
+  &lt;li&gt;Maybe the number of years of schooling has a different effect for males and for females. How would you investigate this?  &lt;/li&gt;
+&lt;/ol&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.]]></title>
-  <link>http://lcallot.github.io/papers/oracle-var</link>
-  <id>http://lcallot.github.io/papers/oracle-var</id>
+  <link>/papers/oracle-var</link>
+  <id>/papers/oracle-var</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Revised version submitted.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/oracle_var.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the paper &lt;a href=&quot;/papers/oracle_var.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 
 &lt;p&gt;This paper establishes non-asymptotic oracle inequalities for the prediction error and estimation accuracy of the LASSO in stationary vector autoregressive models. These inequalities are used to establish consistency of the LASSO even when the number of parameters is of a much larger order of magnitude than the sample size. We also give conditions under which no relevant variables are excluded. Next, non-asymptotic probabilities are given for the Adaptive LASSO to select the correct sparsity pattern. We then give conditions under which the Adaptive LASSO reveals the correct sparsity pattern asymptotically. We establish that the estimates of the non-zero coefficients are asymptotically equivalent to the oracle assisted least squares estimator. This is used to show that the rate of convergence of the estimates of the non-zero coefficients is identical to the one of least squares only including the relevant covariates.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/oracle-var&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/papers/oracle-var&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.]]></title>
-  <link>http://lcallot.github.io/papers/oracle-forecasting</link>
-  <id>http://lcallot.github.io/papers/oracle-forecasting</id>
+  <link>/papers/oracle-forecasting</link>
+  <id>/papers/oracle-forecasting</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Forthcoming as: Callot, Laurent A. F., and Anders Bredahl Kock, 2014, Oracle Efficient Estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions, in N. Haldrup, M. Meitz, and P. Saikkonen (eds.), Essays in Nonlinear Time Series Econometrics, Oxford University Press.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/oracle_forecast.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the paper &lt;a href=&quot;/papers/oracle_forecast.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 &lt;p&gt;We show that the adaptive Lasso (aLasso) and the adaptive group Lasso (agLasso) are oracle efficient in stationary vector autoregressions where the number of parameters per equation is smaller than the number of observations. In particular, this means that the parameters are estimated consistently at a √T -rate, that the truly zero parameters are classified as such asymptotically and that the non-zero parameters are estimated as efficiently as if only the relevant variables had been included in the model from the outset. The group adaptive Lasso differs from the adaptive Lasso by dividing the covariates into groups whose members are all relevant or all irrelevant. Both estimators have the property that they perform variable selection and estimation in one step. We evaluate the forecasting accuracy of these estimators for a large set of macroeconomic variables. The plain Lasso is found to be the most precise procedure overall. The adaptive and the adaptive group Lasso are less stable but mostly perform at par with common factor models.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/oracle-forecasting&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/papers/oracle-forecasting&quot;&gt;Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.]]></title>
-  <link>http://lcallot.github.io/papers/CCS</link>
-  <id>http://lcallot.github.io/papers/CCS</id>
+  <link>/papers/CCS</link>
+  <id>/papers/CCS</id>
   <published>2013-11-22T00:00:00+01:00</published>
   <updated>2013-11-22T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Download the paper &lt;a href=&quot;http://lcallot.github.io/papers/pcvar_ccs.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Download the paper &lt;a href=&quot;/papers/pcvar_ccs.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 &lt;p&gt;This paper proposes a maximum likelihood estimator for a common co-integration space in large panels of co-integrated Vector Autoregressive models. The method pioneered by Pesaran (2006) and further refined in Dees, Mauro, Pesaran, and Smith (2007) is used to reduce the dimension of the parameter space of the model and control for cross section dependence. The common co-integration space is estimated using standard optimization methods.. Test statistics for the existence of a common co-integration space against the hypothesis of heterogeneous co-integration spaces are derived. A bootstrap algorithm to generat pseudo data under the hypothesis of a common co-integration space is proposed, and bootstrap test statistics are derived. Identification of the co-integration vectors of the panel is also discussed.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/CCS&quot;&gt;Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/papers/CCS&quot;&gt;Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.]]></title>
-  <link>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</link>
-  <id>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</id>
+  <link>/papers/a-bootstrap-panel-co-integration-rank-test</link>
+  <id>/papers/a-bootstrap-panel-co-integration-rank-test</id>
   <published>2013-11-21T00:00:00+01:00</published>
   <updated>2013-11-21T00:00:00+01:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Download the paper: &lt;a href=&quot;http://lcallot.github.io/papers/pcvar_rank.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Download the paper: &lt;a href=&quot;/papers/pcvar_rank.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Download the replication material: &lt;a href=&quot;http://lcallot.github.io/papers/pcvar-replication.zip&quot;&gt;zip (9 MB)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the replication material: &lt;a href=&quot;/papers/pcvar-replication.zip&quot;&gt;zip (9 MB)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
 
 &lt;p&gt;This paper proposes a sequential procedure to determine the co-integration rank of panels of co-integrated VAR models. The rank is defined as the number of co-integration vectors within an individual system and between that system and the rest of the panel. The method proposed by Pesaran (2006) is used to control for cross section dependence and reduce the dimension of the parameter space. A bootstrap procedure derived from the bootstrap rank test of Cavaliere, Rahbek, and Taylor (2012) is used to compute the empirical distribution of the trace test statistics and construct a panel trace test statistic based on pooling of the individual p-values. The small sample properties of these tests are documented by means of Monte Carlo. An empirical application illustrates the usefulness of this tests.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test&quot;&gt;A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 21, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/papers/a-bootstrap-panel-co-integration-rank-test&quot;&gt;A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on November 21, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Syntax Highlighting Post]]></title>
-  <link>http://lcallot.github.io/articles/code-highlighting-post</link>
-  <id>http://lcallot.github.io/articles/code-highlighting-post</id>
+  <link>/articles/code-highlighting-post</link>
+  <id>/articles/code-highlighting-post</id>
   <published>2013-08-16T00:00:00+02:00</published>
   <updated>2013-08-16T00:00:00+02:00</updated>
   <author>
     <name>Laurent Callot</name>
-    <uri>http://lcallot.github.io</uri>
+    <uri></uri>
     <email>lcallot@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -479,7 +797,7 @@ print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;densplot&lt;span class=&quot;
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://lcallot.github.io/articles/code-highlighting-post&quot;&gt;Syntax Highlighting Post&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://lcallot.github.io&quot;&gt;Laurent's Research Page&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/articles/code-highlighting-post&quot;&gt;Syntax Highlighting Post&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

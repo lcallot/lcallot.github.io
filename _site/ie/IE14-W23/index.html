@@ -1,0 +1,431 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Week 2-3: R squared, Testing, and Monte Carlo. &#8211; Laurent's Research Page</title>
+<meta name="description" content="Week 2-3: R squared, Testing, and Monte Carlo.">
+<meta name="keywords" content="IE14, teaching, week23">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 2-3: R squared, Testing, and Monte Carlo.">
+<meta property="og:description" content="Week 2-3: R squared, Testing, and Monte Carlo.">
+<meta property="og:url" content="/ie/IE14-W23">
+<meta property="og:site_name" content="Laurent's Research Page">
+
+
+
+
+
+<link rel="canonical" href="/ie/IE14-W23">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post" itemscope itemtype="http://schema.org/WebPage">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	    <ul>
+	        
+			<li>
+				
+					<a href="/papers">Papers</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="/code">Code</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="/teaching">Teaching</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="/cv">Curriculum Vitae</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="/">Home</a>
+				 
+			</li>
+	        
+	        <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead" itemscope itemtype="http://schema.org/Organization">
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+  <article class="hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="/tags.html#IE14" title="Pages tagged IE14" rel="tag">IE14</a>&nbsp;&bull;&nbsp;<a href="/tags.html#teaching" title="Pages tagged teaching" rel="tag">teaching</a>&nbsp;&bull;&nbsp;<a href="/tags.html#week23" title="Pages tagged week23" rel="tag">week23</a></span>
+        
+          <h3 class="entry-title" itemprop="headline">Week 2-3: R squared, Testing, and Monte Carlo.</h3>
+        
+      </header>
+            <div class="entry-content" itemprop="description">
+        <h1 id="regressions-with-multiple-variables-and-matrix-notation">Regressions with multiple variables and matrix notation</h1>
+
+<p>These last 2 weeks we discussed:</p>
+
+<ul>
+  <li>The R squared.</li>
+  <li>Test for linear restrictions.</li>
+  <li>Asymptotic properties of the OLS  estimator.</li>
+  <li>Omitted variable bias.</li>
+</ul>
+
+<p>This post will focus on:</p>
+
+<ul>
+  <li>Estimate empirical distributions of the OLS estimator.</li>
+  <li>Investigate the finite sample size and power of tests. </li>
+</ul>
+
+<h3 id="r-squared-with-increasing-number-of-regressors">R Squared with increasing number of regressors</h3>
+
+<p>Below the code used to generate the R squared plots in the homework slides of Week 2</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># loading the plotting library</span>
+library<span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+
+<span class="c1"># setting the seed</span>
+set.seed<span class="p">(</span><span class="m">42</span><span class="p">)</span>
+
+<span class="c1"># Number of observations</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
+
+<span class="c1"># y is just white noise</span>
+y <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="p">),</span> ncol <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># a vector with the number of control variables</span>
+k.all <span class="o">&lt;-</span> seq<span class="p">(</span>from <span class="o">=</span> <span class="m">0</span><span class="p">,</span> to <span class="o">=</span> n<span class="p">,</span> by <span class="o">=</span> round<span class="p">(</span>n<span class="o">/</span><span class="m">50</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># storage initialization</span>
+r2 <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> ncol <span class="o">=</span> length<span class="p">(</span>k.all<span class="p">),</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+colnames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> k.all
+rownames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;R2&quot;</span><span class="p">,</span> <span class="s">&quot;adjusted R2&quot;</span><span class="p">)</span>
+
+<span class="c1"># counter</span>
+i <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="c1"># looping over the numbers of controls.</span>
+<span class="kr">for</span> <span class="p">(</span>k <span class="kr">in</span> k.all<span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># creating the controls with a constant</span>
+    
+    X <span class="o">&lt;-</span> cbind<span class="p">(</span><span class="m">1</span><span class="p">,</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n <span class="o">*</span> <span class="p">(</span>ifelse<span class="p">(</span>k <span class="o">==</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> k <span class="o">-</span> <span class="m">1</span><span class="p">))),</span> nrow <span class="o">=</span> n<span class="p">,</span> ncol <span class="o">=</span> ifelse<span class="p">(</span>k <span class="o">==</span> 
+        <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> k <span class="o">-</span> <span class="m">1</span><span class="p">)))</span>
+    
+    <span class="c1"># regression + computation of summary statistics</span>
+    slm <span class="o">&lt;-</span> summary<span class="p">(</span>lm<span class="p">(</span>y <span class="o">~</span> X<span class="p">))</span>
+    
+    <span class="c1"># Storage of the resuts</span>
+    r2<span class="p">[</span><span class="m">1</span><span class="p">,</span> i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>r.squared
+    r2<span class="p">[</span><span class="m">2</span><span class="p">,</span> i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>adj.r.squared
+    
+    <span class="c1"># increment the counter</span>
+    i <span class="o">&lt;-</span> i <span class="o">+</span> <span class="m">1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># plotting the results:</span>
+
+<span class="c1"># preparing the data</span>
+mr2 <span class="o">&lt;-</span> melt<span class="p">(</span>r2<span class="p">)</span>
+names<span class="p">(</span>mr2<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;mesure&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+gr2 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mr2<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> k<span class="p">,</span> y <span class="o">=</span> value<span class="p">,</span> colour <span class="o">=</span> mesure<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+print<span class="p">(</span>gr2<span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="text">## Warning: Removed 1 rows containing missing values (geom_path).
+</code></pre></div>
+
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/plotr2.png" alt="center" /> </p>
+
+<h2 id="finite-sample-distribution-of-the-ols-estimator">Finite sample distribution of the OLS estimator</h2>
+
+<p>\( \hat{\beta} \) is normaly distruted if the residuals are Gaussian, but it is asymptotically normal under weaker assumptions. How good is the gaussian approximation? We evaluate this using a Monte Carlo experiment. </p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># Let&#39;s create a function returning the mc estimates of beta Inputs: - n the</span>
+<span class="c1"># number of observations - mc the number of monte carlo iterations - k the</span>
+<span class="c1"># number of control variables - tdf the degrees of freedom of the t</span>
+<span class="c1"># distribution Output:</span>
+mcbeta <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span> <span class="p">{</span>
+    
+    <span class="c1"># We use the same set of controls for every experiment</span>
+    X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n <span class="o">*</span> k<span class="p">),</span> nrow <span class="o">=</span> n<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
+    
+    <span class="c1"># storage matrix</span>
+    bN <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow <span class="o">=</span> mc<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
+    bT <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow <span class="o">=</span> mc<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
+    
+    <span class="kr">for</span> <span class="p">(</span>m <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>mc<span class="p">)</span> <span class="p">{</span>
+        epsN <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">,</span> sd <span class="o">=</span> sqrt<span class="p">(</span>tdf<span class="o">/</span><span class="p">(</span>tdf <span class="o">-</span> <span class="m">2</span><span class="p">)))</span>  <span class="c1"># standard normal innovations</span>
+        epsT <span class="o">&lt;-</span> rt<span class="p">(</span>n<span class="p">,</span> tdf<span class="p">)</span>  <span class="c1">#t(1) innovations</span>
+        
+        <span class="c1"># the true beta is 1 in both cases</span>
+        yN <span class="o">&lt;-</span> X <span class="o">+</span> epsN
+        yT <span class="o">&lt;-</span> X <span class="o">+</span> epsT
+        
+        <span class="c1"># Storing the estimated beta, discarding the constant</span>
+        bN<span class="p">[</span>m<span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yN <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
+        bT<span class="p">[</span>m<span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yT <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
+        
+        <span class="c1"># returning a list with the results</span>
+    <span class="p">}</span>
+    <span class="kr">return</span><span class="p">(</span>list<span class="p">(</span>Normal <span class="o">=</span> bN<span class="p">,</span> Student <span class="o">=</span> bT<span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Now let’s run a first experiment with a very small sample of n=10 and plot the results as two overlapping histograms:</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">10</span>
+<span class="c1"># nbr of Monte Carlo iterations</span>
+mc <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># nbr of controls</span>
+k <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="c1"># degrees of freedom</span>
+tdf <span class="o">&lt;-</span> <span class="m">3</span>
+
+mc10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc10 <span class="o">&lt;-</span> melt<span class="p">(</span>mc10<span class="p">)</span>
+
+colnames<span class="p">(</span>mc10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
+
+gg.mc10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc10<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc10<span class="p">)</span>
+</code></pre></div>
+
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc10.png" alt="center" /> </p>
+
+<p>\(\hat{\beta} \) is estimated to be somewhere between -1 and 4 when the innovations are <em>t(3)</em>, while when they are <em>N(0,3)</em> the range is around [0,2.5]. The <em>t</em> distributed innovations produce many extreme estimates of \( \beta \). Because we seek to minimize the squared residuals, OLS is very sensitive to extreme observations.</p>
+
+<p>What happens when we increase the number of observations to 100?  </p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
+mc100 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc100 <span class="o">&lt;-</span> melt<span class="p">(</span>mc100<span class="p">)</span>
+
+colnames<span class="p">(</span>mc100<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
+
+gg.mc100 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc100<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.01</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc100<span class="p">)</span>
+</code></pre></div>
+
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc100.png" alt="center" /> </p>
+
+<p>Both distributions are closer to the true value, but the <em>t</em> distribution still produces many more outliers. Now with 1000 observations:</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">1000</span>
+mc1000 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc1000 <span class="o">&lt;-</span> melt<span class="p">(</span>mc1000<span class="p">)</span>
+
+colnames<span class="p">(</span>mc1000<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
+
+gg.mc1000 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc1000<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.005</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc1000<span class="p">)</span>
+</code></pre></div>
+
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc1000.png" alt="center" /> </p>
+
+<p>With 1000 observations the distribution the two distributions are similar, in this case the normal approximation is good but we still have more extreme observations with the <em>t</em> innovations.</p>
+
+<p>Let’s keep 1000 observation but increase the number of degrees of freedoms of the <em>t</em> distributions so that it generates fewer extreme innovations:</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+tdf <span class="o">&lt;-</span> <span class="m">10</span>
+
+mcdf10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mcdf10 <span class="o">&lt;-</span> melt<span class="p">(</span>mcdf10<span class="p">)</span>
+
+colnames<span class="p">(</span>mcdf10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
+
+gg.mcdf10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mcdf10<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.005</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mcdf10<span class="p">)</span>
+</code></pre></div>
+
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mcdf10.png" alt="center" /> </p>
+
+<p>With 10 degrees of freedom, the two distributions are almost overlapping, the normal approximation is a good one in this case.</p>
+
+<h2 id="question">Question:</h2>
+<p>Can you setup a similar experiment to evaluate the size and the power of the <em>t</em> test?</p>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+      </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	<a href="http://stackoverflow.com/users/1416977/lcallot" title="Laurent Callot on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/lcallot" title="Laurent Callot on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : '/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-45972660-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'lcallot'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+	        
+
+</body>
+</html>

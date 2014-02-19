@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://lcallot.github.io</loc>
+        <loc></loc>
     </url>
     
     
     <url>
-        <loc>http://lcallot.github.io/teaching/IE14.html</loc>
+        <loc>/ie/IE14-W23</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/ie/IE14-W1</loc>
+        <loc>/teaching/IE14.html</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/oracle-var</loc>
+        <loc>/ie/IE14-W1</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/oracle-forecasting</loc>
+        <loc>/papers/oracle-var</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/CCS</loc>
+        <loc>/papers/oracle-forecasting</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>/papers/CCS</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/articles/code-highlighting-post</loc>
+        <loc>/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+    </url>
+    
+    <url>
+        <loc>/articles/code-highlighting-post</loc>
     </url>
     
 </urlset>

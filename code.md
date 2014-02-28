@@ -1,6 +1,5 @@
 ---
 layout: page
-permalink: /code/index.html
 title: Code and Computing
 description: 
 modified: 2013-11-19

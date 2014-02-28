@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://lcallot.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://lcallot.github.io" />
-<updated>2014-02-28T16:12:57+01:00</updated>
+<updated>2014-02-28T16:13:50+01:00</updated>
 <id>http://lcallot.github.io/</id>
 <author>
   <name>Laurent Callot</name>
@@ -216,11 +216,11 @@ hr {
 
 &lt;p&gt;These machines are administered by the &lt;a href=&quot;https://vunet.login.vu.nl/services/pages/detail.aspx?cid=tcm%3a164-330191-16&quot;&gt;VU compute service&lt;/a&gt; and accessible from within the VU or through &lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt;. &lt;/p&gt;
 
-&lt;p&gt;A user manual is provided here &lt;a href=&quot;https://vunet.login.vu.nl/_layouts/SharePoint.Tridion.WebParts/redirect.aspx?cid=tcm:164-327430-16&quot;&gt;(pdf)&lt;/a&gt;. These are essentially similar in software and specs to &lt;em&gt;rdam&lt;/em&gt; so also refer to the guide below. &lt;/p&gt;
+&lt;p&gt;A user manual is provided here &lt;a href=&quot;https://vunet.login.vu.nl/_layouts/SharePoint.Tridion.WebParts/redirect.aspx?cid=tcm:164-327430-16&quot;&gt;(pdf)&lt;/a&gt;. These are essentially similar in software and specs to &lt;em&gt;rdam&lt;/em&gt; so also refer to the guide below. &lt;em&gt;Note that jobs lasting over 24 hours run the risk of being killed without sommations&lt;/em&gt;. &lt;/p&gt;
 
 &lt;h1&gt;Lisa&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.surfsara.nl/systems/lisa/description&quot;&gt;Lisa&lt;/a&gt; is a cluster administered by &lt;a href=&quot;https://www.surfsara.nl&quot;&gt;Surf Sara&lt;/a&gt; (who also provide access to even larger systems) composed of about 500 nodes, each with 8 to 16 cores and 24GB to 32GB of memory.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.surfsara.nl/systems/lisa/description&quot;&gt;Lisa&lt;/a&gt; is a cluster administered by &lt;a href=&quot;https://www.surfsara.nl&quot;&gt;Surf Sara&lt;/a&gt; (who also provide access to even larger systems) composed of about 500 nodes, each with 8 to 16 cores and 24GB to 32GB of memory. Usage is well &lt;a href=&quot;https://www.surfsara.nl/systems/lisa/usage&quot;&gt;documented here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Access to &lt;em&gt;Lisa&lt;/em&gt; is subject to a simple and fast &lt;a href=&quot;https://www.surfsara.nl/systems/lisa/account&quot;&gt;application process&lt;/a&gt; which needs to be supported (by email) by a faculty member with a permanent position. &lt;/p&gt;
 
@@ -228,21 +228,21 @@ hr {
 
 &lt;p&gt;&lt;em&gt;Rotterdam&lt;/em&gt;, or &lt;em&gt;rdam&lt;/em&gt;, and &lt;em&gt;arhus&lt;/em&gt; are the names of the server financed by the Department of Econometrics &amp;amp; O.R., or NWO, at the VU University
 Amsterdam. Members of the department can get an account from &lt;a href=&quot;mailto:l.callot@vu.nl&quot;&gt;Laurent Callot&lt;/a&gt; or &lt;a href=&quot;mailto:c.s.bos@vu.nl&quot;&gt;Charles
-Bos&lt;/a&gt;. The server is meant for all kind of computational jobs, as long as they can run on Linux.&lt;/p&gt;
+Bos&lt;/a&gt; who also maintain these machines.&lt;/p&gt;
 
 &lt;h4&gt;Some definitions&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt; are the machine for which you got an account. &lt;/li&gt;
-&lt;li&gt;They are known by IP address &lt;tt&gt;145.108.238.26&lt;/tt&gt; for rdam and &lt;tt&gt;145.108.238.16&lt;/tt&gt; for arhus. They are reachable
+&lt;li&gt;They are known by IP address &lt;code&gt;145.108.238.26&lt;/code&gt; for rdam and &lt;code&gt;145.108.238.16&lt;/code&gt; for arhus. They are reachable
 from outside the university as well, at these addresses.&lt;/li&gt;
 &lt;li&gt;You received your own login and password. Your login is personal, you
 cannot give your password to anybody else.&lt;/li&gt;
-&lt;li&gt;In the text below, I&amp;#39;ll use VUNetID (&lt;tt&gt;abc123&lt;/tt&gt;) as example. Replace it
+&lt;li&gt;In the text below, I&amp;#39;ll use VUNetID (&lt;code&gt;abc123&lt;/code&gt;) as example. Replace it
 with your login where needed.&lt;/li&gt;
 &lt;li&gt; &lt;em&gt;rdam&lt;/em&gt; contains a Tesla card, for GPU computations.&lt;/li&gt;
 &lt;li&gt;Each user has a limited amount of priority, e.g. if two users are working at the
-machine usually each is limited to 50% of the cpu-time, if there is a
+machine usually each is limited to 50% of the CPU-time, if there is a
 conflict. For the memory,
 there is no automatic limit. Please make sure you do not use too much
 memory, else the machine becomes very slow. On the other hand, 32GB
@@ -259,7 +259,7 @@ seems to be enough for plenty of programs.&lt;/li&gt;
 
 &lt;h5&gt;Windows machine&lt;/h5&gt;
 
-&lt;p&gt;You can enter the machine using a secure shell program, e.g. &lt;a href=&quot;http://www.chiark.greenend.org.uk/%7Esgtatham/putty/&quot;&gt;PuTTY&lt;/a&gt;. At the VU, send an email to &lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;&lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;ucit-servicedesk@vu.nl&lt;/a&gt;&lt;/a&gt; stating that you want access to PuTTY (if you don&amp;#39;t have it already). At home, download and install &lt;a href=&quot;http://the.earth.li/%7Esgtatham/putty/latest/x86/putty.zip&quot;&gt;&lt;a href=&quot;http://the.earth.li/%7Esgtatham/putty/latest/x86/putty.zip&quot;&gt;http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can enter the machine using a secure shell program, e.g. &lt;a href=&quot;http://www.chiark.greenend.org.uk/%7Esgtatham/putty/&quot;&gt;PuTTy&lt;/a&gt;. At the VU, send an email to &lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;&lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;ucit-servicedesk@vu.nl&lt;/a&gt;&lt;/a&gt; stating that you want access to PuTTY (if you don&amp;#39;t have it already). &lt;/p&gt;
 
 &lt;p&gt;Start PuTTY, fill in as host name &lt;code&gt;145.108.238.26&lt;/code&gt; and save the session under the name &lt;em&gt;rdam&lt;/em&gt;, then hit the Open button. Fill in your login and password.  When you finish with PuTTY, type &lt;code&gt;exit&lt;/code&gt;, &lt;code&gt;ctrl-d&lt;/code&gt;, or just kill the window.&lt;/p&gt;
 

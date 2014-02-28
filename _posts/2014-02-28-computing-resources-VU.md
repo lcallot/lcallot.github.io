@@ -12,7 +12,7 @@ status: process
 
 # Overview
 
-Here is a brief overview of the machines readily accessible to members of the Econometrics & OR department. Modlities of access and usage of these machines is discussed below.  
+Here is a brief overview of the machines readily accessible to members of the Econometrics & OR department. Modalities of access and usage of these machines is discussed below.  
 
 Machine | Cores | Memory | Remarks
 :------- | -----: | ------: | :-------

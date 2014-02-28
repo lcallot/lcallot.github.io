@@ -4,13 +4,533 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2014-02-19T02:16:54+01:00</updated>
+<updated>2014-02-28T16:10:12+01:00</updated>
 <id>/</id>
 <author>
   <name>Laurent Callot</name>
   <uri>/</uri>
   <email>lcallot@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Computing Resources Vu]]></title>
+  <link>/computing-resources-VU</link>
+  <id>/computing-resources-VU</id>
+  <published>2014-02-28T00:00:00+01:00</published>
+  <updated>2014-02-28T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri></uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;!DOCTYPE html&gt;
+&lt;!-- saved from url=(0014)about:internet --&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+&lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=9&quot; &gt;
+
+&lt;title&gt;Overview&lt;/title&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+&lt;/style&gt;
+
+
+
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;Here is a brief overview of the machines readily accessible to members of the Econometrics &amp;amp; OR department. Modlities of access and usage of these machines is discussed below.  &lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;Machine&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;Cores&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;Memory&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;Remarks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;em&gt;rdam&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;16 @2.9GHz&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;128GB&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Detailed user guide below.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;em&gt;arhus&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;8 @2.8GHz&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;12 GB&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Same as above.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;em&gt;pcoms001&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;12 @2.3GHz&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;128 GB&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Administered by the VU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;em&gt;pcoms002&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;12 @2.3GHz&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;128 GB&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Same as above.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;em&gt;Lisa&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;6528 @2.2GHz&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;16TB&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Administered by Surf Sara.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h1&gt;pcoms0001 and 002&lt;/h1&gt;
+
+&lt;p&gt;These machines are administered by the &lt;a href=&quot;https://vunet.login.vu.nl/services/pages/detail.aspx?cid=tcm%3a164-330191-16&quot;&gt;VU compute service&lt;/a&gt; and accessible from within the VU or through &lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt;. &lt;/p&gt;
+
+&lt;p&gt;A user manual is provided here &lt;a href=&quot;https://vunet.login.vu.nl/_layouts/SharePoint.Tridion.WebParts/redirect.aspx?cid=tcm:164-327430-16&quot;&gt;(pdf)&lt;/a&gt;. These are essentially similar in software and specs to &lt;em&gt;rdam&lt;/em&gt; so also refer to the guide below. &lt;/p&gt;
+
+&lt;h1&gt;Lisa&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.surfsara.nl/systems/lisa/description&quot;&gt;Lisa&lt;/a&gt; is a cluster administered by &lt;a href=&quot;https://www.surfsara.nl&quot;&gt;Surf Sara&lt;/a&gt; (who also provide access to even larger systems) composed of about 500 nodes, each with 8 to 16 cores and 24GB to 32GB of memory.&lt;/p&gt;
+
+&lt;p&gt;Access to &lt;em&gt;Lisa&lt;/em&gt; is subject to a simple and fast &lt;a href=&quot;https://www.surfsara.nl/systems/lisa/account&quot;&gt;application process&lt;/a&gt; which needs to be supported (by email) by a faculty member with a permanent position. &lt;/p&gt;
+
+&lt;h1&gt;Rotterdam and Arhus&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Rotterdam&lt;/em&gt;, or &lt;em&gt;rdam&lt;/em&gt;, and &lt;em&gt;arhus&lt;/em&gt; are the names of the server financed by the Department of Econometrics &amp;amp; O.R., or NWO, at the VU University
+Amsterdam. Members of the department can get an account from &lt;a href=&quot;mailto:l.callot@vu.nl&quot;&gt;Laurent Callot&lt;/a&gt; or &lt;a href=&quot;mailto:c.s.bos@vu.nl&quot;&gt;Charles
+Bos&lt;/a&gt;. The server is meant for all kind of computational jobs, as long as they can run on Linux.&lt;/p&gt;
+
+&lt;h4&gt;Some definitions&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt; are the machine for which you got an account. &lt;/li&gt;
+&lt;li&gt;They are known by IP address &lt;tt&gt;145.108.238.26&lt;/tt&gt; for rdam and &lt;tt&gt;145.108.238.16&lt;/tt&gt; for arhus. They are reachable
+from outside the university as well, at these addresses.&lt;/li&gt;
+&lt;li&gt;You received your own login and password. Your login is personal, you
+cannot give your password to anybody else.&lt;/li&gt;
+&lt;li&gt;In the text below, I&amp;#39;ll use VUNetID (&lt;tt&gt;abc123&lt;/tt&gt;) as example. Replace it
+with your login where needed.&lt;/li&gt;
+&lt;li&gt; &lt;em&gt;rdam&lt;/em&gt; contains a Tesla card, for GPU computations.&lt;/li&gt;
+&lt;li&gt;Each user has a limited amount of priority, e.g. if two users are working at the
+machine usually each is limited to 50% of the cpu-time, if there is a
+conflict. For the memory,
+there is no automatic limit. Please make sure you do not use too much
+memory, else the machine becomes very slow. On the other hand, 32GB
+seems to be enough for plenty of programs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Entering the machine&lt;/h4&gt;
+
+&lt;p&gt;If this is the first time you login, you will be asked to change your password.&lt;/p&gt;
+
+&lt;h5&gt;Linux, Unix, Apple stuff&lt;/h5&gt;
+
+&lt;p&gt;To log onto &lt;em&gt;rdam&lt;/em&gt; start a terminal and enter &lt;code&gt;ssh VUnetID@145.108.238.26&lt;/code&gt;, you will be prompted for you password. To exit simply type &lt;code&gt;exit&lt;/code&gt;.  &lt;/p&gt;
+
+&lt;h5&gt;Windows machine&lt;/h5&gt;
+
+&lt;p&gt;You can enter the machine using a secure shell program, e.g. &lt;a href=&quot;http://www.chiark.greenend.org.uk/%7Esgtatham/putty/&quot;&gt;PuTTY&lt;/a&gt;. At the VU, send an email to &lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;&lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;ucit-servicedesk@vu.nl&lt;/a&gt;&lt;/a&gt; stating that you want access to PuTTY (if you don&amp;#39;t have it already). At home, download and install &lt;a href=&quot;http://the.earth.li/%7Esgtatham/putty/latest/x86/putty.zip&quot;&gt;&lt;a href=&quot;http://the.earth.li/%7Esgtatham/putty/latest/x86/putty.zip&quot;&gt;http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Start PuTTY, fill in as host name &lt;code&gt;145.108.238.26&lt;/code&gt; and save the session under the name &lt;em&gt;rdam&lt;/em&gt;, then hit the Open button. Fill in your login and password.  When you finish with PuTTY, type &lt;code&gt;exit&lt;/code&gt;, &lt;code&gt;ctrl-d&lt;/code&gt;, or just kill the window.&lt;/p&gt;
+
+&lt;h4&gt;Using your own files&lt;/h4&gt;
+
+&lt;p&gt;After the migration (and if I have set up things straight for you,
+complain in case of errors), you can use &lt;/p&gt;
+
+&lt;pre&gt;  mount ~/hdrive
+&lt;/pre&gt;
+
+&lt;p&gt;to mount your &lt;tt&gt;h:&lt;/tt&gt; drive. The command may ask for your username (if I didn&amp;#39;t set it for you already). This would
+be &lt;/p&gt;
+
+&lt;pre&gt;  vu/abc123
+&lt;/pre&gt;
+
+&lt;p&gt;(ie &lt;tt&gt;vu/&lt;/tt&gt; followed by your vu-net id, don&amp;#39;t forget the trailing
+&lt;tt&gt;vu/&lt;/tt&gt;!). The password is the standard password you have on the VU network.
+&lt;p&gt;
+Lately this link to the network drive seems to work. Only with
+many large files at once I have some problems at times. If all else
+fails, work in a local directory.
+&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;
+With a
+&lt;/p&gt;&lt;pre&gt;  cd hdrive/oxprogs
+&lt;/pre&gt;
+you would get into the &lt;/p&gt;
+
+&lt;pre&gt;  h:\oxprogs 
+&lt;/pre&gt;
+
+&lt;p&gt;directory (assuming you have one, of course). Note the forward slashes
+in directory names.
+&lt;p&gt;
+If you would wish to unmount the drive, you could use
+&lt;/p&gt;&lt;pre&gt;  cd
+  umount ~/hdrive
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;h5&gt;Graphical interface&lt;/h5&gt;
+
+&lt;p&gt;For just getting to the files (from home) you could use
+&lt;a href=&quot;http://winscp.net/&quot;&gt;WinSCP&lt;/a&gt; or
+&lt;a href=&quot;http://filezilla-project.org/&quot;&gt;FileZilla&lt;/a&gt;.&lt;br/&gt;
+This gives you a graphical environment to copy files to and from Rdam.
+FileZilla is also available on the VU. &lt;/p&gt;
+
+&lt;h2&gt;Using local files&lt;/h2&gt;
+
+&lt;p&gt;You could use local data files (which might go slightly quicker if the
+files are very large) or save your output locally. All files which are
+not saved underneath the &lt;tt&gt;/home/abc123/hdrive&lt;/tt&gt; directory will end up
+locally. For the moment, feel free to use a couple of GBs, please ask if
+you need more. &lt;/p&gt;
+
+&lt;h2&gt;Running commands&lt;/h2&gt;
+
+&lt;p&gt;On the machine you can use Ox, gcc, octave, matlab and possibly other programs
+as well. Run e.g. Ox using&lt;/p&gt;
+
+&lt;pre&gt;  cd
+  cd hdrive/oxprogs
+  oxl myprog
+&lt;/pre&gt;
+
+&lt;p&gt;if all packages would be available. Ox on Rdam has the standard
+packages around, but you can add extra ones by creating&lt;/p&gt;
+
+&lt;pre&gt;  h:\bin\ox\packages\oxprob
+&lt;/pre&gt;
+
+&lt;p&gt;for instance (the &lt;tt&gt;$HOME/bin/ox/&lt;/tt&gt; directory is, on Rdam, automatically added to your &lt;tt&gt;OX7PATH&lt;/tt&gt;
+ variable). If you place the oxprob package there, creating the
+necessary directories, Ox should be able to find the files. Note that
+also Ox on your Windows machine at the VU will search this same 
+directory, hence also on your desktop you should be able to use this 
+same package.&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/computing-resources-VU&quot;&gt;Computing Resources Vu&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on February 28, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Computing resources at Econometrics & OR.]]></title>
+  <link>/computing/computing-resources-VU</link>
+  <id>/computing/computing-resources-VU</id>
+  <published>2014-02-28T00:00:00+01:00</published>
+  <updated>2014-02-28T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri></uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;div class=&quot;toc&quot;&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;Here is a brief overview of the machines readily accessible to members of the Econometrics &amp;amp; OR department. Modlities of access and usage of these machines is discussed below.  &lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Machine&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Cores&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Memory&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Remarks&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;rdam&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;16 @2.9GHz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;128GB&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Detailed user guide below.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;arhus&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;8 @2.8GHz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12 GB&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Same as above.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;pcoms001&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12 @2.3GHz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;128 GB&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Administered by the VU.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;pcoms002&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12 @2.3GHz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;128 GB&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Same as above.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;Lisa&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6528 @2.2GHz&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;16TB&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Administered by Surf Sara.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;pcoms0001-and-002&quot;&gt;pcoms0001 and 002&lt;/h1&gt;
+
+&lt;p&gt;These machines are administered by the &lt;a href=&quot;https://vunet.login.vu.nl/services/pages/detail.aspx?cid=tcm%3a164-330191-16&quot;&gt;VU compute service&lt;/a&gt; and accessible from within the VU or through &lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt;. &lt;/p&gt;
+
+&lt;p&gt;A user manual is provided here &lt;a href=&quot;https://vunet.login.vu.nl/_layouts/SharePoint.Tridion.WebParts/redirect.aspx?cid=tcm:164-327430-16&quot;&gt;(pdf)&lt;/a&gt;. These are essentially similar in software and specs to &lt;em&gt;rdam&lt;/em&gt; so also refer to the guide below. &lt;em&gt;Note that jobs lasting over 24 hours run the risk of being killed without sommations&lt;/em&gt;. &lt;/p&gt;
+
+&lt;h1 id=&quot;lisa&quot;&gt;Lisa&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.surfsara.nl/systems/lisa/description&quot;&gt;Lisa&lt;/a&gt; is a cluster administered by &lt;a href=&quot;https://www.surfsara.nl&quot;&gt;Surf Sara&lt;/a&gt; (who also provide access to even larger systems) composed of about 500 nodes, each with 8 to 16 cores and 24GB to 32GB of memory. Usage is well &lt;a href=&quot;https://www.surfsara.nl/systems/lisa/usage&quot;&gt;documented here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Access to &lt;em&gt;Lisa&lt;/em&gt; is subject to a simple and fast &lt;a href=&quot;https://www.surfsara.nl/systems/lisa/account&quot;&gt;application process&lt;/a&gt; which needs to be supported (by email) by a faculty member with a permanent position. &lt;/p&gt;
+
+&lt;h1 id=&quot;rotterdam-and-arhus&quot;&gt;Rotterdam and Arhus&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Rotterdam&lt;/em&gt;, or &lt;em&gt;rdam&lt;/em&gt;, and &lt;em&gt;arhus&lt;/em&gt; are the names of the server financed by the Department of Econometrics &amp;amp; O.R., or NWO, at the VU University
+Amsterdam. Members of the department can get an account from &lt;a href=&quot;mailto:l.callot@vu.nl&quot;&gt;Laurent Callot&lt;/a&gt; or &lt;a href=&quot;mailto:c.s.bos@vu.nl&quot;&gt;Charles
+Bos&lt;/a&gt; who also maintain these machines.&lt;/p&gt;
+
+&lt;h4 id=&quot;some-definitions&quot;&gt;Some definitions&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;rdam&lt;/em&gt; and &lt;em&gt;arhus&lt;/em&gt; are the machine for which you got an account. &lt;/li&gt;
+  &lt;li&gt;They are known by IP address &lt;code&gt;145.108.238.26&lt;/code&gt; for rdam and &lt;code&gt;145.108.238.16&lt;/code&gt; for arhus. They are reachable
+from outside the university as well, at these addresses.&lt;/li&gt;
+  &lt;li&gt;You received your own login and password. Your login is personal, you
+cannot give your password to anybody else.&lt;/li&gt;
+  &lt;li&gt;In the text below, I’ll use VUNetID (&lt;code&gt;abc123&lt;/code&gt;) as example. Replace it
+with your login where needed.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;rdam&lt;/em&gt; contains a Tesla card, for GPU computations.&lt;/li&gt;
+  &lt;li&gt;Each user has a limited amount of priority, e.g. if two users are working at the
+machine usually each is limited to 50% of the CPU-time, if there is a
+conflict. For the memory,
+there is no automatic limit. Please make sure you do not use too much
+memory, else the machine becomes very slow. On the other hand, 32GB
+seems to be enough for plenty of programs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;entering-the-machine&quot;&gt;Entering the machine&lt;/h4&gt;
+
+&lt;p&gt;If this is the first time you login, you will be asked to change your password.&lt;/p&gt;
+
+&lt;h5 id=&quot;linux-unix-apple-stuff&quot;&gt;Linux, Unix, Apple stuff&lt;/h5&gt;
+&lt;p&gt;To log onto &lt;em&gt;rdam&lt;/em&gt; start a terminal and enter &lt;code&gt;ssh VUnetID@145.108.238.26&lt;/code&gt;, you will be prompted for you password. To exit simply type &lt;code&gt;exit&lt;/code&gt;.  &lt;/p&gt;
+
+&lt;h5 id=&quot;windows-machine&quot;&gt;Windows machine&lt;/h5&gt;
+&lt;p&gt;You can enter the machine using a secure shell program, e.g. &lt;a href=&quot;http://www.chiark.greenend.org.uk/%7Esgtatham/putty/&quot;&gt;PuTTy&lt;/a&gt;. At the VU, send an email to &lt;a href=&quot;mailto:ucit-servicedesk@vu.nl&quot;&gt;ucit-servicedesk@vu.nl&lt;/a&gt; stating that you want access to PuTTY (if you don’t have it already). &lt;/p&gt;
+
+&lt;p&gt;Start PuTTY, fill in as host name &lt;code&gt;145.108.238.26&lt;/code&gt; and save the session under the name &lt;em&gt;rdam&lt;/em&gt;, then hit the Open button. Fill in your login and password.  When you finish with PuTTY, type &lt;code&gt;exit&lt;/code&gt;, &lt;code&gt;ctrl-d&lt;/code&gt;, or just kill the window.&lt;/p&gt;
+
+&lt;h4 id=&quot;using-your-own-files&quot;&gt;Using your own files&lt;/h4&gt;
+&lt;p&gt;After the migration (and if I have set up things straight for you,
+complain in case of errors), you can use &lt;/p&gt;
+&lt;pre&gt;  mount ~/hdrive
+&lt;/pre&gt;
+&lt;p&gt;to mount your &lt;tt&gt;h:&lt;/tt&gt; drive. The command may ask for your username (if I didn’t set it for you already). This would
+be &lt;/p&gt;
+&lt;pre&gt;  vu/abc123
+&lt;/pre&gt;
+&lt;p&gt;(ie &lt;tt&gt;vu/&lt;/tt&gt; followed by your vu-net id, don’t forget the trailing
+&lt;tt&gt;vu/&lt;/tt&gt;!). The password is the standard password you have on the VU network.&lt;/p&gt;
+&lt;p&gt;
+Lately this link to the network drive seems to work. Only with
+many large files at once I have some problems at times. If all else
+fails, work in a local directory.
+&lt;/p&gt;
+&lt;p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;
+With a
+&lt;/p&gt;
+&lt;pre&gt;  cd hdrive/oxprogs
+&lt;/pre&gt;
+&lt;p&gt;you would get into the &lt;/p&gt;
+&lt;pre&gt;  h:\oxprogs 
+&lt;/pre&gt;
+&lt;p&gt;directory (assuming you have one, of course). Note the forward slashes
+in directory names.&lt;/p&gt;
+&lt;p&gt;
+If you would wish to unmount the drive, you could use
+&lt;/p&gt;
+&lt;pre&gt;  cd
+  umount ~/hdrive
+&lt;/pre&gt;
+
+&lt;h5 id=&quot;graphical-interface&quot;&gt;Graphical interface&lt;/h5&gt;
+
+&lt;p&gt;For just getting to the files (from home) you could use
+&lt;a href=&quot;http://winscp.net/&quot;&gt;WinSCP&lt;/a&gt; or
+&lt;a href=&quot;http://filezilla-project.org/&quot;&gt;FileZilla&lt;/a&gt;.&lt;br /&gt;
+This gives you a graphical environment to copy files to and from Rdam.
+FileZilla is also available on the VU. &lt;/p&gt;
+
+&lt;h2&gt;Using local files&lt;/h2&gt;
+&lt;p&gt;You could use local data files (which might go slightly quicker if the
+files are very large) or save your output locally. All files which are
+not saved underneath the &lt;tt&gt;/home/abc123/hdrive&lt;/tt&gt; directory will end up
+locally. For the moment, feel free to use a couple of GBs, please ask if
+you need more. &lt;/p&gt;
+
+&lt;h2&gt;Running commands&lt;/h2&gt;
+&lt;p&gt;On the machine you can use Ox, gcc, octave, matlab and possibly other programs
+as well. Run e.g. Ox using&lt;/p&gt;
+&lt;pre&gt;  cd
+  cd hdrive/oxprogs
+  oxl myprog
+&lt;/pre&gt;
+&lt;p&gt;if all packages would be available. Ox on Rdam has the standard
+packages around, but you can add extra ones by creating&lt;/p&gt;
+&lt;pre&gt;  h:\bin\ox\packages\oxprob
+&lt;/pre&gt;
+&lt;p&gt;for instance (the &lt;tt&gt;$HOME/bin/ox/&lt;/tt&gt; directory is, on Rdam, automatically added to your &lt;tt&gt;OX7PATH&lt;/tt&gt;
+ variable). If you place the oxprob package there, creating the
+necessary directories, Ox should be able to find the files. Note that
+also Ox on your Windows machine at the VU will search this same 
+directory, hence also on your desktop you should be able to use this 
+same package.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/computing/computing-resources-VU&quot;&gt;Computing resources at Econometrics & OR.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on February 28, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>

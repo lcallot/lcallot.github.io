@@ -1,6 +1,22 @@
 [
 	
 		{
+		  "title"      : "Computing Resources Vu",
+		  "category"   : "",
+		  "url"        : "/computing-resources-VU",
+		  "date"       : "2014-02-28 00:00:00 +0100",
+		  "shortdate"  : "February 28, 2014"
+		} ,
+	
+		{
+		  "title"      : "Computing resources at Econometrics &amp; OR.",
+		  "category"   : "computing",
+		  "url"        : "/computing/computing-resources-VU",
+		  "date"       : "2014-02-28 00:00:00 +0100",
+		  "shortdate"  : "February 28, 2014"
+		} ,
+	
+		{
 		  "title"      : "Week 2-3: R squared, Testing, and Monte Carlo.",
 		  "category"   : "ie",
 		  "url"        : "/ie/IE14-W23",

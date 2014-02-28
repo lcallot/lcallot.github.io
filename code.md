@@ -19,4 +19,3 @@ All my public code is available on my [github page](http://github.com/lcallot).
 
 ### Computing ressources at the VU University Amsterdam
 
-[An overview of the available resources.]({% post_url /computing/2014-02-28-computing-resources-VU %})

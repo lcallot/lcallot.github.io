@@ -1,6 +1,22 @@
 [
 	
 		{
+		  "title"      : "Software Rdam",
+		  "category"   : "",
+		  "url"        : "/software-rdam",
+		  "date"       : "2014-03-04 00:00:00 +0100",
+		  "shortdate"  : "March 04, 2014"
+		} ,
+	
+		{
+		  "title"      : "Software on rdam and arhus.",
+		  "category"   : "computing",
+		  "url"        : "/computing/software-rdam",
+		  "date"       : "2014-03-04 00:00:00 +0100",
+		  "shortdate"  : "March 04, 2014"
+		} ,
+	
+		{
 		  "title"      : "Computing resources at Econometrics and OR.",
 		  "category"   : "computing",
 		  "url"        : "/computing/computing-resources-VU",

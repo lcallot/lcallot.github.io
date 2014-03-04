@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Laurent's Research Page</title>
-<meta name="description" content="lcallot research page.">
-<meta name="keywords" content="laurent, research, code, teaching">
+<title>Software on rdam and arhus. &#8211; Laurent's Research Page</title>
+<meta name="description" content="software resources">
+<meta name="keywords" content="computing">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laurent's Research Page">
-<meta property="og:description" content="lcallot research page.">
-<meta property="og:url" content="/index.html">
+<meta property="og:title" content="Software on rdam and arhus.">
+<meta property="og:description" content="software resources">
+<meta property="og:url" content="/computing/software-rdam">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="/">
+<link rel="canonical" href="/computing/software-rdam">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -58,7 +58,7 @@
 
 </head>
 
-<body id="page" itemscope itemtype="http://schema.org/WebPage">
+<body id="post" itemscope itemtype="http://schema.org/WebPage">
 
 <div class="navigation-wrapper">
 	<nav role="navigation" id="site-nav" class="animated drop" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -114,53 +114,108 @@
 </header><!-- /.masthead -->
 
 
-
-<div class='wrap'><img src="/images/res.jpg" class="entry-feature-image" alt="" itemprop="image"><p class="image-credit">Photo Credit: <a href="">lcallot</a></div>
-
-
-<div id="main" role="main" itemprop="mainContentOfPage">
-  <article class="entry" itemscope>
-        <div class="entry-wrapper">
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+  <article class="hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="entry-wrapper">
       <header class="entry-header">
-        <h4 class="entry-title" itemprop="name"></h4>
+        <span class="entry-tags"><a href="/tags.html#computing" title="Pages tagged computing" rel="tag">computing</a></span>
+        
+          <h3 class="entry-title" itemprop="headline">Software on rdam and arhus.</h3>
+        
       </header>
-      <div class="entry-content" itemprop="description">
-        <h1>Welcome to Laurent Callot's research page.</h1>
+            <div class="entry-content" itemprop="description">
+        <p>This page describes some useful Linux tools and statistical programs available on <em>rdam</em> (and on <em>arhus</em> in most instances). These are very short introductions, internet is full of more thorough discussion of each of the topics presented here.</p>
 
+<hr />
 
-<h4 id="job">Current positon:</h4>
-Post-doctoral researcher at the <a href=http://www.vu.nl>VU Amsterdam</a>, department of <a href=http://www.feweb.vu.nl/en/departments-and-institutes/econometrics-and-or/index.asp>Econometrics and OR</a>.
+<h1 id="overview">Overview</h1>
 
-
-<h4 id="affiliations">Other affiliations:</h4>
-<ul>
-<li><a href=http://www.creates.au.dk>CREATES</a></li>
-<li><a href=http://www.tinbergen.nl>Tinbergen Institute</a></li>
-</ul>
-
-<h4 id='research'>Main research interests</h4> 
+<p><em>rdam</em> and <em>arhus</em> have no scheduler and no limits are imposed on the size and the duration of the jobs that users may submit. <strong>With great power comes great responsibility:</strong> you are responsible for ensuring that your jobs do not overload the servers. Below I describe a couple of tools useful for doing that.</p>
 
 <ul>
-<li>Time series econometrics.</li>
-<li>High dimensional statistics.</li>
-<li>Applied econometrics: macroeconomics, finance, and forecasting. </li>
+  <li><strong>screen</strong>: Creates and manages virtual sessions that survive after you logout and can be resumed.</li>
+  <li><strong>top</strong>: Monitor the server and user processes. </li>
 </ul>
 
-
-<h4 id="contents">Contents</h4>
+<p>The main statistical packages available on <em>rdam</em> are:</p>
 
 <ul>
-<li><a href=/papers >Papers</a></li>
-<li><a href=/code >Code and Computing</a></li>
-<li><a href=/teaching >Teaching</a></li>
-<li><a href=/cv >Curriculum Vitae</a></li>
+  <li><strong>R</strong>, <strong>Rstudio</strong>, and <strong>Rstudio server</strong>: Standard installation of <em>R</em> and <em>Rstudio</em> as well as a browser version of <em>Rstudio</em> reachable through a SSH tunnel. </li>
+  <li><strong>Matlab R2013b</strong>: Standard installation with VU license.</li>
+  <li><strong>Ox 7.00</strong>: Installed so that <em>Ox</em> runs by default on a single thread.</li>
 </ul>
 
+<hr />
+
+<h1 id="linux-tools">Linux tools</h1>
+
+<h4 id="screen">screen</h4>
+
+<ol>
+  <li>To create a virtual session named <em>sname</em> using screen enter <code>screen -S sname</code>. This will result in a blank command prompt, you are in the virtual session. Any job you launch in this session will continue even after you log out. </li>
+  <li>To get back to the main session (detach the screen) type <code>Ctrl-A</code> and then <code>d</code>. </li>
+  <li>To reattach a detached session by entering <code>screen -r sname</code>. </li>
+  <li>To kill the <em>sname</em> session enter <code>exit</code>. </li>
+  <li>To list the existing screen sessions with their status <code>screen -ls</code>.</li>
+</ol>
+
+<p>You can find much more detailed (and fancy) tutorials and tips <a href="http://www.tecmint.com/screen-command-examples-to-manage-linux-terminals/">here</a> and <a href="http://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/">here</a>.</p>
+
+<h4 id="top">top</h4>
+
+<p><em>top</em> is a useful monitoring tool. to access it, simply type <code>top</code> at the command line. The first few lines that appear contain server wide statistics.</p>
+
+<ul>
+  <li>The third line shows the share of total cpu used for:
+    <ol>
+      <li>user processes</li>
+      <li>system</li>
+      <li>nice (low priority) processes</li>
+      <li>idle</li>
+    </ol>
+  </li>
+  <li>The fourth line shows the total, used, and available memory. </li>
+</ul>
+
+<p>Below comes a list of every process, starting with the process id and the user it belongs as well as memory use (RES) and cpu used (%CPU).    </p>
+
+<blockquote>
+  <p>Be extremely careful that the memory is not overloaded lest the server grinds to a halt.</p>
+</blockquote>
+
+<p><em>rdam</em> has 16 physical cores and can run on up to 32 cores thanks to hyper-threading however performances are optimal when only 16 cores are used. Do not start large jobs when the server is already loaded, you have <a href="/computing/computing-resources-VU">other machines</a> at your disposal.</p>
+
+<hr />
+
+<h1 id="software">Software</h1>
+
+<h4 id="r-rstudio-and-rstudio-server">R, Rstudio, and Rstudio server</h4>
+
+<p><em>R</em> is started by simply typing <code>R</code> at the command line. </p>
+
+<p><a href="https://www.rstudio.com/"><em>Rstudio</em></a> provides a graphical user interface for <em>R</em> as well as seamless integration with <a href="http://yihui.name/knitr/">knitr</a> (great tool for reproducible research) and Git (and <a href="https://github.com/">Github</a>, the host of this site) for version control (useful to keep track of code changes and for collaborative work)</p>
+
+<p><em>Rstudio Server</em> is also installed and <em>rdam</em>. It provides an access to <em>Rstudio</em> on <em>rdam</em> in your browser through a SSH tunnel in two steps:</p>
+
+<ol>
+  <li>Open a terminal on your machine and enter: <code>ssh -f -N -L 1234:localhost:8787 VUNetID@rdam</code>. After you enter your password nothing happens, the SSH tunnel is in the background. How to do this using PuTTY is described <a href="http://jimhester.com/post/rstudio-server-through-ssh-tunnel">here</a>.</li>
+  <li>Open a browser and point it to <code>localhost:1234</code>, enter your VUNetID and password, and here you have <em>Rstudio</em> running on <em>rdam</em>.</li>
+</ol>
+
+<h4 id="matlab">Matlab</h4>
+
+<p>Matlab is installed with the latest stable release R2013b, and is started by typing <code>matlab</code> at the command prompt.</p>
+
+<h4 id="ox-700">Ox 7.00</h4>
+
+<p>Ox 7.00 is installed, usage is described on the website of <a href="http://personal.vu.nl/c.s.bos/resources.html">Charles Bos</a>.</p>
 
 
+        
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
-  </article>
+      </article>
 </div><!-- /#main -->
 
 <div class="footer-wrapper">
@@ -242,7 +297,7 @@ Post-doctoral researcher at the <a href=http://www.vu.nl>VU Amsterdam</a>, depar
 
 
 
-          
+	        
 
 </body>
 </html>

@@ -19,4 +19,6 @@ All my public code is available on my [github page](http://github.com/lcallot).
 
 ### Computing ressources at the VU University Amsterdam
 
-[A quick guide.]({% post_url 2014-02-28-computing-resources-VU %})
+[Hardware]({% post_url 2014-02-28-computing-resources-VU %})
+
+[Software]({% post_url 2014-03-04-software-rdam %})

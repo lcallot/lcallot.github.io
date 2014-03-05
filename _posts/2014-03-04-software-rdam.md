@@ -79,7 +79,10 @@ _Rstudio Server_ is also installed and _rdam_. It provides an access to _Rstudio
  
 #### Matlab
 
-Matlab is installed with the latest stable release R2013b, and is started by typing `matlab` at the command prompt.
+Matlab is installed with the latest stable release R2013b.
+
+ * Start the GUI by typing `matlab` at the command prompt.
+ * To execute matlab scripts in the backgroup type `m myfile.m`.
 
 #### Ox 7.00
 

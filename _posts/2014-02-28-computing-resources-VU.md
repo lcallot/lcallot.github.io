@@ -51,16 +51,9 @@ Bos</a> who also maintain these machines.
 from outside the university as well, at these addresses.
  * You received your own login and password. Your login is personal, you
 cannot give your password to anybody else.
- * In the text below, I'll use VUNetID (`abc123`) as example. Replace it
-with your login where needed.
  *  _rdam_ contains a Tesla card, for GPU computations.
- * Each user has a limited amount of priority, e.g. if two users are working at the
-machine usually each is limited to 50% of the CPU-time, if there is a
-conflict. For the memory,
-there is no automatic limit. Please make sure you do not use too much
-memory, else the machine becomes very slow. On the other hand, 32GB
-seems to be enough for plenty of programs.
-
+ * Each user has a limited amount of priority, e.g. if two users are working at the machine usually each is limited to 50% of the CPU-time if there is a conflict.
+ * For the memory, there is no automatic limit. Please make sure you do not use too much memory, else the machine becomes very slow. 
 
 
 #### Entering the machine

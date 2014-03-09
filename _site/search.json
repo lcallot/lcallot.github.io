@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Week 6: Empirical size and power of Likelihood based tests.",
+		  "category"   : "ie",
+		  "url"        : "/ie/IE14-W6",
+		  "date"       : "2014-03-09 00:00:00 +0100",
+		  "shortdate"  : "March 09, 2014"
+		} ,
+	
+		{
 		  "title"      : "Software Rdam",
 		  "category"   : "",
 		  "url"        : "/software-rdam",

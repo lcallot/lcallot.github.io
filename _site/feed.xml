@@ -4,13 +4,224 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2014-03-05T00:42:30+01:00</updated>
+<updated>2014-03-09T23:41:40+01:00</updated>
 <id>/</id>
 <author>
   <name>Laurent Callot</name>
   <uri>/</uri>
   <email>lcallot@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Week 6: Empirical size and power of Likelihood based tests.]]></title>
+  <link>/ie/IE14-W6</link>
+  <id>/ie/IE14-W6</id>
+  <published>2014-03-09T00:00:00+01:00</published>
+  <updated>2014-03-09T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri></uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;regressions-with-multiple-variables-and-matrix-notation&quot;&gt;Regressions with multiple variables and matrix notation&lt;/h1&gt;
+
+&lt;h2 id=&quot;monte-carlo-estimation-of-the-size-and-power-of-likelihood-based-tests&quot;&gt;Monte Carlo estimation of the size and power of Likelihood based tests.&lt;/h2&gt;
+
+&lt;p&gt;First, we create a function that takes as input a matrix X, the true value of beta2 as well as the number of observations and the number of Monte Carlo iterations. It returns a vector with the average rejection frequency of \(H0: \beta_2=0 \).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;library&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ggplot2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Create a function returning mc p-values for each test Inputs: - n the&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# number of observations - mc the number of monte carlo iterations - b the&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# true value of beta2 - X the X matrix Output:&lt;/span&gt;
+mcMLtests &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# The parameter vector&lt;/span&gt;
+    beta &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# storage matrix&lt;/span&gt;
+    LR &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    LM &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    W &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;m &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;mc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        eps &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# standard normal innovations&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Generating the data&lt;/span&gt;
+        y &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; X &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; beta &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; eps
+        
+        &lt;span class=&quot;c1&quot;&gt;# Estimating the model under the alternative&lt;/span&gt;
+        ML1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Under the Null&lt;/span&gt;
+        ML0 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Storing the residuals&lt;/span&gt;
+        eps0 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; resid&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ML0&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        eps1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; resid&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ML1&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Storing the estimated betas&lt;/span&gt;
+        beta0 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; coef&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ML0&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        beta1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; coef&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ML1&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Calculating the MLE of sigma2&lt;/span&gt;
+        sig0 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; sum&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;eps0&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;n
+        sig1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; sum&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;eps1&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;n
+        
+        &lt;span class=&quot;c1&quot;&gt;# Computing the test statistics:&lt;/span&gt;
+        LR&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sig0&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sig1&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        W&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta1&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sqrt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sig1&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;sum&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;X&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+        LM&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;eps0&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; X &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; solve&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; t&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%*%&lt;/span&gt; eps0&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;sig0
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    pval &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mean&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pchisq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;LM&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; df &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; mean&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pchisq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;LR&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; df &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; 
+        &lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; mean&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pchisq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; df &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;pval&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We use the function created above to run a first experiment with 10 observations (n=10). The true value of beta2 varies in the range \(\beta_2 = (0,0.05,0.1,…,0.95,1)\). &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# nbr of Monte Carlo iterations&lt;/span&gt;
+mc &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# beta2 parameter value&lt;/span&gt;
+beta2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; seq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;from &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; to &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; by &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The storage matrix&lt;/span&gt;
+mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta2&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+rownames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; beta2
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;LM&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;LR&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;W&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Same set of controls for every experiment&lt;/span&gt;
+X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# loop counter&lt;/span&gt;
+i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Monte Carlo experiment&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;b &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; beta2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    mc10&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcMLtests&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; i &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Now preparing a plot of the results:&lt;/span&gt;
+mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+head&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;##   Var1 Var2 value
+## 1 0.00   LM 0.059
+## 2 0.05   LM 0.083
+## 3 0.10   LM 0.083
+## 4 0.15   LM 0.089
+## 5 0.20   LM 0.115
+## 6 0.25   LM 0.132
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Power&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc10 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc10&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Power&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; colour &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Test&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+    ggtitle&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Rejection frequency of H0: beta2=0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc10&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-03-09-IE14-W6_rmd/mc10.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Another experiment with 100 observations and \( \beta_2 =0,0.025,0.05,…,0.475,0.5 \):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# nbr of obs&lt;/span&gt;
+n &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# nbr of Monte Carlo iterations&lt;/span&gt;
+mc &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# beta2 parameter value&lt;/span&gt;
+beta2 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; seq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;from &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; to &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; by &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.025&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The storage matrix&lt;/span&gt;
+mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta2&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+rownames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; beta2
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;LM&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;LR&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;W&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Same set of controls for every experiment&lt;/span&gt;
+X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# loop counter&lt;/span&gt;
+i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Monte Carlo experiment&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;b &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; beta2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    mc100&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcMLtests&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; i &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Now preparing a plot of the results:&lt;/span&gt;
+mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+head&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;##    Var1 Var2 value
+## 1 0.000   LM 0.056
+## 2 0.025   LM 0.068
+## 3 0.050   LM 0.076
+## 4 0.075   LM 0.116
+## 5 0.100   LM 0.147
+## 6 0.125   LM 0.198
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Power&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc100 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Power&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; colour &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Test&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+    ggtitle&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Rejection frequency of H0: beta2=0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc100&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-03-09-IE14-W6_rmd/mc100.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Same experiment as before, but this time X is t-distributed with 3 degrees of freedom.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# The storage matrix&lt;/span&gt;
+mc100X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;beta2&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+rownames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; beta2
+colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;LM&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;LR&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;W&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Same set of controls for every experiment&lt;/span&gt;
+X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrix&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; df &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; n&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# loop counter&lt;/span&gt;
+i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Monte Carlo experiment&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;b &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; beta2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    mc100X&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; mcMLtests&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; i &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Now preparing a plot of the results:&lt;/span&gt;
+mc100X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+head&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;##    Var1 Var2 value
+## 1 0.000   LM 0.053
+## 2 0.025   LM 0.070
+## 3 0.050   LM 0.173
+## 4 0.075   LM 0.317
+## 5 0.100   LM 0.522
+## 6 0.125   LM 0.686
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;colnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Power&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+gg.mc100X &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mc100X&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Power&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; colour &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Test&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+    ggtitle&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Rejection frequency of H0: beta2=0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mc100X&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2014-03-09-IE14-W6_rmd/mc100X.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/ie/IE14-W6&quot;&gt;Week 6: Empirical size and power of Likelihood based tests.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;&quot;&gt;Laurent's Research Page&lt;/a&gt; on March 09, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -318,7 +529,12 @@ hr {
 
 &lt;h4 id=&quot;matlab&quot;&gt;Matlab&lt;/h4&gt;
 
-&lt;p&gt;Matlab is installed with the latest stable release R2013b, and is started by typing &lt;code&gt;matlab&lt;/code&gt; at the command prompt.&lt;/p&gt;
+&lt;p&gt;Matlab is installed with the latest stable release R2013b.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Start the GUI by typing &lt;code&gt;matlab&lt;/code&gt; at the command prompt.&lt;/li&gt;
+  &lt;li&gt;To execute matlab scripts in the backgroup type &lt;code&gt;m myfile.m&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;ox-700&quot;&gt;Ox 7.00&lt;/h4&gt;
 
@@ -417,15 +633,9 @@ Bos&lt;/a&gt; who also maintain these machines.&lt;/p&gt;
 from outside the university as well, at these addresses.&lt;/li&gt;
   &lt;li&gt;You received your own login and password. Your login is personal, you
 cannot give your password to anybody else.&lt;/li&gt;
-  &lt;li&gt;In the text below, I’ll use VUNetID (&lt;code&gt;abc123&lt;/code&gt;) as example. Replace it
-with your login where needed.&lt;/li&gt;
   &lt;li&gt;&lt;em&gt;rdam&lt;/em&gt; contains a Tesla card, for GPU computations.&lt;/li&gt;
-  &lt;li&gt;Each user has a limited amount of priority, e.g. if two users are working at the
-machine usually each is limited to 50% of the CPU-time, if there is a
-conflict. For the memory,
-there is no automatic limit. Please make sure you do not use too much
-memory, else the machine becomes very slow. On the other hand, 32GB
-seems to be enough for plenty of programs.&lt;/li&gt;
+  &lt;li&gt;Each user has a limited amount of priority, e.g. if two users are working at the machine usually each is limited to 50% of the CPU-time if there is a conflict.&lt;/li&gt;
+  &lt;li&gt;For the memory, there is no automatic limit. Please make sure you do not use too much memory, else the machine becomes very slow. &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;entering-the-machine&quot;&gt;Entering the machine&lt;/h4&gt;
@@ -681,6 +891,11 @@ print&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gg.mcdf10&lt;span class=&quot
 &lt;p&gt;These post also contains some computational questions. I encourage you to give these questions a try: if you really understand something, then you should be able to program it. Use whichever language/package you feel most comfortable with.    &lt;/p&gt;
 
 &lt;p&gt;I have enabled comments. I encourage you to use those to ask questions and reply to open questions if you know the answer. The comments are anonymous and not necessarily linked to your &lt;em&gt;vu&lt;/em&gt; email, please keep it clean.  &lt;/p&gt;
+
+&lt;article&gt;
+&lt;h3&gt;&lt;a href=&quot;/ie/IE14-W6&quot;&gt;Week 6: Empirical size and power of Likelihood based tests.&lt;/a&gt;&lt;/h3&gt;
+&lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-03-09T00:00:00+01:00&quot;&gt;March 2014&lt;/time&gt;&lt;/span&gt;--&gt;
+&lt;/article&gt;
 
 &lt;article&gt;
 &lt;h3&gt;&lt;a href=&quot;/ie/IE14-W23&quot;&gt;Week 2-3: R squared, Testing, and Monte Carlo.&lt;/a&gt;&lt;/h3&gt;

@@ -61,7 +61,7 @@ Below comes a list of every process, starting with the process id and the user i
 _rdam_ has 16 physical cores and can run on up to 32 cores thanks to hyper-threading however performances are optimal when only 16 cores are used. Do not start large jobs when the server is already loaded, you have [other machines]({% post_url 2014-02-28-computing-resources-VU %}) at your disposal.
  
  
- ---
+---
  
 # Software
  

@@ -3,7 +3,7 @@ layout: post
 title: "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions."
 description: ""
 category: "papers"
-tags: [working paper, Panel, Co-integration, Bootstrap]
+tags: [working paper, Forecasting, VAR, Lasso, High dimension]
 status: 'Forthcoming in: Essays in Nonlinear Time Series Econometrics, Oxford University Press.'
 coauthor: Anders Bredahl Kock
 ---

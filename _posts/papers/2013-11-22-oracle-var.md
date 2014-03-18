@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions."
+title: "Oracle inequalities for high dimensional vector autoregressions."
 description: ""
 category: "papers"
-tags: [working paper, Panel, Co-integration, Bootstrap]
+tags: [working paper, Lasso, High dimension, VAR]
 status: 'Revised version submitted.'
 coauthor: Anders Bredahl Kock
 ---

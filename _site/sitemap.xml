@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc></loc>
+        <loc>http://lcallot.github.io</loc>
     </url>
     
     
     <url>
-        <loc>/ie/IE14-W6</loc>
+        <loc>http://lcallot.github.io/ie/IE14-W6</loc>
     </url>
     
     <url>
-        <loc>/software-rdam</loc>
+        <loc>http://lcallot.github.io/software-rdam</loc>
     </url>
     
     <url>
-        <loc>/computing/software-rdam</loc>
+        <loc>http://lcallot.github.io/computing/software-rdam</loc>
     </url>
     
     <url>
-        <loc>/computing/computing-resources-VU</loc>
+        <loc>http://lcallot.github.io/computing/computing-resources-VU</loc>
     </url>
     
     <url>
-        <loc>/ie/IE14-W23</loc>
+        <loc>http://lcallot.github.io/ie/IE14-W23</loc>
     </url>
     
     <url>
-        <loc>/teaching/IE14.html</loc>
+        <loc>http://lcallot.github.io/teaching/IE14.html</loc>
     </url>
     
     <url>
-        <loc>/ie/IE14-W1</loc>
+        <loc>http://lcallot.github.io/ie/IE14-W1</loc>
     </url>
     
     <url>
-        <loc>/papers/oracle-var</loc>
+        <loc>http://lcallot.github.io/papers/oracle-var</loc>
     </url>
     
     <url>
-        <loc>/papers/oracle-forecasting</loc>
+        <loc>http://lcallot.github.io/papers/oracle-forecasting</loc>
     </url>
     
     <url>
-        <loc>/papers/CCS</loc>
+        <loc>http://lcallot.github.io/papers/CCS</loc>
     </url>
     
     <url>
-        <loc>/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</loc>
     </url>
     
     <url>
-        <loc>/articles/code-highlighting-post</loc>
+        <loc>http://lcallot.github.io/articles/code-highlighting-post</loc>
     </url>
     
 </urlset>

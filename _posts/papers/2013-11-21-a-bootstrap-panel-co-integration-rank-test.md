@@ -7,8 +7,6 @@ tags: [working paper, Panel, Co-integration, Bootstrap]
 status: 'Working paper.'
 coauthor: 
 image:
-  feature: kili-lq.jpg
-  credit: Laurent Callot 
 ---
 
 

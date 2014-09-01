@@ -8,7 +8,7 @@ status: 'Revised version submitted.'
 coauthor: Anders Bredahl Kock
 ---
 
-**Revised version submitted.**
+**Conditionally accepted by the Journal of Econometrics.**
 
 Download the paper [pdf]({{ site.url }}/papers/oracle_var.pdf).
 

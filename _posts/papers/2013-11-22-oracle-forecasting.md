@@ -4,11 +4,11 @@ title: "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and 
 description: ""
 category: "papers"
 tags: [working paper, Forecasting, VAR, Lasso, High dimension]
-status: 'Forthcoming in: Essays in Nonlinear Time Series Econometrics, Oxford University Press.'
+status: 'Published in: Essays in Nonlinear Time Series Econometrics, Oxford University Press.'
 coauthor: Anders Bredahl Kock
 ---
 
-**Forthcoming as: Callot, Laurent A. F., and Anders Bredahl Kock, 2014, Oracle Efficient Estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions, in N. Haldrup, M. Meitz, and P. Saikkonen (eds.), Essays in Nonlinear Time Series Econometrics, Oxford University Press.**
+**Published as: Callot, Laurent A. F., and Anders Bredahl Kock, 2014, Oracle Efficient Estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions, in N. Haldrup, M. Meitz, and P. Saikkonen (eds.), Essays in Nonlinear Time Series Econometrics, Oxford University Press.**
 
 Download the paper [pdf]({{ site.url }}/papers/oracle_forecast.pdf).
 

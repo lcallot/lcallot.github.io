@@ -4,11 +4,9 @@ title: "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs."
 description: ""
 category: "papers"
 tags: [working paper, Panel, Co-integration, Bootstrap]
-status: 'Submitted.'
+status: 'Working paper.'
 coauthor: 
 image:
-  feature: kili-lq.jpg
-  credit: Laurent Callot 
 ---
 
 

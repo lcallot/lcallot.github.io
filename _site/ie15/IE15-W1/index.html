@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>Week 1: Multiple Regressions and Matrix Notation. &#8211; Laurent's Research Page</title>
 <meta name="description" content="Week 1: Multiple Regressions and Matrix Notation.">
-<meta name="keywords" content="IE14, teaching, week1">
+<meta name="keywords" content="IE15, teaching, week1">
 
 
 
@@ -16,14 +16,14 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Week 1: Multiple Regressions and Matrix Notation.">
 <meta property="og:description" content="Week 1: Multiple Regressions and Matrix Notation.">
-<meta property="og:url" content="/ie/IE14-W1">
+<meta property="og:url" content="/ie15/IE15-W1">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="/ie/IE14-W1">
+<link rel="canonical" href="/ie15/IE15-W1">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -119,7 +119,7 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="/tags.html#IE14" title="Pages tagged IE14" rel="tag">IE14</a>&nbsp;&bull;&nbsp;<a href="/tags.html#teaching" title="Pages tagged teaching" rel="tag">teaching</a>&nbsp;&bull;&nbsp;<a href="/tags.html#week1" title="Pages tagged week1" rel="tag">week1</a></span>
+        <span class="entry-tags"><a href="/tags.html#IE15" title="Pages tagged IE15" rel="tag">IE15</a>&nbsp;&bull;&nbsp;<a href="/tags.html#teaching" title="Pages tagged teaching" rel="tag">teaching</a>&nbsp;&bull;&nbsp;<a href="/tags.html#week1" title="Pages tagged week1" rel="tag">week1</a></span>
         
           <h3 class="entry-title" itemprop="headline">Week 1: Multiple Regressions and Matrix Notation.</h3>
         
@@ -149,6 +149,96 @@
 </ul>
 
 <p>You can get help on any function by typing <em>?FunctionName</em> in the <em>R</em> console, try <em>?dim</em> for example. </p>
+
+<h3 id="multiple-regression-with-the-wage-data">Multiple regression with the wage data.</h3>
+
+<p>First we load the data and check that it looks as expected.</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># Loading the data.</span>
+wage <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&#39;../data/wages.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Printing the first rows of wage.</span>
+head<span class="p">(</span>wage<span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="text">##   X EXPER MALE SCHOOL  WAGE
+## 1 1     9    0     13 6.315
+## 2 2    12    0     12 5.480
+## 3 3    11    0     11 3.642
+## 4 4     9    0     14 4.593
+## 5 5     8    0     14 2.418
+## 6 6     9    0     14 2.094
+</code></pre></div>
+
+<p>Now we can regress <em>WAGE</em> on <em>SCHOOL</em> and <em>EXPER</em>:</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># regression of wage on school and exper.</span>
+mod1 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> SCHOOL <span class="o">+</span> EXPER<span class="p">,</span> data<span class="o">=</span>wage<span class="p">)</span>
+<span class="c1"># printing the results of the regression.</span>
+summary<span class="p">(</span>mod1<span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="text">## 
+## Call:
+## lm(formula = WAGE ~ SCHOOL + EXPER, data = wage)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -6.88  -1.99  -0.52   1.39  34.91 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -2.4767     0.4700   -5.27  1.5e-07 ***
+## SCHOOL        0.5992     0.0334   17.94  &lt; 2e-16 ***
+## EXPER         0.1573     0.0242    6.51  8.9e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.12 on 3291 degrees of freedom
+## Multiple R-squared:  0.0915,	Adjusted R-squared:  0.0909 
+## F-statistic:  166 on 2 and 3291 DF,  p-value: &lt;2e-16
+</code></pre></div>
+
+<h2 id="question">Question:</h2>
+<p>Try estimating other models using different combination of variables.  </p>
+
+<h3 id="transformations-of-the-data">Transformations of the data</h3>
+
+<p>Maybe the number of years at school does not enter linearily in the model. We can expand the model with a quadratic term:</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"># Create a variable with the square of the number of school years.</span>
+wage<span class="o">$</span>SCHOOL2 <span class="o">&lt;-</span> wage<span class="o">$</span>SCHOOL<span class="o">^</span><span class="m">2</span>
+<span class="c1"># Estimating the model and printing the results. </span>
+mod2 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> SCHOOL <span class="o">+</span> SCHOOL2 <span class="o">+</span> EXPER<span class="p">,</span> data<span class="o">=</span>wage<span class="p">)</span>
+summary<span class="p">(</span>mod2<span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="text">## 
+## Call:
+## lm(formula = WAGE ~ SCHOOL + SCHOOL2 + EXPER, data = wage)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -7.33  -1.96  -0.51   1.38  34.97 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   3.1149     1.5475    2.01  0.04421 *  
+## SCHOOL       -0.3840     0.2614   -1.47  0.14201    
+## SCHOOL2       0.0433     0.0114    3.79  0.00015 ***
+## EXPER         0.1409     0.0245    5.75  9.8e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.11 on 3290 degrees of freedom
+## Multiple R-squared:  0.0954,	Adjusted R-squared:  0.0946 
+## F-statistic:  116 on 3 and 3290 DF,  p-value: &lt;2e-16
+</code></pre></div>
+
+<h2 id="question-1">Question:</h2>
+<ol>
+  <li>Interpret the results above.</li>
+  <li>Maybe the number of years of schooling has a different effect for males and for females. How would you investigate this?  </li>
+</ol>
 
 <h3 id="generating-data-following-a-regression-model-with-multiple-variables">Generating data following a regression model with multiple variables</h3>
 <p>Let us assume the response variable <em>y</em> follows a regression model with 3 explanatory variables:</p>
@@ -180,10 +270,10 @@ k <span class="o">&lt;-</span> <span class="m">3</span>
 n <span class="o">&lt;-</span> <span class="m">100</span>
 
 <span class="c1"># Creating the matrix of regressors:</span>
-X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>k <span class="o">*</span> n<span class="p">),</span> ncol <span class="o">=</span> k<span class="p">,</span> nrow <span class="o">=</span> n<span class="p">)</span>
+X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>k<span class="o">*</span>n<span class="p">),</span>ncol<span class="o">=</span>k<span class="p">,</span>nrow<span class="o">=</span>n<span class="p">)</span>
 
 <span class="c1"># Creating the vector of parameters beta:</span>
-beta <span class="o">&lt;-</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">),</span> ncol <span class="o">=</span> <span class="m">1</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+beta <span class="o">&lt;-</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">),</span>ncol<span class="o">=</span><span class="m">1</span><span class="p">,</span>nrow<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 
 <span class="c1"># printing the dimensions of X:</span>
 dim<span class="p">(</span>X<span class="p">)</span>
@@ -198,7 +288,7 @@ dim<span class="p">(</span>X<span class="p">)</span>
 eps <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">)</span>
 
 <span class="c1"># Then y:</span>
-y <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">+</span> X <span class="o">%*%</span> beta <span class="o">+</span> eps
+y <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">+</span> X<span class="o">%*%</span>beta <span class="o">+</span> eps
 
 <span class="c1"># And check that the dimensions make sense</span>
 dim<span class="p">(</span>y<span class="p">)</span>
@@ -213,7 +303,7 @@ dim<span class="p">(</span>y<span class="p">)</span>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># estimate the model.</span>
 ols.lm <span class="o">&lt;-</span> lm<span class="p">(</span>y <span class="o">~</span> X<span class="p">)</span>
-<span class="c1"># print the results.</span>
+<span class="c1"># print the results. </span>
 summary<span class="p">(</span>ols.lm<span class="p">)</span>
 </code></pre></div>
 
@@ -251,10 +341,10 @@ summary<span class="p">(</span>ols.lm<span class="p">)</span>
 <p>We also need to remember adding a constant to X using the <em>cbind()</em> function. </p>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># Adding the constant</span>
-X <span class="o">&lt;-</span> cbind<span class="p">(</span><span class="m">1</span><span class="p">,</span> X<span class="p">)</span>
+X <span class="o">&lt;-</span> cbind<span class="p">(</span><span class="m">1</span><span class="p">,</span>X<span class="p">)</span>
 
 <span class="c1"># Estimating beta hat</span>
-beta.hat <span class="o">&lt;-</span> solve<span class="p">(</span>t<span class="p">(</span>X<span class="p">)</span> <span class="o">%*%</span> X<span class="p">)</span> <span class="o">%*%</span> t<span class="p">(</span>X<span class="p">)</span> <span class="o">%*%</span> y
+beta.hat <span class="o">&lt;-</span> solve<span class="p">(</span>t<span class="p">(</span>X<span class="p">)</span><span class="o">%*%</span>X<span class="p">)</span><span class="o">%*%</span>t<span class="p">(</span>X<span class="p">)</span><span class="o">%*%</span>y
 print<span class="p">(</span>beta.hat<span class="p">)</span>
 </code></pre></div>
 
@@ -267,7 +357,7 @@ print<span class="p">(</span>beta.hat<span class="p">)</span>
 
 <p>The estimates of \(\hat{\beta}\) are the same using both methods, that is nice. </p>
 
-<h2 id="question">Question:</h2>
+<h2 id="question-2">Question:</h2>
 <p>Compute the standard errors of the residuals and of the OLS estimator. To do this, you will need to:</p>
 
 <ol>
@@ -289,13 +379,13 @@ print<span class="p">(</span>beta.hat<span class="p">)</span>
 <p><strong>To compare the output on your machine with the one in this post, make sure you have set the same seed as I have.</strong></p>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># Computing the residuals</span>
-y.hat <span class="o">&lt;-</span> X <span class="o">%*%</span> beta.hat
-e.hat <span class="o">&lt;-</span> y <span class="o">-</span> y.hat
+y.hat <span class="o">&lt;-</span> X<span class="o">%*%</span>beta.hat
+e.hat <span class="o">&lt;-</span> y<span class="o">-</span>y.hat
 
 <span class="c1"># Residual standard error</span>
-sig2 <span class="o">&lt;-</span> <span class="p">(</span>t<span class="p">(</span>e.hat<span class="p">)</span> <span class="o">%*%</span> e.hat<span class="p">)</span><span class="o">/</span><span class="p">(</span>n <span class="o">-</span> <span class="p">(</span>k <span class="o">+</span> <span class="m">1</span><span class="p">))</span>
+sig2 <span class="o">&lt;-</span> <span class="p">(</span>t<span class="p">(</span>e.hat<span class="p">)</span><span class="o">%*%</span>e.hat<span class="p">)</span> <span class="o">/</span> <span class="p">(</span>n <span class="o">-</span> <span class="p">(</span>k<span class="m">+1</span><span class="p">))</span>
 res.se <span class="o">&lt;-</span> sqrt<span class="p">(</span>sig2<span class="p">)</span>
-cat<span class="p">(</span><span class="s">&quot;\n residual standard errors:&quot;</span><span class="p">,</span> res.se<span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+cat<span class="p">(</span><span class="s">&#39;\n residual standard errors:&#39;</span><span class="p">,</span> res.se<span class="p">,</span>sep<span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="highlight"><pre><code class="text">## 
@@ -303,9 +393,9 @@ cat<span class="p">(</span><span class="s">&quot;\n residual standard errors:&qu
 </code></pre></div>
 
 <div class="highlight"><pre><code class="r"><span class="c1"># Parameter std. err.</span>
-diag.xx <span class="o">&lt;-</span> diag<span class="p">(</span>solve<span class="p">(</span>t<span class="p">(</span>X<span class="p">)</span> <span class="o">%*%</span> X<span class="p">))</span>
+diag.xx <span class="o">&lt;-</span>diag<span class="p">(</span>solve<span class="p">(</span>t<span class="p">(</span>X<span class="p">)</span><span class="o">%*%</span>X<span class="p">))</span>
 beta.se <span class="o">&lt;-</span> res.se <span class="o">*</span> sqrt<span class="p">(</span>diag.xx<span class="p">)</span>
-cat<span class="p">(</span><span class="s">&quot;\n Parameters standard errors:&quot;</span><span class="p">,</span> beta.se<span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+cat<span class="p">(</span><span class="s">&#39;\n Parameters standard errors:&#39;</span><span class="p">,</span> beta.se<span class="p">,</span>sep<span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="highlight"><pre><code class="text">## 
@@ -316,120 +406,29 @@ cat<span class="p">(</span><span class="s">&quot;\n Parameters standard errors:&
 
 <p>Let evaluate the quality of our model graphically. To do that we can look at a scatter plot of the observed values and the residuals.</p>
 
-<div class="highlight"><pre><code class="r"><span class="c1"># Creating a data frame with the resituals, and the observed and fitted</span>
-<span class="c1"># values.</span>
+<div class="highlight"><pre><code class="r"><span class="c1"># Creating a data frame with the resituals, and the observed and fitted values.</span>
 ols.man <span class="o">&lt;-</span> data.frame<span class="p">(</span>residuals <span class="o">=</span> e.hat<span class="p">,</span> fitted <span class="o">=</span> y.hat<span class="p">,</span> observed <span class="o">=</span> y<span class="p">)</span>
 <span class="c1"># Loading a plotting library.</span>
 require<span class="p">(</span>ggplot2<span class="p">)</span>
-sqplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span class="p">,</span> aes<span class="p">(</span>y <span class="o">=</span> observed<span class="p">,</span> x <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+sqplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span class="p">,</span> aes<span class="p">(</span>y<span class="o">=</span>observed<span class="p">,</span>x<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
 </code></pre></div>
 
 <div class="highlight"><pre><code class="r">print<span class="p">(</span>sqplot<span class="p">)</span>
 </code></pre></div>
 
-<p><img src="/figs/2014-01-27-IE14-W1_rmd/fig-sq.png" alt="center" /> </p>
+<p><img src="/figs/2015-02-04-IE15-W1.rmd/fig-sq.png" alt="center" /> </p>
 
 <p>we can also look at the density of our residuals.</p>
 
-<div class="highlight"><pre><code class="r">densplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">()</span>
+<div class="highlight"><pre><code class="r">densplot <span class="o">&lt;-</span> ggplot<span class="p">(</span>ols.man<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">()</span>
 print<span class="p">(</span>densplot<span class="p">)</span>
 </code></pre></div>
 
-<p><img src="/figs/2014-01-27-IE14-W1_rmd/fig-dens.png" alt="center" /> </p>
-
-<h2 id="question-1">Question:</h2>
-
-<p>Does this look like a Gaussian density to you? What happens when you re-run the code increasing the sample size <em>n</em> to 1000?</p>
-
-<h3 id="multiple-regression-with-the-wage-data">Multiple regression with the wage data.</h3>
-
-<p>First we load the data and check that it looks as expected.</p>
-
-<div class="highlight"><pre><code class="r"><span class="c1"># Loading the data.</span>
-wage <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;../data/wages.csv&quot;</span><span class="p">)</span>
-<span class="c1"># Printing the first rows of wage.</span>
-head<span class="p">(</span>wage<span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><code class="text">##   X EXPER MALE SCHOOL  WAGE
-## 1 1     9    0     13 6.315
-## 2 2    12    0     12 5.480
-## 3 3    11    0     11 3.642
-## 4 4     9    0     14 4.593
-## 5 5     8    0     14 2.418
-## 6 6     9    0     14 2.094
-</code></pre></div>
-
-<p>Now we can regress <em>WAGE</em> on <em>SCHOOL</em> and <em>EXPER</em>:</p>
-
-<div class="highlight"><pre><code class="r"><span class="c1"># regression of wage on school and exper.</span>
-mod1 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> SCHOOL <span class="o">+</span> EXPER<span class="p">,</span> data <span class="o">=</span> wage<span class="p">)</span>
-<span class="c1"># printing the results of the regression.</span>
-summary<span class="p">(</span>mod1<span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><code class="text">## 
-## Call:
-## lm(formula = WAGE ~ SCHOOL + EXPER, data = wage)
-## 
-## Residuals:
-##    Min     1Q Median     3Q    Max 
-##  -6.88  -1.99  -0.52   1.39  34.91 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  -2.4767     0.4700   -5.27  1.5e-07 ***
-## SCHOOL        0.5992     0.0334   17.94  &lt; 2e-16 ***
-## EXPER         0.1573     0.0242    6.51  8.9e-11 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 3.12 on 3291 degrees of freedom
-## Multiple R-squared:  0.0915,	Adjusted R-squared:  0.0909 
-## F-statistic:  166 on 2 and 3291 DF,  p-value: &lt;2e-16
-</code></pre></div>
-
-<h2 id="question-2">Question:</h2>
-<p>Try estimating other models using different combination of variables.  </p>
-
-<h3 id="transformations-of-the-data">Transformations of the data</h3>
-
-<p>Maybe the number of years at school does not enter linearily in the model. We can expand the model with a quadratic term:</p>
-
-<div class="highlight"><pre><code class="r"><span class="c1"># Create a variable with the square of the number of school years.</span>
-wage<span class="o">$</span>SCHOOL2 <span class="o">&lt;-</span> wage<span class="o">$</span>SCHOOL<span class="o">^</span><span class="m">2</span>
-<span class="c1"># Estimating the model and printing the results.</span>
-mod2 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> SCHOOL <span class="o">+</span> SCHOOL2 <span class="o">+</span> EXPER<span class="p">,</span> data <span class="o">=</span> wage<span class="p">)</span>
-summary<span class="p">(</span>mod2<span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><code class="text">## 
-## Call:
-## lm(formula = WAGE ~ SCHOOL + SCHOOL2 + EXPER, data = wage)
-## 
-## Residuals:
-##    Min     1Q Median     3Q    Max 
-##  -7.33  -1.96  -0.51   1.38  34.97 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   3.1149     1.5475    2.01  0.04421 *  
-## SCHOOL       -0.3840     0.2614   -1.47  0.14201    
-## SCHOOL2       0.0433     0.0114    3.79  0.00015 ***
-## EXPER         0.1409     0.0245    5.75  9.8e-09 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 3.11 on 3290 degrees of freedom
-## Multiple R-squared:  0.0954,	Adjusted R-squared:  0.0946 
-## F-statistic:  116 on 3 and 3290 DF,  p-value: &lt;2e-16
-</code></pre></div>
+<p><img src="/figs/2015-02-04-IE15-W1.rmd/fig-dens.png" alt="center" /> </p>
 
 <h2 id="question-3">Question:</h2>
-<ol>
-  <li>Interpret the results above.</li>
-  <li>Maybe the number of years of schooling has a different effect for males and for females. How would you investigate this?  </li>
-</ol>
+
+<p>Does this look like a Gaussian density to you? What happens when you re-run the code increasing the sample size <em>n</em> to 1000?</p>
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->

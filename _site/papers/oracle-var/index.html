@@ -5,26 +5,26 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions. &#8211; Laurent's Research Page</title>
+<title>Oracle inequalities for high dimensional vector autoregressions. &#8211; Laurent's Research Page</title>
 <meta name="description" content="">
-<meta name="keywords" content="working paper, Panel, Co-integration, Bootstrap">
+<meta name="keywords" content="working paper, Lasso, High dimension, VAR">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.">
+<meta property="og:title" content="Oracle inequalities for high dimensional vector autoregressions.">
 <meta property="og:description" content="">
-<meta property="og:url" content="http://lcallot.github.io/papers/oracle-var">
+<meta property="og:url" content="/papers/oracle-var">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="http://lcallot.github.io/papers/oracle-var">
-<link href="http://lcallot.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
+<link rel="canonical" href="/papers/oracle-var">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -33,28 +33,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://lcallot.github.io/assets/css/main.min.css">
+<link rel="stylesheet" href="/assets/css/main.min.css">
 <!-- Webfonts -->
 <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<script src="http://lcallot.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://lcallot.github.io/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://lcallot.github.io/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://lcallot.github.io/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://lcallot.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://lcallot.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://lcallot.github.io/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -66,25 +66,25 @@
 	        
 			<li>
 				
-					<a href="http://lcallot.github.io/papers">Papers</a>
+					<a href="/papers">Papers</a>
 				 
 			</li>
 	        
 			<li>
 				
-					<a href="http://lcallot.github.io/code">Code</a>
+					<a href="/code">Code</a>
 				 
 			</li>
 	        
 			<li>
 				
-					<a href="http://lcallot.github.io/teaching">Teaching</a>
+					<a href="/teaching">Teaching</a>
 				 
 			</li>
 	        
 			<li>
 				
-					<a href="http://lcallot.github.io/cv">Curriculum Vitae</a>
+					<a href="/cv">Curriculum Vitae</a>
 				 
 			</li>
 	        
@@ -94,7 +94,7 @@
 				 
 			</li>
 	        
-	        <li><a href="http://lcallot.github.io/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
 	        <li class="dosearch"><i class="icon-search"></i> Search</li>
 	    </ul>
 	</nav>
@@ -119,15 +119,15 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="http://lcallot.github.io/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#Panel" title="Pages tagged Panel" rel="tag">Panel</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#Co-integration" title="Pages tagged Co-integration" rel="tag">Co-integration</a>&nbsp;&bull;&nbsp;<a href="http://lcallot.github.io/tags.html#Bootstrap" title="Pages tagged Bootstrap" rel="tag">Bootstrap</a></span>
+        <span class="entry-tags"><a href="/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Lasso" title="Pages tagged Lasso" rel="tag">Lasso</a>&nbsp;&bull;&nbsp;<a href="/tags.html#High dimension" title="Pages tagged High dimension" rel="tag">High dimension</a>&nbsp;&bull;&nbsp;<a href="/tags.html#VAR" title="Pages tagged VAR" rel="tag">VAR</a></span>
         
-          <h3 class="entry-title" itemprop="headline">Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.</h3>
+          <h3 class="entry-title" itemprop="headline">Oracle inequalities for high dimensional vector autoregressions.</h3>
         
       </header>
             <div class="entry-content" itemprop="description">
-        <p><strong>Revised version submitted.</strong></p>
+        <p><strong>Conditionally accepted by the Journal of Econometrics.</strong></p>
 
-<p>Download the paper <a href="http://lcallot.github.io/papers/oracle_var.pdf">pdf</a>.</p>
+<p>Download the paper <a href="/papers/oracle_var.pdf">pdf</a>.</p>
 
 <h2 id="abstract">Abstract:</h2>
 
@@ -142,7 +142,7 @@
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
-    <span>&copy; 2014 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
+    <span>&copy; 2015 Laurent Callot. Powered by <a href="http://jekyllrb.com">Jekyll</a> using a <a href=https://github.com/lcallot/lcallot.github.io>home brewed</a> version of the <a href="http://mademistakes.com/">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
@@ -159,15 +159,15 @@
 </div><!-- /.footer-wrapper -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://lcallot.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="http://lcallot.github.io/assets/js/scripts.min.js"></script>
+<script src="/assets/js/scripts.min.js"></script>
 
 <!-- Jekyll Simple Search option -->
 <script>
   $(document).ready(function() {
       $('.search-field').simpleJekyllSearch({
-          jsonFile : 'http://lcallot.github.io/search.json',
+          jsonFile : '/search.json',
           searchResults : '.search-results',
           template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
           noResults: '<p>Nothing found.</p>'

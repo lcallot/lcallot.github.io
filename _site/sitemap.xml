@@ -1,56 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://lcallot.github.io</loc>
+        <loc></loc>
     </url>
     
     
     <url>
-        <loc>http://lcallot.github.io/ie/IE14-W6</loc>
+        <loc>/ie15/IE15-W1</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/software-rdam</loc>
+        <loc>/teaching/IE15.html</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/computing/software-rdam</loc>
+        <loc>/papers/death</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/computing/computing-resources-VU</loc>
+        <loc>/papers/rcv-fc</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/ie/IE14-W23</loc>
+        <loc>/papers/ptv-var</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/teaching/IE14.html</loc>
+        <loc>/ie/IE14-W6</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/ie/IE14-W1</loc>
+        <loc>/computing/software-rdam</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/oracle-var</loc>
+        <loc>/computing/computing-resources-VU</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/oracle-forecasting</loc>
+        <loc>/ie/IE14-W23</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/CCS</loc>
+        <loc>/teaching/IE14.html</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>/ie/IE14-W1</loc>
     </url>
     
     <url>
-        <loc>http://lcallot.github.io/articles/code-highlighting-post</loc>
+        <loc>/papers/oracle-var</loc>
+    </url>
+    
+    <url>
+        <loc>/papers/oracle-forecasting</loc>
+    </url>
+    
+    <url>
+        <loc>/papers/CCS</loc>
+    </url>
+    
+    <url>
+        <loc>/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+    </url>
+    
+    <url>
+        <loc>/articles/code-highlighting-post</loc>
     </url>
     
 </urlset>

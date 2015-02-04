@@ -1,25 +1,57 @@
 [
 	
 		{
+		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
+		  "category"   : "ie15",
+		  "url"        : "/ie15/IE15-W1",
+		  "date"       : "2015-02-04 00:00:00 +0100",
+		  "shortdate"  : "February 04, 2015"
+		} ,
+	
+		{
+		  "title"      : "Introductory Econometrics (Inleiding Econometrie 1) 2015",
+		  "category"   : "courses",
+		  "url"        : "/teaching/IE15.html",
+		  "date"       : "2015-01-27 00:00:00 +0100",
+		  "shortdate"  : "January 27, 2015"
+		} ,
+	
+		{
+		  "title"      : "Deterministic and stochastic trends in the Lee-Carter mortality model.",
+		  "category"   : "papers",
+		  "url"        : "/papers/death",
+		  "date"       : "2014-11-20 00:00:00 +0100",
+		  "shortdate"  : "November 20, 2014"
+		} ,
+	
+		{
+		  "title"      : "Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.",
+		  "category"   : "papers",
+		  "url"        : "/papers/rcv-fc",
+		  "date"       : "2014-11-13 00:00:00 +0100",
+		  "shortdate"  : "November 13, 2014"
+		} ,
+	
+		{
+		  "title"      : "Vector Autoregressions with Parsimoniously Time Varying Parameters and an Application to Monetary Policy.",
+		  "category"   : "papers",
+		  "url"        : "/papers/ptv-var",
+		  "date"       : "2014-11-04 00:00:00 +0100",
+		  "shortdate"  : "November 04, 2014"
+		} ,
+	
+		{
 		  "title"      : "Week 6: Empirical size and power of Likelihood based tests.",
 		  "category"   : "ie",
-		  "url"        : "http://lcallot.github.io/ie/IE14-W6",
+		  "url"        : "/ie/IE14-W6",
 		  "date"       : "2014-03-09 00:00:00 +0100",
 		  "shortdate"  : "March 09, 2014"
 		} ,
 	
 		{
-		  "title"      : "Software Rdam",
-		  "category"   : "",
-		  "url"        : "http://lcallot.github.io/software-rdam",
-		  "date"       : "2014-03-04 00:00:00 +0100",
-		  "shortdate"  : "March 04, 2014"
-		} ,
-	
-		{
 		  "title"      : "Software on rdam and arhus.",
 		  "category"   : "computing",
-		  "url"        : "http://lcallot.github.io/computing/software-rdam",
+		  "url"        : "/computing/software-rdam",
 		  "date"       : "2014-03-04 00:00:00 +0100",
 		  "shortdate"  : "March 04, 2014"
 		} ,
@@ -27,7 +59,7 @@
 		{
 		  "title"      : "Computing resources at Econometrics and OR.",
 		  "category"   : "computing",
-		  "url"        : "http://lcallot.github.io/computing/computing-resources-VU",
+		  "url"        : "/computing/computing-resources-VU",
 		  "date"       : "2014-02-28 00:00:00 +0100",
 		  "shortdate"  : "February 28, 2014"
 		} ,
@@ -35,7 +67,7 @@
 		{
 		  "title"      : "Week 2-3: R squared, Testing, and Monte Carlo.",
 		  "category"   : "ie",
-		  "url"        : "http://lcallot.github.io/ie/IE14-W23",
+		  "url"        : "/ie/IE14-W23",
 		  "date"       : "2014-02-17 00:00:00 +0100",
 		  "shortdate"  : "February 17, 2014"
 		} ,
@@ -43,7 +75,7 @@
 		{
 		  "title"      : "Introductory Econometrics (inleiding econometrie 1) 2014",
 		  "category"   : "courses",
-		  "url"        : "http://lcallot.github.io/teaching/IE14.html",
+		  "url"        : "/teaching/IE14.html",
 		  "date"       : "2014-01-27 00:00:00 +0100",
 		  "shortdate"  : "January 27, 2014"
 		} ,
@@ -51,15 +83,15 @@
 		{
 		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
 		  "category"   : "ie",
-		  "url"        : "http://lcallot.github.io/ie/IE14-W1",
+		  "url"        : "/ie/IE14-W1",
 		  "date"       : "2014-01-27 00:00:00 +0100",
 		  "shortdate"  : "January 27, 2014"
 		} ,
 	
 		{
-		  "title"      : "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.",
+		  "title"      : "Oracle inequalities for high dimensional vector autoregressions.",
 		  "category"   : "papers",
-		  "url"        : "http://lcallot.github.io/papers/oracle-var",
+		  "url"        : "/papers/oracle-var",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -67,7 +99,7 @@
 		{
 		  "title"      : "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.",
 		  "category"   : "papers",
-		  "url"        : "http://lcallot.github.io/papers/oracle-forecasting",
+		  "url"        : "/papers/oracle-forecasting",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -75,7 +107,7 @@
 		{
 		  "title"      : "Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.",
 		  "category"   : "papers",
-		  "url"        : "http://lcallot.github.io/papers/CCS",
+		  "url"        : "/papers/CCS",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -83,7 +115,7 @@
 		{
 		  "title"      : "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.",
 		  "category"   : "papers",
-		  "url"        : "http://lcallot.github.io/papers/a-bootstrap-panel-co-integration-rank-test",
+		  "url"        : "/papers/a-bootstrap-panel-co-integration-rank-test",
 		  "date"       : "2013-11-21 00:00:00 +0100",
 		  "shortdate"  : "November 21, 2013"
 		} ,
@@ -91,7 +123,7 @@
 		{
 		  "title"      : "Syntax Highlighting Post",
 		  "category"   : "articles",
-		  "url"        : "http://lcallot.github.io/articles/code-highlighting-post",
+		  "url"        : "/articles/code-highlighting-post",
 		  "date"       : "2013-08-16 00:00:00 +0200",
 		  "shortdate"  : "August 16, 2013"
 		} 

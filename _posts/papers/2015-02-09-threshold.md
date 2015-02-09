@@ -5,7 +5,7 @@ description: ""
 category: "papers"
 tags: [working paper, Lasso]
 status: 'Submitted.'
-coauthor: Mehmet Caner, Anders Kock, and Juan Andres Riquelme
+coauthor: Mehmet Caner, Anders Bredahl Kock, and Juan Andres Riquelme
 ---
 
 **Submitted.**

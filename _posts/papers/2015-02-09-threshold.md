@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Thresholded Lasso: variable selection in high dimensions."
+title: "Sharp threshold detection based on sup-norm error rates in high-dimensional models"
 description: ""
 category: "papers"
 tags: [working paper, Lasso]

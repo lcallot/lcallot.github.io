@@ -1,6 +1,30 @@
 [
 	
 		{
+		  "title"      : "Week 2: R-squared experiment, t-test, F-test .",
+		  "category"   : "ie15",
+		  "url"        : "/ie15/IE15-W2",
+		  "date"       : "2015-02-10 00:00:00 +0100",
+		  "shortdate"  : "February 10, 2015"
+		} ,
+	
+		{
+		  "title"      : "Threshold",
+		  "category"   : "",
+		  "url"        : "/threshold",
+		  "date"       : "2015-02-09 00:00:00 +0100",
+		  "shortdate"  : "February 09, 2015"
+		} ,
+	
+		{
+		  "title"      : "Thresholded Lasso: variable selection in high dimensions.",
+		  "category"   : "papers",
+		  "url"        : "/papers/threshold",
+		  "date"       : "2015-02-09 00:00:00 +0100",
+		  "shortdate"  : "February 09, 2015"
+		} ,
+	
+		{
 		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
 		  "category"   : "ie15",
 		  "url"        : "/ie15/IE15-W1",

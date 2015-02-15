@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Week 3:  Monte Carlos.",
+		  "category"   : "ie15",
+		  "url"        : "/ie15/IE14-W3",
+		  "date"       : "2015-02-15 00:00:00 +0100",
+		  "shortdate"  : "February 15, 2015"
+		} ,
+	
+		{
 		  "title"      : "Week 2: R-squared experiment, t-test, F-test .",
 		  "category"   : "ie15",
 		  "url"        : "/ie15/IE15-W2",
@@ -9,15 +17,7 @@
 		} ,
 	
 		{
-		  "title"      : "Threshold",
-		  "category"   : "",
-		  "url"        : "/threshold",
-		  "date"       : "2015-02-09 00:00:00 +0100",
-		  "shortdate"  : "February 09, 2015"
-		} ,
-	
-		{
-		  "title"      : "Thresholded Lasso: variable selection in high dimensions.",
+		  "title"      : "Sharp threshold detection based on sup-norm error rates in high-dimensional models",
 		  "category"   : "papers",
 		  "url"        : "/papers/threshold",
 		  "date"       : "2015-02-09 00:00:00 +0100",

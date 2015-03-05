@@ -14,8 +14,10 @@ image:
 <article>
 <h3><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h3>
 <!---<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %Y" }}</time></span>-->
-{% if post.coauthor %}Joint work with {{ post.coauthor }}.{% endif %}
-{% if post.status %}{{ post.status }}{% endif %}
+<ul>
+{% if post.coauthor %}<li>Joint work with {{ post.coauthor }}.</li>{% endif %}
+{% if post.status %}<li>{{ post.status }}</li>{% endif %}
+</ul>
 </article>
 {% endfor %}
 

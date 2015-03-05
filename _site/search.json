@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Week 5:  Maximum Likelihood.",
+		  "category"   : "ie15",
+		  "url"        : "/ie15/IE15-W5",
+		  "date"       : "2015-03-03 00:00:00 +0100",
+		  "shortdate"  : "March 03, 2015"
+		} ,
+	
+		{
 		  "title"      : "Week 3:  Monte Carlos.",
 		  "category"   : "ie15",
 		  "url"        : "/ie15/IE14-W3",

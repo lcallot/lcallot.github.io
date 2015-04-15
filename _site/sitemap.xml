@@ -18,7 +18,7 @@
     </url>
     
     <url>
-        <loc>/papers/threshold</loc>
+        <loc>/pub/threshold</loc>
     </url>
     
     <url>
@@ -30,15 +30,15 @@
     </url>
     
     <url>
-        <loc>/papers/death</loc>
+        <loc>/wp/death</loc>
     </url>
     
     <url>
-        <loc>/papers/rcv-fc</loc>
+        <loc>/wp/rcv-fc</loc>
     </url>
     
     <url>
-        <loc>/papers/ptv-var</loc>
+        <loc>/wp/ptv-var</loc>
     </url>
     
     <url>
@@ -66,19 +66,19 @@
     </url>
     
     <url>
-        <loc>/papers/oracle-var</loc>
+        <loc>/pub/oracle-var</loc>
     </url>
     
     <url>
-        <loc>/papers/oracle-forecasting</loc>
+        <loc>/pub/oracle-forecasting</loc>
     </url>
     
     <url>
-        <loc>/papers/CCS</loc>
+        <loc>/wp/CCS</loc>
     </url>
     
     <url>
-        <loc>/papers/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>/wp/a-bootstrap-panel-co-integration-rank-test</loc>
     </url>
     
     <url>

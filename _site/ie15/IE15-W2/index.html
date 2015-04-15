@@ -127,29 +127,32 @@
             <div class="entry-content" itemprop="description">
         <h3 id="restricted-regression-with-the-wage-data">Restricted regression with the wage data.</h3>
 
-<p>First we load the data and check that it looks as expected. Make sure to adjust the path to the location of the data on your computer.</p>
+<p>First we load the data and check that it looks as expected. Make sure to adjust the path to the location of the data on your computer. </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># Loading the data.
-wage &lt;- read.csv('../data/wages.csv')
-# Printing the first rows of wage.
-head(wage)</code></pre></div>
+<div class="highlight"><pre><code class="r"><span class="c1"># Loading the data.</span>
+wage <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&#39;../data/wages.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Printing the first rows of wage.</span>
+head<span class="p">(</span>wage<span class="p">)</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">##   X EXPER MALE SCHOOL  WAGE
+<div class="highlight"><pre><code class="text">##   X EXPER MALE SCHOOL  WAGE
 ## 1 1     9    0     13 6.315
 ## 2 2    12    0     12 5.480
 ## 3 3    11    0     11 3.642
 ## 4 4     9    0     14 4.593
 ## 5 5     8    0     14 2.418
-## 6 6     9    0     14 2.094</code></pre></div>
+## 6 6     9    0     14 2.094
+</code></pre></div>
 
 <p>Now we can regress <em>WAGE</em> on <em>SCHOOL</em> and <em>EXPER</em> and <em>MALE</em>:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># regression of wage on school and exper and male.
-mod1 &lt;- lm(WAGE ~ SCHOOL + EXPER + MALE, data=wage)
-# printing the results of the regression.
-summary(mod1)</code></pre></div>
+<div class="highlight"><pre><code class="r"><span class="c1"># regression of wage on school and exper and male.</span>
+mod1 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> SCHOOL <span class="o">+</span> EXPER <span class="o">+</span> MALE<span class="p">,</span> data<span class="o">=</span>wage<span class="p">)</span>
+<span class="c1"># printing the results of the regression.</span>
+summary<span class="p">(</span>mod1<span class="p">)</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## 
+<div class="highlight"><pre><code class="text">## 
 ## Call:
 ## lm(formula = WAGE ~ SCHOOL + EXPER + MALE, data = wage)
 ## 
@@ -164,21 +167,23 @@ summary(mod1)</code></pre></div>
 ## EXPER         0.1248     0.0238    5.25  1.6e-07 ***
 ## MALE          1.3444     0.1077   12.49  &lt; 2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 3.05 on 3290 degrees of freedom
 ## Multiple R-squared:  0.133,	Adjusted R-squared:  0.132 
-## F-statistic:  168 on 3 and 3290 DF,  p-value: &lt;2e-16</code></pre></div>
+## F-statistic:  168 on 3 and 3290 DF,  p-value: &lt;2e-16
+</code></pre></div>
 
 <p>To compute a restricted regression with \(\beta_{SCHOOL} = \beta_{EXPER}\) we define a new variable <em>XPSC</em>:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">wage$XPSC &lt;- wage$EXPER - wage$SCHOOL
-# regression of wage on xpsc and male.
-mod2 &lt;- lm(WAGE ~ XPSC + MALE, data=wage)
-# printing the results of the regression.
-summary(mod2)</code></pre></div>
+<div class="highlight"><pre><code class="r">wage<span class="o">$</span>XPSC <span class="o">&lt;-</span> wage<span class="o">$</span>EXPER <span class="o">-</span> wage<span class="o">$</span>SCHOOL
+<span class="c1"># regression of wage on xpsc and male.</span>
+mod2 <span class="o">&lt;-</span> lm<span class="p">(</span>WAGE <span class="o">~</span> XPSC <span class="o">+</span> MALE<span class="p">,</span> data<span class="o">=</span>wage<span class="p">)</span>
+<span class="c1"># printing the results of the regression.</span>
+summary<span class="p">(</span>mod2<span class="p">)</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## 
+<div class="highlight"><pre><code class="text">## 
 ## Call:
 ## lm(formula = WAGE ~ XPSC + MALE, data = wage)
 ## 
@@ -192,73 +197,77 @@ summary(mod2)</code></pre></div>
 ## XPSC         -0.1555     0.0183   -8.51   &lt;2e-16 ***
 ## MALE          1.3199     0.1125   11.73   &lt;2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 3.18 on 3291 degrees of freedom
 ## Multiple R-squared:  0.0526,	Adjusted R-squared:  0.052 
-## F-statistic: 91.4 on 2 and 3291 DF,  p-value: &lt;2e-16</code></pre></div>
+## F-statistic: 91.4 on 2 and 3291 DF,  p-value: &lt;2e-16
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#plotting library, install it if missing.
-library(ggplot2)
-library(reshape2)
-# Number of observations
-n &lt;- 100
-# Number of replications
-mciter &lt;- 10
-# a vector with the number of control variables
-k.all &lt;- seq(from=0,to=n,by=round(n/50,0))
-# storage initialization
-r2 &lt;- matrix(0,ncol=length(k.all),nrow=2)
-colnames(r2) &lt;- k.all
-rownames(r2) &lt;- c('R2','adjusted R2')
-r2agg &lt;- r2
+<div class="highlight"><pre><code class="r"><span class="c1">#plotting library, install it if missing.</span>
+library<span class="p">(</span>ggplot2<span class="p">)</span>
+library<span class="p">(</span>reshape2<span class="p">)</span>
+<span class="c1"># Number of observations</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
+<span class="c1"># Number of replications</span>
+mciter <span class="o">&lt;-</span> <span class="m">10</span>
+<span class="c1"># a vector with the number of control variables</span>
+k.all <span class="o">&lt;-</span> seq<span class="p">(</span>from<span class="o">=</span><span class="m">0</span><span class="p">,</span>to<span class="o">=</span>n<span class="p">,</span>by<span class="o">=</span>round<span class="p">(</span>n<span class="o">/</span><span class="m">50</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+<span class="c1"># storage initialization</span>
+r2 <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span>ncol<span class="o">=</span>length<span class="p">(</span>k.all<span class="p">),</span>nrow<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+colnames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> k.all
+rownames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;R2&#39;</span><span class="p">,</span><span class="s">&#39;adjusted R2&#39;</span><span class="p">)</span>
+r2agg <span class="o">&lt;-</span> r2
 
-for(j in 1:mciter){
-	# y is just white noise
-	y &lt;-  matrix(rnorm(n),ncol=1)
-	# a vector with the number of control variables
-	k.all &lt;- seq(from=0,to=n,by=round(n/50,0))
-	# counter
-	i &lt;- 1
-	# looping over the numbers of controls.
-	for(k in k.all){
-	    # creating the controls with a constant
-	   X &lt;- cbind(1,matrix(rnorm(n*(ifelse(k==0,0,k-1))),nrow=n,ncol=ifelse(k==0,0,k-1)))
-	    # regression + computation of summary statistics
-	    slm &lt;- summary(lm(y ~ X))
-	    # Storage of the resuts
-	    r2[1,i] &lt;- slm$r.squared
-	    r2[2,i] &lt;- slm$adj.r.squared
-	    # increment the counter
-	    i &lt;- i+1
-	}
-	#Storing the result of the first xp only.
-	if(j==1)mr2     &lt;-  melt(r2)
-	if(j==1)names(mr2)[1:2]  &lt;-  c('r2','k')
+<span class="kr">for</span><span class="p">(</span>j <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>mciter<span class="p">){</span>
+	<span class="c1"># y is just white noise</span>
+	y <span class="o">&lt;-</span>  matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="p">),</span>ncol<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+	<span class="c1"># a vector with the number of control variables</span>
+	k.all <span class="o">&lt;-</span> seq<span class="p">(</span>from<span class="o">=</span><span class="m">0</span><span class="p">,</span>to<span class="o">=</span>n<span class="p">,</span>by<span class="o">=</span>round<span class="p">(</span>n<span class="o">/</span><span class="m">50</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+	<span class="c1"># counter</span>
+	i <span class="o">&lt;-</span> <span class="m">1</span>
+	<span class="c1"># looping over the numbers of controls.</span>
+	<span class="kr">for</span><span class="p">(</span>k <span class="kr">in</span> k.all<span class="p">){</span>
+	    <span class="c1"># creating the controls with a constant</span>
+	   X <span class="o">&lt;-</span> cbind<span class="p">(</span><span class="m">1</span><span class="p">,</span>matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">*</span><span class="p">(</span>ifelse<span class="p">(</span>k<span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span>k<span class="m">-1</span><span class="p">))),</span>nrow<span class="o">=</span>n<span class="p">,</span>ncol<span class="o">=</span>ifelse<span class="p">(</span>k<span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span>k<span class="m">-1</span><span class="p">)))</span>
+	    <span class="c1"># regression + computation of summary statistics</span>
+	    slm <span class="o">&lt;-</span> summary<span class="p">(</span>lm<span class="p">(</span>y <span class="o">~</span> X<span class="p">))</span>
+	    <span class="c1"># Storage of the resuts</span>
+	    r2<span class="p">[</span><span class="m">1</span><span class="p">,</span>i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>r.squared
+	    r2<span class="p">[</span><span class="m">2</span><span class="p">,</span>i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>adj.r.squared
+	    <span class="c1"># increment the counter</span>
+	    i <span class="o">&lt;-</span> i<span class="m">+1</span>
+	<span class="p">}</span>
+	<span class="c1">#Storing the result of the first xp only.</span>
+	<span class="kr">if</span><span class="p">(</span>j<span class="o">==</span><span class="m">1</span><span class="p">)</span>mr2     <span class="o">&lt;-</span>  melt<span class="p">(</span>r2<span class="p">)</span>
+	<span class="kr">if</span><span class="p">(</span>j<span class="o">==</span><span class="m">1</span><span class="p">)</span>names<span class="p">(</span>mr2<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>  <span class="o">&lt;-</span>  c<span class="p">(</span><span class="s">&#39;r2&#39;</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
 	
-	# aggregating the r2s
-	 r2agg &lt;- r2agg + r2
+	<span class="c1"># aggregating the r2s</span>
+	 r2agg <span class="o">&lt;-</span> r2agg <span class="o">+</span> r2
 
-}
-#formating the output
-mr2agg    &lt;-  melt(r2agg/mciter)
-names(mr2agg)[1:2] &lt;- c('r2','k')
-options(warn = -1)
-# creating the plots 
-gr2 &lt;- ggplot(mr2,aes(x=k,y=value,colour=r2)) + geom_line()
-gr2agg &lt;- ggplot(mr2agg,aes(x=k,y=value,colour=r2)) + geom_line()</code></pre></div>
+<span class="p">}</span>
+<span class="c1">#formating the output</span>
+mr2agg    <span class="o">&lt;-</span>  melt<span class="p">(</span>r2agg<span class="o">/</span>mciter<span class="p">)</span>
+names<span class="p">(</span>mr2agg<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;r2&#39;</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+options<span class="p">(</span>warn <span class="o">=</span> <span class="m">-1</span><span class="p">)</span>
+<span class="c1"># creating the plots </span>
+gr2 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mr2<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>k<span class="p">,</span>y<span class="o">=</span>value<span class="p">,</span>colour<span class="o">=</span>r2<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+gr2agg <span class="o">&lt;-</span> ggplot<span class="p">(</span>mr2agg<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>k<span class="p">,</span>y<span class="o">=</span>value<span class="p">,</span>colour<span class="o">=</span>r2<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+</code></pre></div>
 
 <p>Plot of the first iteration:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">print(gr2)</code></pre></div>
+<div class="highlight"><pre><code class="r">print<span class="p">(</span>gr2<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-10-IE15-W2.rmd/plotgr2.png" alt="center" /></p>
+<p><img src="/figs/2015-02-10-IE15-W2.rmd/plotgr2.png" alt="center" /> </p>
 
 <p>Plot of the average over all iterations:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">print(gr2agg)</code></pre></div>
+<div class="highlight"><pre><code class="r">print<span class="p">(</span>gr2agg<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-10-IE15-W2.rmd/plotgr2agg.png" alt="center" /></p>
+<p><img src="/figs/2015-02-10-IE15-W2.rmd/plotgr2agg.png" alt="center" /> </p>
 
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->

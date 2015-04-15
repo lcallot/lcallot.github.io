@@ -128,221 +128,231 @@
         <p>This week we conduct some simulation experiments to investigate:</p>
 
 <ol>
-  <li>The finite sample distribution of the OLS estimator in the case where the innovations are Gaussian or Student distributed.</li>
-  <li>The size and power of the t-test for varying sample sizes.</li>
+  <li>The finite sample distribution of the OLS estimator in the case where the innovations are Gaussian or Student distributed. </li>
+  <li>The size and power of the t-test for varying sample sizes. </li>
 </ol>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># Loading the libraries. 
-library('ggplot2')
-library('reshape2')
-library('plot3D')
+<div class="highlight"><pre><code class="r"><span class="c1"># Loading the libraries. </span>
+library<span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">)</span>
+library<span class="p">(</span><span class="s">&#39;reshape2&#39;</span><span class="p">)</span>
+library<span class="p">(</span><span class="s">&#39;plot3D&#39;</span><span class="p">)</span>
 
-set.seed(2512800)</code></pre></div>
+set.seed<span class="p">(</span><span class="m">2512800</span><span class="p">)</span>
+</code></pre></div>
 
 <h2 id="finite-sample-distribution-of-the-ols-estimator">Finite sample distribution of the OLS estimator</h2>
 
 <p>In this section we conduct a series of simulation experiments to investigate the finite sample distribution of the ols estimator. Here are the steps we take:</p>
 
 <ol>
-  <li>We build a function to perform the simulations. This function returns many estimates of \( \hat{\beta} \) when the data is generated with either Gaussian or Student distributed residuals.</li>
+  <li>We build a function to perform the simulations. This function returns many estimates of \( \hat{\beta} \) when the data is generated with either Gaussian or Student distributed residuals. </li>
   <li>We compare the empirical distributions of the estimators by plotting two overlapping histograms, one for each distribution.</li>
-  <li>We repeat the experiments with different numbers of observations and degrees of freedom.</li>
+  <li>We repeat the experiments with different numbers of observations and degrees of freedom. </li>
 </ol>
 
-<p>The simulation function computes many ols estimators on generated data where the residuals are either standard normal of t-distributed. The function takes as inputs the number of observations, of simulations, of control variables, and the number of degrees of freedom for the t-distribution of the innovations. It returns a list with the estimated parameters for the Gaussian and the t-residuals. For simplicity the true value of all entries of \( \hat{\beta} \) are equal to 1. In order to have the same variance for the Gaussian and Student residuals, we set the variance of the Gaussian innovations to \( \frac{tdf}{(tdf-2)} \) where \(tdf\) is the number of degrees of freedom of the Student innovations.</p>
+<p>The simulation function computes many ols estimators on generated data where the residuals are either standard normal of t-distributed. The function takes as inputs the number of observations, of simulations, of control variables, and the number of degrees of freedom for the t-distribution of the innovations. It returns a list with the estimated parameters for the Gaussian and the t-residuals. For simplicity the true value of all entries of \( \hat{\beta} \) are equal to 1. In order to have the same variance for the Gaussian and Student residuals, we set the variance of the Gaussian innovations to \( \frac{tdf}{(tdf-2)} \) where \(tdf\) is the number of degrees of freedom of the Student innovations. </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#Let's create a function returning the mc estimates of beta 
-# Inputs: - n the number of observations
-#         - mc the number of monte carlo iterations
-#         - k the number of control variables
-#         - tdf the degrees of freedom of the t distribution 
-# Output: - a list with two matrices of betaN and betaT.
-mcbeta &lt;- function(n,mc,k,tdf){
+<div class="highlight"><pre><code class="r"><span class="c1">#Let&#39;s create a function returning the mc estimates of beta </span>
+<span class="c1"># Inputs: - n the number of observations</span>
+<span class="c1">#         - mc the number of monte carlo iterations</span>
+<span class="c1">#         - k the number of control variables</span>
+<span class="c1">#         - tdf the degrees of freedom of the t distribution </span>
+<span class="c1"># Output: - a list with two matrices of betaN and betaT.</span>
+mcbeta <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">,</span>mc<span class="p">,</span>k<span class="p">,</span>tdf<span class="p">){</span>
   
 
-  #storage matrix
-  bN &lt;- matrix(NA,nrow=mc,ncol=k)
-  bT &lt;- matrix(NA,nrow=mc,ncol=k)
+  <span class="c1">#storage matrix</span>
+  bN <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span>nrow<span class="o">=</span>mc<span class="p">,</span>ncol<span class="o">=</span>k<span class="p">)</span>
+  bT <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span>nrow<span class="o">=</span>mc<span class="p">,</span>ncol<span class="o">=</span>k<span class="p">)</span>
   
-  for(m in 1:mc){
-  	# Set of controls
-    X &lt;- matrix(rnorm(n*k),nrow=n,ncol=k)
+  <span class="kr">for</span><span class="p">(</span>m <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>mc<span class="p">){</span>
+  	<span class="c1"># Set of controls</span>
+    X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">*</span>k<span class="p">),</span>nrow<span class="o">=</span>n<span class="p">,</span>ncol<span class="o">=</span>k<span class="p">)</span>
   
-    epsN &lt;- rnorm(n,sd=sqrt(tdf/(tdf-2))) # Gaussian innovations
-    epsT &lt;- rt(n,tdf) #Student innovations
+    epsN <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">,</span>sd<span class="o">=</span>sqrt<span class="p">(</span>tdf<span class="o">/</span><span class="p">(</span>tdf<span class="m">-2</span><span class="p">)))</span> <span class="c1"># Gaussian innovations</span>
+    epsT <span class="o">&lt;-</span> rt<span class="p">(</span>n<span class="p">,</span>tdf<span class="p">)</span> <span class="c1">#Student innovations</span>
     
-    # the true beta is 1 in both cases
-    yN &lt;- X + epsN
-    yT &lt;- X + epsT
+    <span class="c1"># the true beta is 1 in both cases</span>
+    yN <span class="o">&lt;-</span> X <span class="o">+</span> epsN
+    yT <span class="o">&lt;-</span> X <span class="o">+</span> epsT
     
-    # Storing the estimated beta, discarding the constant
-    bN[m,] &lt;- coef(lm(yN ~ X))[-1]
-    bT[m,] &lt;- coef(lm(yT ~ X))[-1]
+    <span class="c1"># Storing the estimated beta, discarding the constant</span>
+    bN<span class="p">[</span>m<span class="p">,]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yN <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
+    bT<span class="p">[</span>m<span class="p">,]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yT <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
     
-    # returning a list with the results
-  }
-  return(list('Normal'=bN,'Student'=bT))
-}</code></pre></div>
+    <span class="c1"># returning a list with the results</span>
+  <span class="p">}</span>
+  <span class="kr">return</span><span class="p">(</span>list<span class="p">(</span><span class="s">&#39;Normal&#39;</span><span class="o">=</span>bN<span class="p">,</span><span class="s">&#39;Student&#39;</span><span class="o">=</span>bT<span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Now let’s run a first experiment with a very small sample of n=10 and plot the results as two overlapping histograms:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-n &lt;- 10
-#nbr of Monte Carlo iterations
-mc &lt;- 1000
-# nbr of controls
-k &lt;- 1
-# degrees of freedom 
-tdf &lt;- 3
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">10</span>
+<span class="c1">#nbr of Monte Carlo iterations</span>
+mc <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># nbr of controls</span>
+k <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="c1"># degrees of freedom </span>
+tdf <span class="o">&lt;-</span> <span class="m">3</span>
 
-mc10 &lt;- mcbeta(n,mc,k,tdf)
-mc10 &lt;- melt(mc10)
+mc10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span>mc<span class="p">,</span>k<span class="p">,</span>tdf<span class="p">)</span>
+mc10 <span class="o">&lt;-</span> melt<span class="p">(</span>mc10<span class="p">)</span>
 
-colnames(mc10) &lt;- c('iteration','a','value','residuals')
+colnames<span class="p">(</span>mc10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;iteration&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;residuals&#39;</span><span class="p">)</span>
 
-gg.mc10 &lt;- ggplot(mc10,aes(x=value,fill=residuals)) + geom_histogram(binwidth=.1, alpha=.5, position='identity')
-print(gg.mc10)</code></pre></div>
+gg.mc10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc10<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>value<span class="p">,</span>fill<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth<span class="o">=</span><span class="m">.1</span><span class="p">,</span> alpha<span class="o">=</span><span class="m">.5</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc10<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc10.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc10.png" alt="center" /> </p>
 
 <p>\(\hat{\beta} \) is estimated to be somewhere between -2 and 3 when the innovations are <em>t(3)</em>, while when they are <em>N(0,3)</em> the range is around [0,2.5]. The <em>t</em> distributed innovations produce many extreme estimates of \( \beta \). Because we seek to minimize the squared residuals, OLS is very sensitive to extreme observations.</p>
 
-<p>What happens when we increase the number of observations to 100?</p>
+<p>What happens when we increase the number of observations to 100?  </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-n &lt;- 100
-# Estimation
-mc100 &lt;- mcbeta(n,mc,k,tdf)
-mc100 &lt;- melt(mc100)
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
+<span class="c1"># Estimation</span>
+mc100 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span>mc<span class="p">,</span>k<span class="p">,</span>tdf<span class="p">)</span>
+mc100 <span class="o">&lt;-</span> melt<span class="p">(</span>mc100<span class="p">)</span>
 
-colnames(mc100) &lt;- c('iteration','a','value','residuals')
+colnames<span class="p">(</span>mc100<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;iteration&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;residuals&#39;</span><span class="p">)</span>
 
-gg.mc100 &lt;- ggplot(mc100,aes(x=value,fill=residuals)) + geom_histogram(binwidth=.01, alpha=.5, position='identity')
-print(gg.mc100)</code></pre></div>
+gg.mc100 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc100<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>value<span class="p">,</span>fill<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth<span class="o">=</span><span class="m">.01</span><span class="p">,</span> alpha<span class="o">=</span><span class="m">.5</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc100<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc100.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc100.png" alt="center" /> </p>
 
 <p>Both distributions are closer to the true value, but the <em>t</em> distribution still produces many more outliers. Now with 1000 observations:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-n &lt;- 1000
-# Estimation
-mc1000 &lt;- mcbeta(n,mc,k,tdf)
-mc1000 &lt;- melt(mc1000)
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># Estimation</span>
+mc1000 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span>mc<span class="p">,</span>k<span class="p">,</span>tdf<span class="p">)</span>
+mc1000 <span class="o">&lt;-</span> melt<span class="p">(</span>mc1000<span class="p">)</span>
 
-colnames(mc1000) &lt;- c('iteration','a','value','residuals')
+colnames<span class="p">(</span>mc1000<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;iteration&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;residuals&#39;</span><span class="p">)</span>
 
-gg.mc1000 &lt;- ggplot(mc1000,aes(x=value,fill=residuals)) + geom_histogram(binwidth=.005, alpha=.5, position='identity')
-print(gg.mc1000)</code></pre></div>
+gg.mc1000 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc1000<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>value<span class="p">,</span>fill<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth<span class="o">=</span><span class="m">.005</span><span class="p">,</span> alpha<span class="o">=</span><span class="m">.5</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc1000<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc1000.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/mc1000.png" alt="center" /> </p>
 
 <p>With 1000 observations the distribution the two distributions are similar, in this case the normal approximation is good but we still have more extreme observations with the <em>t</em> innovations.</p>
 
 <p>Let’s keep 1000 observation but increase the number of degrees of freedoms of the <em>t</em> distributions so that it generates fewer extreme innovations:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-tdf &lt;- 10
-# Estimation
-mcdf10 &lt;- mcbeta(n,mc,k,tdf)
-mcdf10 &lt;- melt(mcdf10)
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+tdf <span class="o">&lt;-</span> <span class="m">10</span>
+<span class="c1"># Estimation</span>
+mcdf10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span>mc<span class="p">,</span>k<span class="p">,</span>tdf<span class="p">)</span>
+mcdf10 <span class="o">&lt;-</span> melt<span class="p">(</span>mcdf10<span class="p">)</span>
 
-colnames(mcdf10) &lt;- c('iteration','a','value','residuals')
+colnames<span class="p">(</span>mcdf10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;iteration&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;residuals&#39;</span><span class="p">)</span>
 
-gg.mcdf10 &lt;- ggplot(mcdf10,aes(x=value,fill=residuals)) + geom_histogram(binwidth=.005, alpha=.5, position='identity')
-print(gg.mcdf10)</code></pre></div>
+gg.mcdf10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mcdf10<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>value<span class="p">,</span>fill<span class="o">=</span>residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth<span class="o">=</span><span class="m">.005</span><span class="p">,</span> alpha<span class="o">=</span><span class="m">.5</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mcdf10<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/mcdf10.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/mcdf10.png" alt="center" /> </p>
 
 <p>With 10 degrees of freedom, the two distributions are almost overlapping, the normal approximation is a good one in this case.</p>
 
 <h2 id="size-and-power-of-the-t-test">Size and power of the t-test.</h2>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#Let's create a function returning the mc estimates of beta 
-# Inputs: - n the number of observations
-#         - mc the number of monte carlo iterations
-#         - k the number of control variables
+<div class="highlight"><pre><code class="r"><span class="c1">#Let&#39;s create a function returning the mc estimates of beta </span>
+<span class="c1"># Inputs: - n the number of observations</span>
+<span class="c1">#         - mc the number of monte carlo iterations</span>
+<span class="c1">#         - k the number of control variables</span>
 
-# Output: 
-mcsp &lt;- function(n,mc){
+<span class="c1"># Output: </span>
+mcsp <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">,</span>mc<span class="p">){</span>
   
-  # vector of values b for which we test H0: \hat\beta = b
-  b &lt;- seq(0,1,0.01)
-  #storage matrix
-  tstats &lt;- matrix(NA,nrow=mc,ncol=length(b))
-  colnames(tstats) &lt;- b
-  # Looping over the number of iteratons 
-  for(m in 1:mc){
-    # We use a new set of controls for every experiment
-    X &lt;- matrix(rnorm(n),nrow=n,ncol=1)
-    # standard normal innovations
-    eps &lt;- rnorm(n,sd=1)
-    # the true beta is 1 
-    y &lt;- X + eps    
-    # Storing the estimated beta with std.err
-    smy &lt;- summary(lm(y ~ X))$coefficients
-    # Computing the vector of t-statistcs
-    tstats[m,] &lt;- (smy[2,1] - b)/smy[2,2]
+  <span class="c1"># vector of values b for which we test H0: \hat\beta = b</span>
+  b <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0.01</span><span class="p">)</span>
+  <span class="c1">#storage matrix</span>
+  tstats <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span>nrow<span class="o">=</span>mc<span class="p">,</span>ncol<span class="o">=</span>length<span class="p">(</span>b<span class="p">))</span>
+  colnames<span class="p">(</span>tstats<span class="p">)</span> <span class="o">&lt;-</span> b
+  <span class="c1"># Looping over the number of iteratons </span>
+  <span class="kr">for</span><span class="p">(</span>m <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>mc<span class="p">){</span>
+    <span class="c1"># We use a new set of controls for every experiment</span>
+    X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="p">),</span>nrow<span class="o">=</span>n<span class="p">,</span>ncol<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="c1"># standard normal innovations</span>
+    eps <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">,</span>sd<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="c1"># the true beta is 1 </span>
+    y <span class="o">&lt;-</span> X <span class="o">+</span> eps    
+    <span class="c1"># Storing the estimated beta with std.err</span>
+    smy <span class="o">&lt;-</span> summary<span class="p">(</span>lm<span class="p">(</span>y <span class="o">~</span> X<span class="p">))</span><span class="o">$</span>coefficients
+    <span class="c1"># Computing the vector of t-statistcs</span>
+    tstats<span class="p">[</span>m<span class="p">,]</span> <span class="o">&lt;-</span> <span class="p">(</span>smy<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> b<span class="p">)</span><span class="o">/</span>smy<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
     
-  }
-# returning the vector of t-statistics.
-  return(tstats)
-}</code></pre></div>
+  <span class="p">}</span>
+<span class="c1"># returning the vector of t-statistics.</span>
+  <span class="kr">return</span><span class="p">(</span>tstats<span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<p>In this first experiment we set n=100 and compute a 95\% t-test for the hypothesis \(\mathcal{H}_0:\hat\beta_i = b\) with b going from 0 to 1 (the true value) by steps of 0.01. We plot below the rejection frequency for each value of b.</p>
+<p>In this first experiment we set n=100 and compute a 95\% t-test for the hypothesis \(\mathcal{H}_0:\hat\beta_i = b\) with b going from 0 to 1 (the true value) by steps of 0.01. We plot below the rejection frequency for each value of b.  </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-n &lt;- 50
-#nbr of Monte Carlo iterations
-mc &lt;- 1000
-# Critical value for the t-test
-cv &lt;- 1.96
-# running the experiments
-sp100 &lt;- mcsp(n,mc)
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">50</span>
+<span class="c1">#nbr of Monte Carlo iterations</span>
+mc <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># Critical value for the t-test</span>
+cv <span class="o">&lt;-</span> <span class="m">1.96</span>
+<span class="c1"># running the experiments</span>
+sp100 <span class="o">&lt;-</span> mcsp<span class="p">(</span>n<span class="p">,</span>mc<span class="p">)</span>
 
-msp100 &lt;- melt(colMeans(abs(sp100&gt;cv)))
-msp100 &lt;- cbind(as.numeric(colnames(sp100)),msp100)
-colnames(msp100) &lt;- c('b','value')
+msp100 <span class="o">&lt;-</span> melt<span class="p">(</span>colMeans<span class="p">(</span>abs<span class="p">(</span>sp100<span class="o">&gt;</span>cv<span class="p">)))</span>
+msp100 <span class="o">&lt;-</span> cbind<span class="p">(</span>as.numeric<span class="p">(</span>colnames<span class="p">(</span>sp100<span class="p">)),</span>msp100<span class="p">)</span>
+colnames<span class="p">(</span>msp100<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">)</span>
 
-gg.msp100 &lt;- ggplot(msp100,aes(x=b,y=value)) + geom_line() 
-print(gg.msp100)</code></pre></div>
+gg.msp100 <span class="o">&lt;-</span> ggplot<span class="p">(</span>msp100<span class="p">,</span>aes<span class="p">(</span>x<span class="o">=</span>b<span class="p">,</span>y<span class="o">=</span>value<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span> 
+print<span class="p">(</span>gg.msp100<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/ps100.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/ps100.png" alt="center" /> </p>
 
-<p>We now repeat the same experiment as before for varying sample size. Each ribbon in the plot shows the rejection frequency for every value of b (y axis) at a given sample size (x axis). So the size of the test is the rejection frequency at b=1, it is always close to 0.05 the nominal value, and the rejection frequencies for b&gt;1 are estimates of the power of the test for a given sample sizes. The power always starts close to 0.05 and climbs towards 1 while we move away from the true hypothesis. The climb is faster as the sample size increases: the more information the more often we reject false hypotheses.</p>
+<p>We now repeat the same experiment as before for varying sample size. Each ribbon in the plot shows the rejection frequency for every value of b (y axis) at a given sample size (x axis). So the size of the test is the rejection frequency at b=1, it is always close to 0.05 the nominal value, and the rejection frequencies for b&gt;1 are estimates of the power of the test for a given sample sizes. The power always starts close to 0.05 and climbs towards 1 while we move away from the true hypothesis. The climb is faster as the sample size increases: the more information the more often we reject false hypotheses.   </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">#nbr of obs
-b &lt;- seq(0,1,0.01)
-vobs &lt;- c(5,10,15,20,25,30,35,40,45,50,60,70,80,90,100)
-# Storage
-sp &lt;- sp2 &lt;- matrix(NA,nrow=length(vobs),ncol=length(b))
-#nbr of Monte Carlo iterations
-mc &lt;- 1000
-# Critical value for the t-test
-cv &lt;- 1.96
-cv2&lt;- qt(0.975,df=vobs-2)
-# Looping over the sample sizes. 
-ncount &lt;- 0
-for(n in vobs){
-	ncount &lt;- ncount + 1
-	# running the experiments
-	sp100 &lt;- mcsp(n,mc)
-	sp[ncount,] &lt;- colMeans(abs(sp100&gt;cv))
-	sp2[ncount,] &lt;- colMeans(abs(sp100&gt;cv2[ncount]))
-	}
-colnames(sp2) &lt;- colnames(sp) &lt;- b
-rownames(sp2) &lt;- rownames(sp) &lt;- vobs
+<div class="highlight"><pre><code class="r"><span class="c1">#nbr of obs</span>
+b <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0.01</span><span class="p">)</span>
+vobs <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">25</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">60</span><span class="p">,</span><span class="m">70</span><span class="p">,</span><span class="m">80</span><span class="p">,</span><span class="m">90</span><span class="p">,</span><span class="m">100</span><span class="p">)</span>
+<span class="c1"># Storage</span>
+sp <span class="o">&lt;-</span> sp2 <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span>nrow<span class="o">=</span>length<span class="p">(</span>vobs<span class="p">),</span>ncol<span class="o">=</span>length<span class="p">(</span>b<span class="p">))</span>
+<span class="c1">#nbr of Monte Carlo iterations</span>
+mc <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># Critical value for the t-test</span>
+cv <span class="o">&lt;-</span> <span class="m">1.96</span>
+cv2<span class="o">&lt;-</span> qt<span class="p">(</span><span class="m">0.975</span><span class="p">,</span>df<span class="o">=</span>vobs<span class="m">-2</span><span class="p">)</span>
+<span class="c1"># Looping over the sample sizes. </span>
+ncount <span class="o">&lt;-</span> <span class="m">0</span>
+<span class="kr">for</span><span class="p">(</span>n <span class="kr">in</span> vobs<span class="p">){</span>
+	ncount <span class="o">&lt;-</span> ncount <span class="o">+</span> <span class="m">1</span>
+	<span class="c1"># running the experiments</span>
+	sp100 <span class="o">&lt;-</span> mcsp<span class="p">(</span>n<span class="p">,</span>mc<span class="p">)</span>
+	sp<span class="p">[</span>ncount<span class="p">,]</span> <span class="o">&lt;-</span> colMeans<span class="p">(</span>abs<span class="p">(</span>sp100<span class="o">&gt;</span>cv<span class="p">))</span>
+	sp2<span class="p">[</span>ncount<span class="p">,]</span> <span class="o">&lt;-</span> colMeans<span class="p">(</span>abs<span class="p">(</span>sp100<span class="o">&gt;</span>cv2<span class="p">[</span>ncount<span class="p">]))</span>
+	<span class="p">}</span>
+colnames<span class="p">(</span>sp2<span class="p">)</span> <span class="o">&lt;-</span> colnames<span class="p">(</span>sp<span class="p">)</span> <span class="o">&lt;-</span> b
+rownames<span class="p">(</span>sp2<span class="p">)</span> <span class="o">&lt;-</span> rownames<span class="p">(</span>sp<span class="p">)</span> <span class="o">&lt;-</span> vobs
 
 
-ribbon3D(x=vobs,y=b,z =sp, along ='y', clab = 'rejection frequency', shade = 0.5, bty = &quot;g&quot;, ticktype = &quot;detailed&quot;,phi=20,theta=-110)</code></pre></div>
+ribbon3D<span class="p">(</span>x<span class="o">=</span>vobs<span class="p">,</span>y<span class="o">=</span>b<span class="p">,</span>z <span class="o">=</span>sp<span class="p">,</span> along <span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> clab <span class="o">=</span> <span class="s">&#39;rejection frequency&#39;</span><span class="p">,</span> shade <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> bty <span class="o">=</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> ticktype <span class="o">=</span> <span class="s">&quot;detailed&quot;</span><span class="p">,</span>phi<span class="o">=</span><span class="m">20</span><span class="p">,</span>theta<span class="o">=</span><span class="m">-110</span><span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/sp.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/sp.png" alt="center" /> </p>
 
-<p>Note that for the previous plot we used the quantile from the Gaussian distributions (i.e. from the asymptotic distribution of \(\mathcal{H}_0\)). In the plot below we use the exact Student critical values.</p>
+<p>Note that for the previous plot we used the quantile from the Gaussian distributions (i.e. from the asymptotic distribution of \(\mathcal{H}_0\)). In the plot below we use the exact Student critical values.  </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">ribbon3D(x=vobs,y=b,z =sp2, along ='y', clab = 'rejection frequency', shade = 0.5, bty = &quot;g&quot;, ticktype = &quot;detailed&quot;,phi=20,theta=-110)</code></pre></div>
+<div class="highlight"><pre><code class="r">ribbon3D<span class="p">(</span>x<span class="o">=</span>vobs<span class="p">,</span>y<span class="o">=</span>b<span class="p">,</span>z <span class="o">=</span>sp2<span class="p">,</span> along <span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> clab <span class="o">=</span> <span class="s">&#39;rejection frequency&#39;</span><span class="p">,</span> shade <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> bty <span class="o">=</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> ticktype <span class="o">=</span> <span class="s">&quot;detailed&quot;</span><span class="p">,</span>phi<span class="o">=</span><span class="m">20</span><span class="p">,</span>theta<span class="o">=</span><span class="m">-110</span><span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2015-02-15-IE14-W3.rmd/sp2.png" alt="center" /></p>
+<p><img src="/figs/2015-02-15-IE14-W3.rmd/sp2.png" alt="center" /> </p>
 
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->

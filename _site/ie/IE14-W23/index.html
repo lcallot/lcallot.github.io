@@ -140,172 +140,180 @@
 
 <ul>
   <li>Estimate empirical distributions of the OLS estimator.</li>
-  <li>Investigate the finite sample size and power of tests.</li>
+  <li>Investigate the finite sample size and power of tests. </li>
 </ul>
 
 <h3 id="r-squared-with-increasing-number-of-regressors">R Squared with increasing number of regressors</h3>
 
 <p>Below the code used to generate the R squared plots in the homework slides of Week 2</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># loading the plotting library
-library(&quot;ggplot2&quot;)
+<div class="highlight"><pre><code class="r"><span class="c1"># loading the plotting library</span>
+library<span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
 
-# setting the seed
-set.seed(42)
+<span class="c1"># setting the seed</span>
+set.seed<span class="p">(</span><span class="m">42</span><span class="p">)</span>
 
-# Number of observations
-n &lt;- 100
+<span class="c1"># Number of observations</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
 
-# y is just white noise
-y &lt;- matrix(rnorm(n), ncol = 1)
+<span class="c1"># y is just white noise</span>
+y <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="p">),</span> ncol <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
 
-# a vector with the number of control variables
-k.all &lt;- seq(from = 0, to = n, by = round(n/50, 0))
+<span class="c1"># a vector with the number of control variables</span>
+k.all <span class="o">&lt;-</span> seq<span class="p">(</span>from <span class="o">=</span> <span class="m">0</span><span class="p">,</span> to <span class="o">=</span> n<span class="p">,</span> by <span class="o">=</span> round<span class="p">(</span>n<span class="o">/</span><span class="m">50</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
 
-# storage initialization
-r2 &lt;- matrix(NA, ncol = length(k.all), nrow = 2)
-colnames(r2) &lt;- k.all
-rownames(r2) &lt;- c(&quot;R2&quot;, &quot;adjusted R2&quot;)
+<span class="c1"># storage initialization</span>
+r2 <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> ncol <span class="o">=</span> length<span class="p">(</span>k.all<span class="p">),</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+colnames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> k.all
+rownames<span class="p">(</span>r2<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;R2&quot;</span><span class="p">,</span> <span class="s">&quot;adjusted R2&quot;</span><span class="p">)</span>
 
-# counter
-i &lt;- 1
-# looping over the numbers of controls.
-for (k in k.all) {
-    # creating the controls with a constant
+<span class="c1"># counter</span>
+i <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="c1"># looping over the numbers of controls.</span>
+<span class="kr">for</span> <span class="p">(</span>k <span class="kr">in</span> k.all<span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># creating the controls with a constant</span>
     
-    X &lt;- cbind(1, matrix(rnorm(n * (ifelse(k == 0, 0, k - 1))), nrow = n, ncol = ifelse(k == 
-        0, 0, k - 1)))
+    X <span class="o">&lt;-</span> cbind<span class="p">(</span><span class="m">1</span><span class="p">,</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n <span class="o">*</span> <span class="p">(</span>ifelse<span class="p">(</span>k <span class="o">==</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> k <span class="o">-</span> <span class="m">1</span><span class="p">))),</span> nrow <span class="o">=</span> n<span class="p">,</span> ncol <span class="o">=</span> ifelse<span class="p">(</span>k <span class="o">==</span> 
+        <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> k <span class="o">-</span> <span class="m">1</span><span class="p">)))</span>
     
-    # regression + computation of summary statistics
-    slm &lt;- summary(lm(y ~ X))
+    <span class="c1"># regression + computation of summary statistics</span>
+    slm <span class="o">&lt;-</span> summary<span class="p">(</span>lm<span class="p">(</span>y <span class="o">~</span> X<span class="p">))</span>
     
-    # Storage of the resuts
-    r2[1, i] &lt;- slm$r.squared
-    r2[2, i] &lt;- slm$adj.r.squared
+    <span class="c1"># Storage of the resuts</span>
+    r2<span class="p">[</span><span class="m">1</span><span class="p">,</span> i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>r.squared
+    r2<span class="p">[</span><span class="m">2</span><span class="p">,</span> i<span class="p">]</span> <span class="o">&lt;-</span> slm<span class="o">$</span>adj.r.squared
     
-    # increment the counter
-    i &lt;- i + 1
-}</code></pre></div>
+    <span class="c1"># increment the counter</span>
+    i <span class="o">&lt;-</span> i <span class="o">+</span> <span class="m">1</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># plotting the results:
+<div class="highlight"><pre><code class="r"><span class="c1"># plotting the results:</span>
 
-# preparing the data
-mr2 &lt;- melt(r2)
-names(mr2)[1:2] &lt;- c(&quot;mesure&quot;, &quot;k&quot;)
+<span class="c1"># preparing the data</span>
+mr2 <span class="o">&lt;-</span> melt<span class="p">(</span>r2<span class="p">)</span>
+names<span class="p">(</span>mr2<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;mesure&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">)</span>
 
-# plotting
-gr2 &lt;- ggplot(mr2, aes(x = k, y = value, colour = mesure)) + geom_line()
-print(gr2)</code></pre></div>
+<span class="c1"># plotting</span>
+gr2 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mr2<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> k<span class="p">,</span> y <span class="o">=</span> value<span class="p">,</span> colour <span class="o">=</span> mesure<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()</span>
+print<span class="p">(</span>gr2<span class="p">)</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## Warning: Removed 1 rows containing missing values (geom_path).</code></pre></div>
+<div class="highlight"><pre><code class="text">## Warning: Removed 1 rows containing missing values (geom_path).
+</code></pre></div>
 
-<p><img src="/figs/2014-02-17-IE14-W23_rmd/plotr2.png" alt="center" /></p>
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/plotr2.png" alt="center" /> </p>
 
 <h2 id="finite-sample-distribution-of-the-ols-estimator">Finite sample distribution of the OLS estimator</h2>
 
-<p>\( \hat{\beta} \) is normaly distruted if the residuals are Gaussian, but it is asymptotically normal under weaker assumptions. How good is the gaussian approximation? We evaluate this using a Monte Carlo experiment.</p>
+<p>\( \hat{\beta} \) is normaly distruted if the residuals are Gaussian, but it is asymptotically normal under weaker assumptions. How good is the gaussian approximation? We evaluate this using a Monte Carlo experiment. </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># Let's create a function returning the mc estimates of beta Inputs: - n the
-# number of observations - mc the number of monte carlo iterations - k the
-# number of control variables - tdf the degrees of freedom of the t
-# distribution Output:
-mcbeta &lt;- function(n, mc, k, tdf) {
+<div class="highlight"><pre><code class="r"><span class="c1"># Let&#39;s create a function returning the mc estimates of beta Inputs: - n the</span>
+<span class="c1"># number of observations - mc the number of monte carlo iterations - k the</span>
+<span class="c1"># number of control variables - tdf the degrees of freedom of the t</span>
+<span class="c1"># distribution Output:</span>
+mcbeta <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span> <span class="p">{</span>
     
-    # We use the same set of controls for every experiment
-    X &lt;- matrix(rnorm(n * k), nrow = n, ncol = k)
+    <span class="c1"># We use the same set of controls for every experiment</span>
+    X <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n <span class="o">*</span> k<span class="p">),</span> nrow <span class="o">=</span> n<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
     
-    # storage matrix
-    bN &lt;- matrix(NA, nrow = mc, ncol = k)
-    bT &lt;- matrix(NA, nrow = mc, ncol = k)
+    <span class="c1"># storage matrix</span>
+    bN <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow <span class="o">=</span> mc<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
+    bT <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow <span class="o">=</span> mc<span class="p">,</span> ncol <span class="o">=</span> k<span class="p">)</span>
     
-    for (m in 1:mc) {
-        epsN &lt;- rnorm(n, sd = sqrt(tdf/(tdf - 2)))  # standard normal innovations
-        epsT &lt;- rt(n, tdf)  #t(1) innovations
+    <span class="kr">for</span> <span class="p">(</span>m <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>mc<span class="p">)</span> <span class="p">{</span>
+        epsN <span class="o">&lt;-</span> rnorm<span class="p">(</span>n<span class="p">,</span> sd <span class="o">=</span> sqrt<span class="p">(</span>tdf<span class="o">/</span><span class="p">(</span>tdf <span class="o">-</span> <span class="m">2</span><span class="p">)))</span>  <span class="c1"># standard normal innovations</span>
+        epsT <span class="o">&lt;-</span> rt<span class="p">(</span>n<span class="p">,</span> tdf<span class="p">)</span>  <span class="c1">#t(1) innovations</span>
         
-        # the true beta is 1 in both cases
-        yN &lt;- X + epsN
-        yT &lt;- X + epsT
+        <span class="c1"># the true beta is 1 in both cases</span>
+        yN <span class="o">&lt;-</span> X <span class="o">+</span> epsN
+        yT <span class="o">&lt;-</span> X <span class="o">+</span> epsT
         
-        # Storing the estimated beta, discarding the constant
-        bN[m, ] &lt;- coef(lm(yN ~ X))[-1]
-        bT[m, ] &lt;- coef(lm(yT ~ X))[-1]
+        <span class="c1"># Storing the estimated beta, discarding the constant</span>
+        bN<span class="p">[</span>m<span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yN <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
+        bT<span class="p">[</span>m<span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> coef<span class="p">(</span>lm<span class="p">(</span>yT <span class="o">~</span> X<span class="p">))[</span><span class="m">-1</span><span class="p">]</span>
         
-        # returning a list with the results
-    }
-    return(list(Normal = bN, Student = bT))
-}</code></pre></div>
+        <span class="c1"># returning a list with the results</span>
+    <span class="p">}</span>
+    <span class="kr">return</span><span class="p">(</span>list<span class="p">(</span>Normal <span class="o">=</span> bN<span class="p">,</span> Student <span class="o">=</span> bT<span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Now let’s run a first experiment with a very small sample of n=10 and plot the results as two overlapping histograms:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># nbr of obs
-n &lt;- 10
-# nbr of Monte Carlo iterations
-mc &lt;- 1000
-# nbr of controls
-k &lt;- 1
-# degrees of freedom
-tdf &lt;- 3
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">10</span>
+<span class="c1"># nbr of Monte Carlo iterations</span>
+mc <span class="o">&lt;-</span> <span class="m">1000</span>
+<span class="c1"># nbr of controls</span>
+k <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="c1"># degrees of freedom</span>
+tdf <span class="o">&lt;-</span> <span class="m">3</span>
 
-mc10 &lt;- mcbeta(n, mc, k, tdf)
-mc10 &lt;- melt(mc10)
+mc10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc10 <span class="o">&lt;-</span> melt<span class="p">(</span>mc10<span class="p">)</span>
 
-colnames(mc10) &lt;- c(&quot;iteration&quot;, &quot;a&quot;, &quot;value&quot;, &quot;residuals&quot;)
+colnames<span class="p">(</span>mc10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
 
-gg.mc10 &lt;- ggplot(mc10, aes(x = value, fill = residuals)) + geom_histogram(binwidth = 0.1, 
-    alpha = 0.5, position = &quot;identity&quot;)
-print(gg.mc10)</code></pre></div>
+gg.mc10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc10<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc10<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc10.png" alt="center" /></p>
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc10.png" alt="center" /> </p>
 
 <p>\(\hat{\beta} \) is estimated to be somewhere between -1 and 4 when the innovations are <em>t(3)</em>, while when they are <em>N(0,3)</em> the range is around [0,2.5]. The <em>t</em> distributed innovations produce many extreme estimates of \( \beta \). Because we seek to minimize the squared residuals, OLS is very sensitive to extreme observations.</p>
 
-<p>What happens when we increase the number of observations to 100?</p>
+<p>What happens when we increase the number of observations to 100?  </p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># nbr of obs
-n &lt;- 100
-mc100 &lt;- mcbeta(n, mc, k, tdf)
-mc100 &lt;- melt(mc100)
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">100</span>
+mc100 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc100 <span class="o">&lt;-</span> melt<span class="p">(</span>mc100<span class="p">)</span>
 
-colnames(mc100) &lt;- c(&quot;iteration&quot;, &quot;a&quot;, &quot;value&quot;, &quot;residuals&quot;)
+colnames<span class="p">(</span>mc100<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
 
-gg.mc100 &lt;- ggplot(mc100, aes(x = value, fill = residuals)) + geom_histogram(binwidth = 0.01, 
-    alpha = 0.5, position = &quot;identity&quot;)
-print(gg.mc100)</code></pre></div>
+gg.mc100 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc100<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.01</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc100<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc100.png" alt="center" /></p>
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc100.png" alt="center" /> </p>
 
 <p>Both distributions are closer to the true value, but the <em>t</em> distribution still produces many more outliers. Now with 1000 observations:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># nbr of obs
-n &lt;- 1000
-mc1000 &lt;- mcbeta(n, mc, k, tdf)
-mc1000 &lt;- melt(mc1000)
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+n <span class="o">&lt;-</span> <span class="m">1000</span>
+mc1000 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mc1000 <span class="o">&lt;-</span> melt<span class="p">(</span>mc1000<span class="p">)</span>
 
-colnames(mc1000) &lt;- c(&quot;iteration&quot;, &quot;a&quot;, &quot;value&quot;, &quot;residuals&quot;)
+colnames<span class="p">(</span>mc1000<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
 
-gg.mc1000 &lt;- ggplot(mc1000, aes(x = value, fill = residuals)) + geom_histogram(binwidth = 0.005, 
-    alpha = 0.5, position = &quot;identity&quot;)
-print(gg.mc1000)</code></pre></div>
+gg.mc1000 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mc1000<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.005</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mc1000<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc1000.png" alt="center" /></p>
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mc1000.png" alt="center" /> </p>
 
 <p>With 1000 observations the distribution the two distributions are similar, in this case the normal approximation is good but we still have more extreme observations with the <em>t</em> innovations.</p>
 
 <p>Let’s keep 1000 observation but increase the number of degrees of freedoms of the <em>t</em> distributions so that it generates fewer extreme innovations:</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"># nbr of obs
-tdf &lt;- 10
+<div class="highlight"><pre><code class="r"><span class="c1"># nbr of obs</span>
+tdf <span class="o">&lt;-</span> <span class="m">10</span>
 
-mcdf10 &lt;- mcbeta(n, mc, k, tdf)
-mcdf10 &lt;- melt(mcdf10)
+mcdf10 <span class="o">&lt;-</span> mcbeta<span class="p">(</span>n<span class="p">,</span> mc<span class="p">,</span> k<span class="p">,</span> tdf<span class="p">)</span>
+mcdf10 <span class="o">&lt;-</span> melt<span class="p">(</span>mcdf10<span class="p">)</span>
 
-colnames(mcdf10) &lt;- c(&quot;iteration&quot;, &quot;a&quot;, &quot;value&quot;, &quot;residuals&quot;)
+colnames<span class="p">(</span>mcdf10<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;residuals&quot;</span><span class="p">)</span>
 
-gg.mcdf10 &lt;- ggplot(mcdf10, aes(x = value, fill = residuals)) + geom_histogram(binwidth = 0.005, 
-    alpha = 0.5, position = &quot;identity&quot;)
-print(gg.mcdf10)</code></pre></div>
+gg.mcdf10 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mcdf10<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> value<span class="p">,</span> fill <span class="o">=</span> residuals<span class="p">))</span> <span class="o">+</span> geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">0.005</span><span class="p">,</span> 
+    alpha <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> position <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span>
+print<span class="p">(</span>gg.mcdf10<span class="p">)</span>
+</code></pre></div>
 
-<p><img src="/figs/2014-02-17-IE14-W23_rmd/mcdf10.png" alt="center" /></p>
+<p><img src="/figs/2014-02-17-IE14-W23_rmd/mcdf10.png" alt="center" /> </p>
 
 <p>With 10 degrees of freedom, the two distributions are almost overlapping, the normal approximation is a good one in this case.</p>
 

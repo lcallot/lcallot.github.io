@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice. &#8211; Laurent's Research Page</title>
+<title>Deterministic and stochastic trends in the Lee-Carter mortality model. &#8211; Laurent's Research Page</title>
 <meta name="description" content="">
-<meta name="keywords" content="working paper, Lasso, High dimension, VAR">
+<meta name="keywords" content="working paper, Lee Carter">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.">
+<meta property="og:title" content="Deterministic and stochastic trends in the Lee-Carter mortality model.">
 <meta property="og:description" content="">
-<meta property="og:url" content="/papers/rcv-fc">
+<meta property="og:url" content="/wp/death">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="/papers/rcv-fc">
+<link rel="canonical" href="/wp/death">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -119,21 +119,23 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Lasso" title="Pages tagged Lasso" rel="tag">Lasso</a>&nbsp;&bull;&nbsp;<a href="/tags.html#High dimension" title="Pages tagged High dimension" rel="tag">High dimension</a>&nbsp;&bull;&nbsp;<a href="/tags.html#VAR" title="Pages tagged VAR" rel="tag">VAR</a></span>
+        <span class="entry-tags"><a href="/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Lee Carter" title="Pages tagged Lee Carter" rel="tag">Lee Carter</a></span>
         
-          <h3 class="entry-title" itemprop="headline">Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.</h3>
+          <h3 class="entry-title" itemprop="headline">Deterministic and stochastic trends in the Lee-Carter mortality model.</h3>
         
       </header>
             <div class="entry-content" itemprop="description">
         <p><strong>Submitted.</strong></p>
 
-<p>Download the paper <a href="/papers/rcv_forecasts.pdf">pdf</a>.</p>
+<p>Download the paper <a href="/papers/death_wp.pdf">pdf</a>.</p>
+
+<p><a href="https://github.com/lcallot/LeeCarter">Replication material</a>.</p>
 
 <h2 id="abstract">Abstract:</h2>
 
-<p>In this paper we consider modeling and forecasting of large realized covariance matrices by penalized vector autoregressive models. We propose using Lasso-type estimators to reduce the dimensionality to a manageable one and provide strong theoretical performance guarantees on the forecast capability of our procedure. To be precise, we show that we can forecast future realized covariance matrices almost as precisely as if we had known the true driving dynamics of these in advance. We next investigate the sources of these driving dynamics for the realized covariance matrices of the 30 Dow Jones stocks and find that these dynamics are not stable as the data is aggregated from the daily to the weekly and monthly frequency.</p>
-
-<p>The theoretical performance guarantees on our forecasts are illustrated on the Dow Jones index. In particular, we can beat our benchmark by a wide margin at the longer forecast horizons. Finally, we investigate the economic value of our forecasts in a portfolio selection exercise and find that in certain cases an investor is willing to pay a considerable amount in order get access to our forecasts.</p>
+<p>The Lee and Carter (1992) model assumes that the deterministic and stochastic time series dynamics loads with identical weights when describing the development of age specific mortality rates. Effectively this means that the main characteristics of the model simplifies to a random walk model with age specific drift components. But restricting the adjustment mechanism of the stochastic and linear trend components to be identical may be a too strong simplification. In fact, the presence of a stochastic trend component may itself result from a bias induced by properly fitting the linear trend that characterizes mortality data. We find empirical evidence that this feature
+of the Lee-Carter model overly restricts the system dynamics and we suggest to separate the deterministic and stochastic time series components at the benefit of improved fit and forecasting performance. In fact, we find that the classical Lee-Carter model will otherwise over estimate the reduction of mortality for the younger age groups and will under estimate the reduction of mortality for
+the older age groups. In practice, our recommendation means that the Lee-Carter model instead of a one-factor model should be formulated as a two (or several)-factor model where one factor is deterministic and the other factors are stochastic. This feature generalizes to the range of models that extend the Lee-Carter model in various directions.</p>
 
         
       </div><!-- /.entry-content -->

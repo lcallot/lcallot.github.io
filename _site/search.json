@@ -26,8 +26,8 @@
 	
 		{
 		  "title"      : "Sharp threshold detection based on sup-norm error rates in high-dimensional models",
-		  "category"   : "papers",
-		  "url"        : "/papers/threshold",
+		  "category"   : "pub",
+		  "url"        : "/pub/threshold",
 		  "date"       : "2015-02-09 00:00:00 +0100",
 		  "shortdate"  : "February 09, 2015"
 		} ,
@@ -50,24 +50,24 @@
 	
 		{
 		  "title"      : "Deterministic and stochastic trends in the Lee-Carter mortality model.",
-		  "category"   : "papers",
-		  "url"        : "/papers/death",
+		  "category"   : "wp",
+		  "url"        : "/wp/death",
 		  "date"       : "2014-11-20 00:00:00 +0100",
 		  "shortdate"  : "November 20, 2014"
 		} ,
 	
 		{
 		  "title"      : "Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.",
-		  "category"   : "papers",
-		  "url"        : "/papers/rcv-fc",
+		  "category"   : "wp",
+		  "url"        : "/wp/rcv-fc",
 		  "date"       : "2014-11-13 00:00:00 +0100",
 		  "shortdate"  : "November 13, 2014"
 		} ,
 	
 		{
-		  "title"      : "Vector Autoregressions with Parsimoniously Time Varying Parameters and an Application to Monetary Policy.",
-		  "category"   : "papers",
-		  "url"        : "/papers/ptv-var",
+		  "title"      : "Vector Autoregressions with Parsimoniously Time-Varying Parameters and an Application to Monetary Policy.",
+		  "category"   : "wp",
+		  "url"        : "/wp/ptv-var",
 		  "date"       : "2014-11-04 00:00:00 +0100",
 		  "shortdate"  : "November 04, 2014"
 		} ,
@@ -122,32 +122,32 @@
 	
 		{
 		  "title"      : "Oracle inequalities for high dimensional vector autoregressions.",
-		  "category"   : "papers",
-		  "url"        : "/papers/oracle-var",
+		  "category"   : "pub",
+		  "url"        : "/pub/oracle-var",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
 	
 		{
 		  "title"      : "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.",
-		  "category"   : "papers",
-		  "url"        : "/papers/oracle-forecasting",
+		  "category"   : "pub",
+		  "url"        : "/pub/oracle-forecasting",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
 	
 		{
 		  "title"      : "Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.",
-		  "category"   : "papers",
-		  "url"        : "/papers/CCS",
+		  "category"   : "wp",
+		  "url"        : "/wp/CCS",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
 	
 		{
 		  "title"      : "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.",
-		  "category"   : "papers",
-		  "url"        : "/papers/a-bootstrap-panel-co-integration-rank-test",
+		  "category"   : "wp",
+		  "url"        : "/wp/a-bootstrap-panel-co-integration-rank-test",
 		  "date"       : "2013-11-21 00:00:00 +0100",
 		  "shortdate"  : "November 21, 2013"
 		} ,

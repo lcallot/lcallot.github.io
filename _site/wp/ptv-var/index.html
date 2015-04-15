@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs. &#8211; Laurent's Research Page</title>
+<title>Vector Autoregressions with Parsimoniously Time-Varying Parameters and an Application to Monetary Policy. &#8211; Laurent's Research Page</title>
 <meta name="description" content="">
-<meta name="keywords" content="working paper, Panel, Co-integration, Bootstrap">
+<meta name="keywords" content="working paper, Lasso, High dimension, VAR">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.">
+<meta property="og:title" content="Vector Autoregressions with Parsimoniously Time-Varying Parameters and an Application to Monetary Policy.">
 <meta property="og:description" content="">
-<meta property="og:url" content="/papers/CCS">
+<meta property="og:url" content="/wp/ptv-var">
 <meta property="og:site_name" content="Laurent's Research Page">
 
 
 
 
 
-<link rel="canonical" href="/papers/CCS">
+<link rel="canonical" href="/wp/ptv-var">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Laurent's Research Page Feed">
 
 
@@ -119,17 +119,27 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Panel" title="Pages tagged Panel" rel="tag">Panel</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Co-integration" title="Pages tagged Co-integration" rel="tag">Co-integration</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Bootstrap" title="Pages tagged Bootstrap" rel="tag">Bootstrap</a></span>
+        <span class="entry-tags"><a href="/tags.html#working paper" title="Pages tagged working paper" rel="tag">working paper</a>&nbsp;&bull;&nbsp;<a href="/tags.html#Lasso" title="Pages tagged Lasso" rel="tag">Lasso</a>&nbsp;&bull;&nbsp;<a href="/tags.html#High dimension" title="Pages tagged High dimension" rel="tag">High dimension</a>&nbsp;&bull;&nbsp;<a href="/tags.html#VAR" title="Pages tagged VAR" rel="tag">VAR</a></span>
         
-          <h3 class="entry-title" itemprop="headline">Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.</h3>
+          <h3 class="entry-title" itemprop="headline">Vector Autoregressions with Parsimoniously Time-Varying Parameters and an Application to Monetary Policy.</h3>
         
       </header>
             <div class="entry-content" itemprop="description">
-        <p>Download the paper <a href="/papers/pcvar_ccs.pdf">pdf</a>.</p>
+        <p><strong>Submitted.</strong></p>
+
+<p>Download the paper <a href="/papers/ptv-var_WP_v2.pdf">pdf</a>.</p>
+
+<p><a href="https://github.com/lcallot/ptv-var">Replication material</a>.</p>
 
 <h2 id="abstract">Abstract:</h2>
-<p>This paper proposes a maximum likelihood estimator for a common co-integration space in large panels of co-integrated Vector Autoregressive models. The method pioneered by Pesaran (2006) and further refined in Dees, Mauro, Pesaran, and Smith (2007) is used to reduce the dimension of the parameter space of the model and control for cross section dependence. The common co-integration space is estimated using standard optimization methods.. Test statistics for the existence of a common co-integration space against the hypothesis of heterogeneous co-integration spaces are derived. A bootstrap algorithm to generat pseudo data under the hypothesis of a common co-integration space is proposed, and bootstrap test statistics are derived. Identification of the co-integration vectors of the panel is also discussed.</p>
 
+<p>This paper studies vector autoregressive models with parsimoniously time-varying parameters. The parameters are assumed to follow parsimonious random walks, where parsimony stems from the assumption that increments to the parameters have a non-zero probability of being exactly equal to zero. We estimate the sparse and high-dimensional vector of changes to the parameters with the Lasso and the adaptive Lasso.</p>
+
+<p>The parsimonious random walk allows the parameters to be modelled non parametrically, so that our model can accommodate constant parameters, an unknown number of structural breaks, or parameters varying randomly. 
+We characterize the finite sample properties of the Lasso by deriving upper bounds on the estimation and prediction errors that are valid with high probability, and provide asymptotic conditions under which these bounds tend to zero with probability tending to one. We also provide conditions under which the adaptive Lasso is able to achieve perfect model selection. </p>
+
+<p>We investigate by simulations the properties of the Lasso and the adaptive Lasso in settings where the parameters are stable, experience structural breaks, or follow a parsimonious random walk. <br />
+We use our model to investigate the monetary policy response to inflation and business cycle fluctuations in the US by estimating a parsimoniously time varying parameter Taylor rule. We document substantial changes in the policy response of the Fed in the 1970s and 1980s, and since 2007, but also document the stability of this response in the rest of the sample.    </p>
 
         
       </div><!-- /.entry-content -->

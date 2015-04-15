@@ -2,7 +2,7 @@
 layout: post
 title: "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs."
 description: ""
-category: "papers"
+category: "wp"
 tags: [working paper, Panel, Co-integration, Bootstrap]
 status: 'Working paper.'
 coauthor: 

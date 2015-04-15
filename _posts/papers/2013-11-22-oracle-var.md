@@ -2,7 +2,7 @@
 layout: post
 title: "Oracle inequalities for high dimensional vector autoregressions."
 description: ""
-category: "papers"
+category: "pub"
 tags: [working paper, Lasso, High dimension, VAR]
 status: 'Published: Journal of Econometrics.'
 coauthor: Anders Bredahl Kock

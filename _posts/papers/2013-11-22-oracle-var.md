@@ -8,7 +8,7 @@ status: 'Published: Journal of Econometrics.'
 coauthor: Anders Bredahl Kock
 ---
 
-**Accepted, [Journal of Econometrics](http://www.sciencedirect.com/science/article/pii/S0304407615000378).**
+**Accepted, [Journal of Econometrics Volume 186, Issue 2, June 2015 (link).](http://www.sciencedirect.com/science/article/pii/S0304407615000378).**
 
 Download the paper [pdf]({{ site.url }}/papers/oracle_var.pdf).
 

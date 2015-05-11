@@ -8,7 +8,7 @@ status: 'Accepted for publication: Journal of Business and Economic Statistics.'
 coauthor: Mehmet Caner, Anders Bredahl Kock, and Juan Andres Riquelme
 ---
 
-**Submitted.**
+**Accepted for publication: Journal of Business and Economic Statistics.**
 
 Download the paper [pdf]({{ site.url }}/papers/tlasso.pdf).
 

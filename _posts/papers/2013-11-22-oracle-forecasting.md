@@ -4,7 +4,7 @@ title: "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and 
 description: ""
 category: "pub"
 tags: [working paper, Forecasting, VAR, Lasso, High dimension]
-status: 'Published in: Essays in Nonlinear Time Series Econometrics, Oxford University Press.'
+status: 'Published in: Essays in Nonlinear Time Series Econometrics, Oxford University Press, 2014.'
 coauthor: Anders Bredahl Kock
 ---
 

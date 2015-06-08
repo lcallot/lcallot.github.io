@@ -6,23 +6,31 @@
     
     
     <url>
-        <loc>/ie15/IE15-W5</loc>
+        <loc>/misc/rdvx</loc>
     </url>
     
     <url>
-        <loc>/ie15/IE14-W3</loc>
+        <loc>/papers/wp/ptv-fac</loc>
     </url>
     
     <url>
-        <loc>/ie15/IE15-W2</loc>
+        <loc>/teaching/ie2015/w5/ie15/IE15-W5</loc>
     </url>
     
     <url>
-        <loc>/pub/threshold</loc>
+        <loc>/teaching/ie2015/w3/ie15/IE14-W3</loc>
     </url>
     
     <url>
-        <loc>/ie15/IE15-W1</loc>
+        <loc>/teaching/ie2015/w2/ie15/IE15-W2</loc>
+    </url>
+    
+    <url>
+        <loc>/papers/pub/threshold</loc>
+    </url>
+    
+    <url>
+        <loc>/teaching/ie2015/w1/ie15/IE15-W1</loc>
     </url>
     
     <url>
@@ -30,31 +38,31 @@
     </url>
     
     <url>
-        <loc>/wp/death</loc>
+        <loc>/papers/wp/death</loc>
     </url>
     
     <url>
-        <loc>/wp/rcv-fc</loc>
+        <loc>/papers/wp/rcv-fc</loc>
     </url>
     
     <url>
-        <loc>/wp/ptv-var</loc>
+        <loc>/papers/wp/ptv-var</loc>
     </url>
     
     <url>
-        <loc>/ie/IE14-W6</loc>
+        <loc>/teaching/ie2014/w6/ie/IE14-W6</loc>
     </url>
     
     <url>
-        <loc>/computing/software-rdam</loc>
+        <loc>/misc/software-rdam</loc>
     </url>
     
     <url>
-        <loc>/computing/computing-resources-VU</loc>
+        <loc>/misc/computing-resources-VU</loc>
     </url>
     
     <url>
-        <loc>/ie/IE14-W23</loc>
+        <loc>/teaching/ie2014/w3/ie/IE14-W23</loc>
     </url>
     
     <url>
@@ -62,23 +70,23 @@
     </url>
     
     <url>
-        <loc>/ie/IE14-W1</loc>
+        <loc>/teaching/ie2014/w1/ie/IE14-W1</loc>
     </url>
     
     <url>
-        <loc>/pub/oracle-var</loc>
+        <loc>/papers/pub/oracle-var</loc>
     </url>
     
     <url>
-        <loc>/pub/oracle-forecasting</loc>
+        <loc>/papers/pub/oracle-forecasting</loc>
     </url>
     
     <url>
-        <loc>/wp/CCS</loc>
+        <loc>/papers/wp/CCS</loc>
     </url>
     
     <url>
-        <loc>/wp/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>/papers/wp/a-bootstrap-panel-co-integration-rank-test</loc>
     </url>
     
     <url>

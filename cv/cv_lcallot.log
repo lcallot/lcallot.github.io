@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.22)  19 APR 2015 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.5.26)  12 JUN 2015 12:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **cv_lcallot.tex
 (./cv_lcallot.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -24,15 +24,15 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count87
 \calc@Bcount=\count88
 \calc@Adimen=\dimen103
 \calc@Bdimen=\dimen104
 \calc@Askip=\skip43
 \calc@Bskip=\skip44
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
+LaTeX Info: Redefining \setlength on input line 75.
+LaTeX Info: Redefining \addtolength on input line 76.
 \calc@Ccount=\count89
 \calc@Cskip=\skip45
 )
@@ -43,7 +43,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
@@ -95,12 +95,12 @@ Package: lastpage 2013/01/28 v1.2l Refers to last page's name (HMM; JPG)
 \footpageshift=\skip61
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 130.
+Package color Info: Driver file: pdftex.def on input line 137.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -239,10 +239,10 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 \etb@tempcnta=\count105
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fmtcount/fmtcount.sty
-Package: fmtcount 2013/08/17 v2.03
+Package: fmtcount 2014/07/18 v3.00
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fmtcount/fcprefix.sty
 Package: fcprefix 2012/09/28
@@ -403,7 +403,7 @@ Overfull \hbox (18.0pt too wide) in paragraph at lines 191--197
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 209.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 209.
@@ -415,18 +415,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 255--257
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no “ in font cmti10!
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 262.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 262.
-[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 264--266
 
  []
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 266.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 266.
+[1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 278--280
 
  []
@@ -454,13 +454,13 @@ Package rerunfilecheck Info: File `cv_lcallot.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 352.
  ) 
 Here is how much of TeX's memory you used:
- 6718 strings out of 493304
- 97293 string characters out of 6139871
- 205332 words of memory out of 5000000
- 10083 multiletter control sequences out of 15000+600000
+ 6714 strings out of 493105
+ 97346 string characters out of 6137072
+ 206345 words of memory out of 5000000
+ 10101 multiletter control sequences out of 15000+600000
  7023 words of font info for 25 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 40i,14n,43p,992b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 1141 hyphenation exceptions out of 8191
+ 38i,14n,43p,992b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -468,7 +468,7 @@ live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb>
-Output written on cv_lcallot.pdf (3 pages, 108648 bytes).
+Output written on cv_lcallot.pdf (3 pages, 108123 bytes).
 PDF statistics:
  115 PDF objects out of 1000 (max. 8388607)
  101 compressed objects within 2 object streams

@@ -4,7 +4,7 @@ title: "Sharp threshold detection based on sup-norm error rates in high-dimensio
 description: ""
 category: "pub"
 tags: [working paper, Lasso]
-status: 'Accepted for publication: Journal of Business and Economic Statistics, 2015.'
+status: 'In press: Journal of Business and Economic Statistics, 2015.'
 coauthor: Mehmet Caner, Anders Bredahl Kock, and Juan Andres Riquelme
 ---
 

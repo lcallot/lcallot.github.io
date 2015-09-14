@@ -8,7 +8,7 @@ status: 'In press: Journal of Business and Economic Statistics, 2015.'
 coauthor: Mehmet Caner, Anders Bredahl Kock, and Juan Andres Riquelme
 ---
 
-**[In press: Journal of Business and Economic Statistics (link)](http://www.tandfonline.com/doi/abs/10.1080/07350015.2015.1052461).**
+**[Published: Journal of Business and Economic Statistics (link)](http://www.tandfonline.com/doi/abs/10.1080/07350015.2015.1052461).**
 
 Download the paper [pdf]({{ site.url }}/papers/tlasso.pdf).
 

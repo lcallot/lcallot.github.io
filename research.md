@@ -47,4 +47,4 @@ Paper titles are links to the abstract, pdf, and replication material.
 
 - Dynamic panels with multiple ordinal dimensions.
 - Country level effects of Monetary policy and prices dynamics in the Euro-zone, with Anders B. Kock.
-- Infernce in models with parsimoniously time-varying parameters.  
+- Inference in models with parsimoniously time-varying parameters.  

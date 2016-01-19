@@ -26,3 +26,5 @@ All my public code is available on my [github page](http://github.com/lcallot).
 ### Misc.
 
 [Text mining on the Rendez-vous avec X corpus]({% post_url /misc/2015-06-09-rdvx %})
+
+[Getting data from Quandl API and mapping with R]({% post_url /misc/2016-01-19-EUmap %})

@@ -6,7 +6,8 @@ description: "cv"
 modified: 2013-11-19
 tags: [CV]
 ---
-Downlad my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
+Download my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
+
 
 
 

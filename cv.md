@@ -14,7 +14,12 @@ Downlad my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
 
 ### Current position:
 
-**Post-Doctoral Researcher**, [Department of Econometrics & OR](http://www.feweb.vu.nl/en/departments-and-institutes/econometrics-and-or/index.asp), Vrije Universiteit (VU) Amsterdam. Since November 2012.
+**Economist**, Amazon Development Center, Berlin. Since June 2016.
+
+
+### Previous position:
+
+**Post-Doctoral Researcher**, [Department of Econometrics & OR](http://www.feweb.vu.nl/en/departments-and-institutes/econometrics-and-or/index.asp), Vrije Universiteit (VU) Amsterdam. November 2012 to November 2015.
 
 ### Education:
 

@@ -1,17 +1,57 @@
 [
 	
 		{
+		  "title"      : "Deep Learning for Forecasting: Current Trends and Challenges.",
+		  "category"   : "pub",
+		  "url"        : "http://localhost:4000/pub/DLFC2",
+		  "date"       : "2018-12-31 00:00:00 +0100",
+		  "shortdate"  : "December 31, 2018"
+		} ,
+	
+		{
+		  "title"      : "Deep Learning for Forecasting.",
+		  "category"   : "pub",
+		  "url"        : "http://localhost:4000/pub/DLFC1",
+		  "date"       : "2018-12-01 00:00:00 +0100",
+		  "shortdate"  : "December 01, 2018"
+		} ,
+	
+		{
+		  "title"      : "A Nodewise Regression Approach to Estimating Large Portfolios.",
+		  "category"   : "wp",
+		  "url"        : "http://localhost:4000/wp/nodewise",
+		  "date"       : "2018-09-04 00:00:00 +0200",
+		  "shortdate"  : "September 04, 2018"
+		} ,
+	
+		{
+		  "title"      : "Getting data from Quandl API and mapping with R",
+		  "category"   : "misc",
+		  "url"        : "http://localhost:4000/misc/EUmap",
+		  "date"       : "2016-01-19 00:00:00 +0100",
+		  "shortdate"  : "January 19, 2016"
+		} ,
+	
+		{
+		  "title"      : "Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.",
+		  "category"   : "pub",
+		  "url"        : "http://localhost:4000/pub/rcv-fc",
+		  "date"       : "2015-12-04 00:00:00 +0100",
+		  "shortdate"  : "December 04, 2015"
+		} ,
+	
+		{
 		  "title"      : "Une analyse textuelle des synopsis de &#39;Rendez-vous avec X&#39;",
 		  "category"   : "misc",
-		  "url"        : "/misc/rdvx",
+		  "url"        : "http://localhost:4000/misc/rdvx",
 		  "date"       : "2015-06-09 00:00:00 +0200",
 		  "shortdate"  : "June 09, 2015"
 		} ,
 	
 		{
 		  "title"      : "Regularized Estimation of Structural Instability in Factor Models: The US Macroeconomy and the Great Moderation.",
-		  "category"   : "wp",
-		  "url"        : "/papers/wp/ptv-fac",
+		  "category"   : "pub",
+		  "url"        : "http://localhost:4000/pub/ptv-fac",
 		  "date"       : "2015-06-01 00:00:00 +0200",
 		  "shortdate"  : "June 01, 2015"
 		} ,
@@ -19,7 +59,7 @@
 		{
 		  "title"      : "Week 5:  Maximum Likelihood.",
 		  "category"   : "ie15",
-		  "url"        : "/teaching/ie2015/w5/ie15/IE15-W5",
+		  "url"        : "http://localhost:4000/ie15/IE15-W5",
 		  "date"       : "2015-03-03 00:00:00 +0100",
 		  "shortdate"  : "March 03, 2015"
 		} ,
@@ -27,7 +67,7 @@
 		{
 		  "title"      : "Week 3:  Monte Carlos.",
 		  "category"   : "ie15",
-		  "url"        : "/teaching/ie2015/w3/ie15/IE14-W3",
+		  "url"        : "http://localhost:4000/ie15/IE14-W3",
 		  "date"       : "2015-02-15 00:00:00 +0100",
 		  "shortdate"  : "February 15, 2015"
 		} ,
@@ -35,7 +75,7 @@
 		{
 		  "title"      : "Week 2: R-squared experiment, t-test, F-test .",
 		  "category"   : "ie15",
-		  "url"        : "/teaching/ie2015/w2/ie15/IE15-W2",
+		  "url"        : "http://localhost:4000/ie15/IE15-W2",
 		  "date"       : "2015-02-10 00:00:00 +0100",
 		  "shortdate"  : "February 10, 2015"
 		} ,
@@ -43,7 +83,7 @@
 		{
 		  "title"      : "Sharp threshold detection based on sup-norm error rates in high-dimensional models",
 		  "category"   : "pub",
-		  "url"        : "/papers/pub/threshold",
+		  "url"        : "http://localhost:4000/pub/threshold",
 		  "date"       : "2015-02-09 00:00:00 +0100",
 		  "shortdate"  : "February 09, 2015"
 		} ,
@@ -51,7 +91,7 @@
 		{
 		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
 		  "category"   : "ie15",
-		  "url"        : "/teaching/ie2015/w1/ie15/IE15-W1",
+		  "url"        : "http://localhost:4000/ie15/IE15-W1",
 		  "date"       : "2015-02-04 00:00:00 +0100",
 		  "shortdate"  : "February 04, 2015"
 		} ,
@@ -59,31 +99,23 @@
 		{
 		  "title"      : "Introductory Econometrics (Inleiding Econometrie 1) 2015",
 		  "category"   : "courses",
-		  "url"        : "/teaching/IE15.html",
+		  "url"        : "http://localhost:4000/teaching/IE15.html",
 		  "date"       : "2015-01-27 00:00:00 +0100",
 		  "shortdate"  : "January 27, 2015"
 		} ,
 	
 		{
 		  "title"      : "Deterministic and stochastic trends in the Lee-Carter mortality model.",
-		  "category"   : "wp",
-		  "url"        : "/papers/wp/death",
+		  "category"   : "pub",
+		  "url"        : "http://localhost:4000/pub/death",
 		  "date"       : "2014-11-20 00:00:00 +0100",
 		  "shortdate"  : "November 20, 2014"
 		} ,
 	
 		{
-		  "title"      : "Estimation and Forecasting of Large Realized Covariance Matrices and Portfolio Choice.",
-		  "category"   : "wp",
-		  "url"        : "/papers/wp/rcv-fc",
-		  "date"       : "2014-11-13 00:00:00 +0100",
-		  "shortdate"  : "November 13, 2014"
-		} ,
-	
-		{
 		  "title"      : "Vector Autoregressions with Parsimoniously Time-Varying Parameters and an Application to Monetary Policy.",
 		  "category"   : "wp",
-		  "url"        : "/papers/wp/ptv-var",
+		  "url"        : "http://localhost:4000/wp/ptv-var",
 		  "date"       : "2014-11-04 00:00:00 +0100",
 		  "shortdate"  : "November 04, 2014"
 		} ,
@@ -91,7 +123,7 @@
 		{
 		  "title"      : "Week 6: Empirical size and power of Likelihood based tests.",
 		  "category"   : "ie",
-		  "url"        : "/teaching/ie2014/w6/ie/IE14-W6",
+		  "url"        : "http://localhost:4000/ie/IE14-W6",
 		  "date"       : "2014-03-09 00:00:00 +0100",
 		  "shortdate"  : "March 09, 2014"
 		} ,
@@ -99,7 +131,7 @@
 		{
 		  "title"      : "Software on rdam and arhus.",
 		  "category"   : "misc",
-		  "url"        : "/misc/software-rdam",
+		  "url"        : "http://localhost:4000/misc/software-rdam",
 		  "date"       : "2014-03-04 00:00:00 +0100",
 		  "shortdate"  : "March 04, 2014"
 		} ,
@@ -107,7 +139,7 @@
 		{
 		  "title"      : "Computing resources at Econometrics and OR.",
 		  "category"   : "misc",
-		  "url"        : "/misc/computing-resources-VU",
+		  "url"        : "http://localhost:4000/misc/computing-resources-VU",
 		  "date"       : "2014-02-28 00:00:00 +0100",
 		  "shortdate"  : "February 28, 2014"
 		} ,
@@ -115,23 +147,23 @@
 		{
 		  "title"      : "Week 2-3: R squared, Testing, and Monte Carlo.",
 		  "category"   : "ie",
-		  "url"        : "/teaching/ie2014/w3/ie/IE14-W23",
+		  "url"        : "http://localhost:4000/ie/IE14-W23",
 		  "date"       : "2014-02-17 00:00:00 +0100",
 		  "shortdate"  : "February 17, 2014"
 		} ,
 	
 		{
-		  "title"      : "Introductory Econometrics (inleiding econometrie 1) 2014",
-		  "category"   : "courses",
-		  "url"        : "/teaching/IE14.html",
+		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
+		  "category"   : "ie",
+		  "url"        : "http://localhost:4000/ie/IE14-W1",
 		  "date"       : "2014-01-27 00:00:00 +0100",
 		  "shortdate"  : "January 27, 2014"
 		} ,
 	
 		{
-		  "title"      : "Week 1: Multiple Regressions and Matrix Notation.",
-		  "category"   : "ie",
-		  "url"        : "/teaching/ie2014/w1/ie/IE14-W1",
+		  "title"      : "Introductory Econometrics (inleiding econometrie 1) 2014",
+		  "category"   : "courses",
+		  "url"        : "http://localhost:4000/teaching/IE14.html",
 		  "date"       : "2014-01-27 00:00:00 +0100",
 		  "shortdate"  : "January 27, 2014"
 		} ,
@@ -139,7 +171,7 @@
 		{
 		  "title"      : "Oracle inequalities for high dimensional vector autoregressions.",
 		  "category"   : "pub",
-		  "url"        : "/papers/pub/oracle-var",
+		  "url"        : "http://localhost:4000/pub/oracle-var",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -147,7 +179,7 @@
 		{
 		  "title"      : "Oracle Efficient estimation and Forecasting with the Adaptive Lasso and the Adaptive Group Lasso in Vector Autoregressions.",
 		  "category"   : "pub",
-		  "url"        : "/papers/pub/oracle-forecasting",
+		  "url"        : "http://localhost:4000/pub/oracle-forecasting",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -155,7 +187,7 @@
 		{
 		  "title"      : "Estimating and Testing for a Common Co-Integration Space in Large Panels of Co-Integrated VARs.",
 		  "category"   : "wp",
-		  "url"        : "/papers/wp/CCS",
+		  "url"        : "http://localhost:4000/wp/CCS",
 		  "date"       : "2013-11-22 00:00:00 +0100",
 		  "shortdate"  : "November 22, 2013"
 		} ,
@@ -163,7 +195,7 @@
 		{
 		  "title"      : "A Bootstrap Co-Integration Rank Test for Panels of Co-Integrated VARs.",
 		  "category"   : "wp",
-		  "url"        : "/papers/wp/a-bootstrap-panel-co-integration-rank-test",
+		  "url"        : "http://localhost:4000/wp/a-bootstrap-panel-co-integration-rank-test",
 		  "date"       : "2013-11-21 00:00:00 +0100",
 		  "shortdate"  : "November 21, 2013"
 		} ,
@@ -171,7 +203,7 @@
 		{
 		  "title"      : "Syntax Highlighting Post",
 		  "category"   : "articles",
-		  "url"        : "/articles/code-highlighting-post",
+		  "url"        : "http://localhost:4000/articles/code-highlighting-post",
 		  "date"       : "2013-08-16 00:00:00 +0200",
 		  "shortdate"  : "August 16, 2013"
 		} 

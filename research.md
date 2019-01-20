@@ -2,7 +2,7 @@
 layout: page
 permalink: /papers/index.html
 title: Research Papers 
-description: "bla"
+description: "papers"
 modified: 2013-11-19
 tags: [research, ]
 image:
@@ -41,11 +41,4 @@ Paper titles are links to the abstract, pdf, and replication material.
 </article>
 {% endfor %}
 
-------------------------
 
-## Work in progress
-
-- Forecasting USD/EUR exchange rates with high dimensional estimators, with Mehmet Caner.
-- Dynamic panels with multiple ordinal dimensions.
-- Country level effects of Monetary policy and prices dynamics in the Euro-zone, with Anders B. Kock.
-- Inference in models with parsimoniously time-varying parameters.  

@@ -1,96 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc></loc>
+        <loc>http://localhost:4000</loc>
     </url>
     
     
     <url>
-        <loc>/misc/rdvx</loc>
+        <loc>http://localhost:4000/wp/nodewise</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/ptv-fac</loc>
+        <loc>http://localhost:4000/misc/EUmap</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2015/w5/ie15/IE15-W5</loc>
+        <loc>http://localhost:4000/pub/rcv-fc</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2015/w3/ie15/IE14-W3</loc>
+        <loc>http://localhost:4000/misc/rdvx</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2015/w2/ie15/IE15-W2</loc>
+        <loc>http://localhost:4000/pub/ptv-fac</loc>
     </url>
     
     <url>
-        <loc>/papers/pub/threshold</loc>
+        <loc>http://localhost:4000/ie15/IE15-W5</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2015/w1/ie15/IE15-W1</loc>
+        <loc>http://localhost:4000/ie15/IE14-W3</loc>
     </url>
     
     <url>
-        <loc>/teaching/IE15.html</loc>
+        <loc>http://localhost:4000/ie15/IE15-W2</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/death</loc>
+        <loc>http://localhost:4000/pub/threshold</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/rcv-fc</loc>
+        <loc>http://localhost:4000/ie15/IE15-W1</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/ptv-var</loc>
+        <loc>http://localhost:4000/teaching/IE15.html</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2014/w6/ie/IE14-W6</loc>
+        <loc>http://localhost:4000/pub/death</loc>
     </url>
     
     <url>
-        <loc>/misc/software-rdam</loc>
+        <loc>http://localhost:4000/wp/ptv-var</loc>
     </url>
     
     <url>
-        <loc>/misc/computing-resources-VU</loc>
+        <loc>http://localhost:4000/ie/IE14-W6</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2014/w3/ie/IE14-W23</loc>
+        <loc>http://localhost:4000/misc/software-rdam</loc>
     </url>
     
     <url>
-        <loc>/teaching/IE14.html</loc>
+        <loc>http://localhost:4000/misc/computing-resources-VU</loc>
     </url>
     
     <url>
-        <loc>/teaching/ie2014/w1/ie/IE14-W1</loc>
+        <loc>http://localhost:4000/ie/IE14-W23</loc>
     </url>
     
     <url>
-        <loc>/papers/pub/oracle-var</loc>
+        <loc>http://localhost:4000/ie/IE14-W1</loc>
     </url>
     
     <url>
-        <loc>/papers/pub/oracle-forecasting</loc>
+        <loc>http://localhost:4000/teaching/IE14.html</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/CCS</loc>
+        <loc>http://localhost:4000/pub/oracle-var</loc>
     </url>
     
     <url>
-        <loc>/papers/wp/a-bootstrap-panel-co-integration-rank-test</loc>
+        <loc>http://localhost:4000/pub/oracle-forecasting</loc>
     </url>
     
     <url>
-        <loc>/articles/code-highlighting-post</loc>
+        <loc>http://localhost:4000/wp/CCS</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/wp/a-bootstrap-panel-co-integration-rank-test</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/articles/code-highlighting-post</loc>
     </url>
     
 </urlset>

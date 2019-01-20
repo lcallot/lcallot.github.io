@@ -49,10 +49,6 @@ google_analytics:  'UA-45972660-1'
 links:
   - title: Papers
     url: /papers
-  - title: Code
-    url: /code
-  - title: Teaching
-    url: /teaching
   - title: Curriculum Vitae
     url: /cv
   - title: Home
@@ -83,4 +79,4 @@ kramdown:
     coderay_css: class
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", ".Rproj", ".Rproj.user"]

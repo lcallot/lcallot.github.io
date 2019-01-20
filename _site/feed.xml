@@ -4,13 +4,55 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2019-01-20T22:04:22+01:00</updated>
+<updated>2019-01-20T23:26:24+01:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Laurent Callot</name>
   <uri>http://localhost:4000/</uri>
   <email>lcallot@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Deep Learning for Forecasting: Current Trends and Challenges.]]></title>
+  <link>http://localhost:4000/pub/DLFC2</link>
+  <id>http://localhost:4000/pub/DLFC2</id>
+  <published>2018-12-31T00:00:00+01:00</published>
+  <updated>2018-12-31T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri>http://localhost:4000</uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Download the &lt;a href=&quot;https://econpapers.repec.org/article/forijafaa/y_3a2018_3ai_3a51_3ap_3a42-47.htm&quot;&gt;paper&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
+
+&lt;p&gt;In the first installment of this two-part article, Tim Januschowski and colleagues presented a tutorial on the basics of Deep Learning (DL) through neural networks (NNs), with illustrations of how NNs have been applied for forecasting product sales and other variables at Amazon. In this segment, they describe the pros and cons of forecasting through NNs and discuss some areas of current research designed to improve the application of NNs for forecasting.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/pub/DLFC2&quot;&gt;Deep Learning for Forecasting: Current Trends and Challenges.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://localhost:4000&quot;&gt;Laurent Callot's Homepage&lt;/a&gt; on December 31, 2018.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Deep Learning for Forecasting.]]></title>
+  <link>http://localhost:4000/pub/DLFC1</link>
+  <id>http://localhost:4000/pub/DLFC1</id>
+  <published>2018-12-01T00:00:00+01:00</published>
+  <updated>2018-12-01T00:00:00+01:00</updated>
+  <author>
+    <name>Laurent Callot</name>
+    <uri>http://localhost:4000</uri>
+    <email>lcallot@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Download the &lt;a href=&quot;https://ideas.repec.org/a/for/ijafaa/y2018i50p35-41.html&quot;&gt;paper&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
+
+&lt;p&gt;While the term “deep learning” (DL) has only been coined in the last few years, the techniques it refers to have been in development since the 1950s, namely artificial neural networks (NN or ANN for short). DL has scored major successes in image recognition, natural language processing (e.g. machine translation and speech recognition), and autonomous agents such as Google Deep Mind’s AlphaGo. It is often used as a synonym for artificial intelligence (AI), by which name it has received extensive press coverage. This first of two installments of an article from Tim Januschowski and colleagues presents a tutorial on the basics of DL with illustrations of how it has been applied for forecasting Amazon product sales and other variables. The second installment will explore current trends and challenges in applying DL to forecasting problems.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/pub/DLFC1&quot;&gt;Deep Learning for Forecasting.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://localhost:4000&quot;&gt;Laurent Callot's Homepage&lt;/a&gt; on December 01, 2018.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -2569,77 +2611,6 @@ cannot give your password to anybody else.&lt;/li&gt;
 &lt;/ol&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://localhost:4000&quot;&gt;Laurent Callot's Homepage&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Introductory Econometrics (inleiding econometrie 1) 2014]]></title>
-  <link>http://localhost:4000/teaching/IE14.html</link>
-  <id>http://localhost:4000/teaching/IE2014_main</id>
-  <updated>2014-01-27T00:00:00-00:00</updated>
-  <published>2014-01-27T00:00:00+01:00</published>
-  
-  <author>
-    <name>Laurent Callot</name>
-    <uri>http://localhost:4000</uri>
-    <email>lcallot@gmail.com</email>
-  </author>
-  <content type="html">&lt;p&gt;I will publish every week a post summarizing the material covered in the week with some extra questions and a focus on computing.&lt;/p&gt;
-
-&lt;p&gt;All the code in these posts is &lt;em&gt;R&lt;/em&gt; code. &lt;em&gt;R&lt;/em&gt; allows me to easily share code with you, which you can run and modify. The simplest way to do that is:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Install &lt;a href=&quot;http://www.rstudio.com&quot;&gt;Rstudio&lt;/a&gt; (free, open source, compatible with all platform),&lt;/li&gt;
-  &lt;li&gt;Copy/paste the pieces of code below in Rstudio’s console,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;that’s it.&lt;/p&gt;
-
-&lt;p&gt;These post also contains some computational questions. I encourage you to give these questions a try: if you really understand something, then you should be able to program it. Use whichever language/package you feel most comfortable with.&lt;/p&gt;
-
-&lt;p&gt;I have enabled comments. I encourage you to use those to ask questions and reply to open questions if you know the answer. The comments are anonymous and not necessarily linked to your &lt;em&gt;vu&lt;/em&gt; email, please keep it clean.&lt;/p&gt;
-
-&lt;article&gt;
-&lt;h3&gt;&lt;a href=&quot;http://localhost:4000/ie/IE14-W6&quot;&gt;Week 6: Empirical size and power of Likelihood based tests.&lt;/a&gt;&lt;/h3&gt;
-&lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-03-09T00:00:00+01:00&quot;&gt;March 2014&lt;/time&gt;&lt;/span&gt;--&gt;
-&lt;/article&gt;
-
-&lt;article&gt;
-&lt;h3&gt;&lt;a href=&quot;http://localhost:4000/ie/IE14-W23&quot;&gt;Week 2-3: R squared, Testing, and Monte Carlo.&lt;/a&gt;&lt;/h3&gt;
-&lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-02-17T00:00:00+01:00&quot;&gt;February 2014&lt;/time&gt;&lt;/span&gt;--&gt;
-&lt;/article&gt;
-
-&lt;article&gt;
-&lt;h3&gt;&lt;a href=&quot;http://localhost:4000/ie/IE14-W1&quot;&gt;Week 1: Multiple Regressions and Matrix Notation.&lt;/a&gt;&lt;/h3&gt;
-&lt;!---&lt;span class=&quot;entry-date&quot;&gt;&lt;time datetime=&quot;2014-01-27T00:00:00+01:00&quot;&gt;January 2014&lt;/time&gt;&lt;/span&gt;--&gt;
-&lt;/article&gt;
-
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/teaching/IE14.html&quot;&gt;Introductory Econometrics (inleiding econometrie 1) 2014&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://localhost:4000&quot;&gt;Laurent Callot's Homepage&lt;/a&gt; on January 27, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Oracle inequalities for high dimensional vector autoregressions.]]></title>
-  <link>http://localhost:4000/pub/oracle-var</link>
-  <id>http://localhost:4000/pub/oracle-var</id>
-  <published>2013-11-22T00:00:00+01:00</published>
-  <updated>2013-11-22T00:00:00+01:00</updated>
-  <author>
-    <name>Laurent Callot</name>
-    <uri>http://localhost:4000</uri>
-    <email>lcallot@gmail.com</email>
-  </author>
-  <content type="html">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S0304407615000378&quot;&gt;Journal of Econometrics Volume 186, Issue 2, June 2015 (link)&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Download the paper &lt;a href=&quot;http://localhost:4000/papers/oracle_var.pdf&quot;&gt;pdf&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;abstract&quot;&gt;Abstract:&lt;/h2&gt;
-
-&lt;p&gt;This paper establishes non-asymptotic oracle inequalities for the prediction error and estimation accuracy of the LASSO in stationary vector autoregressive models. These inequalities are used to establish consistency of the LASSO even when the number of parameters is of a much larger order of magnitude than the sample size. We also give conditions under which no relevant variables are excluded. Next, non-asymptotic probabilities are given for the Adaptive LASSO to select the correct sparsity pattern. We then give conditions under which the Adaptive LASSO reveals the correct sparsity pattern asymptotically. We establish that the estimates of the non-zero coefficients are asymptotically equivalent to the oracle assisted least squares estimator. This is used to show that the rate of convergence of the estimates of the non-zero coefficients is identical to the one of least squares only including the relevant covariates.&lt;/p&gt;
-
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/pub/oracle-var&quot;&gt;Oracle inequalities for high dimensional vector autoregressions.&lt;/a&gt; was originally published by Laurent Callot at &lt;a href=&quot;http://localhost:4000&quot;&gt;Laurent Callot's Homepage&lt;/a&gt; on November 22, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

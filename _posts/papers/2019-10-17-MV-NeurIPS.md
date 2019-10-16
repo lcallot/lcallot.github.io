@@ -4,7 +4,7 @@ title: "High-Dimensional Multivariate Forecasting withLow-Rank Gaussian Copula P
 description: ""
 category: "pub"
 tags: [deep learning, forecasting]
-status: 'Accepted: NeurIPS, 2019'
+status: 'NeurIPS, 2019'
 coauthor: David Salinas, Michael Bohlke-Schneider, Laurent Callot, Roberto Medico, Jan Gasthaus 
 ---
 

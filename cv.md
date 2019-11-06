@@ -15,10 +15,11 @@ Download my curriculum vitae [pdf]({{ site.url }}/cv/cv_lcallot.pdf).
 
 ### Current position:
 
-**Senior Economist**, Amazon Development Center, Berlin. Since June 2016.
+**Senior Applied Scientist (Machine Learning)**, Amazon Development Center, Berlin. Since June 2016.
 
 * Intelligent Cloud Control Machine Learning
-* Previous team: Supply Chain Optimization Technologies and CoreML
+* Previous role: Senior Economist
+* Previous team: Supply Chain Optimization Technologies and Core ML
 
 
 ### Previous position:

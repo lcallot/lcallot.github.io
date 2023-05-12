@@ -27,5 +27,5 @@ Check my [Google Scholar](https://scholar.google.com/citations?hl=en&user=bkrcSq
 
 ## CV
 
-Here's a [link to my (outdated) CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
+Here's a [link to my CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
 

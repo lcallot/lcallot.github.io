@@ -19,13 +19,13 @@ I earned my PhD in 2012 from Aarhus University in Denmark. I hold a Masters in E
 
 
 
+## CV
+
+Here's a [link to my CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
+
 
 
 ## Research
 
 Check my [Google Scholar](https://scholar.google.com/citations?hl=en&user=bkrcSq0AAAAJ) page for a complete list of publications. 
-
-## CV
-
-Here's a [link to my CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
 

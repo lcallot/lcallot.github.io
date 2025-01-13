@@ -4,7 +4,7 @@ layout: home
 
 
 
-I am employed as a [Principal Applied Scientist and Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Amazon Q Developer](https://aws.amazon.com/q/). I am located in Seattle.
+I am employed as a [Principal Applied Scientist and Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Amazon Q Developer](https://aws.amazon.com/q/developer). I am located in Seattle.
 
 
 

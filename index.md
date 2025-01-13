@@ -4,11 +4,11 @@ layout: home
 
 
 
-I am employed as a [Principal Applied Scientist and Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I currently work in the space of AI Ops and Generative AI. I am located in Seattle.
+I am employed as a [Principal Applied Scientist and Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Amazon Q Developer](https://aws.amazon.com/q/). I am located in Seattle.
 
 
 
-Since joining Amazon in 2016, I have led and managed multiple teams of scientists and engineers. My teams have launched or contributed to several AWS AI services and internal products. Most of my work has been in the domains of forecasting, anomaly detection, causality, policy design, generative AI, and interpretable AI. 
+Since joining Amazon in 2016, I have led and managed multiple teams of scientists and engineers. My teams have launched or contributed to several AWS AI services and internal products. Most of my work has been on AI agents for coding and operations, interpretable AI, causality, forecasting, anomaly detection, and policy design.
 
 
 ## Previous experience and education. 

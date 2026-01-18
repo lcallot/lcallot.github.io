@@ -4,7 +4,9 @@ layout: home
 
 
 
-I am employed as a [Principal Applied Scientist and Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Amazon Q Developer](https://aws.amazon.com/q/developer). I am located in Seattle.
+I am employed as a [Principal Applied Scientist and Senior Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Kiro Autonomous Agent](https://aws.amazon.com/ai/frontier-agents/). I am located in Seattle.
+
+Key links: [Kiro Autonomous Agent](https://aws.amazon.com/ai/frontier-agents/), [SWE-PolyBench](https://amazon-science.github.io/SWE-PolyBench/), and my [Amazon Science profile](https://www.amazon.science/author/laurent-callot).
 
 
 
@@ -27,4 +29,3 @@ Here's a [link to my CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
 ## Research
 
 Check my [Google Scholar](https://scholar.google.com/citations?hl=en&user=bkrcSq0AAAAJ) page for a complete list of publications. 
-

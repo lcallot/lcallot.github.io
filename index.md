@@ -6,8 +6,6 @@ layout: home
 
 I am employed as a [Principal Applied Scientist and Senior Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Kiro Autonomous Agent](https://aws.amazon.com/ai/frontier-agents/). I am located in Seattle.
 
-Key links: [Kiro Autonomous Agent](https://aws.amazon.com/ai/frontier-agents/), [SWE-PolyBench](https://amazon-science.github.io/SWE-PolyBench/), and my [Amazon Science profile](https://www.amazon.science/author/laurent-callot).
-
 
 
 Since joining Amazon in 2016, I have led and managed multiple teams of scientists and engineers. My teams have launched or contributed to several AWS AI services and internal products. Most of my work has been on AI agents for coding and operations, interpretable AI, causality, forecasting, anomaly detection, and policy design.

@@ -1,29 +1,12 @@
 ---
 layout: home
 ---
+I am a Principal Applied Scientist and Senior Manager at AWS Agentic AI, leading agentic AI for software development and operations across Kiro, Amazon Q, AWS DevOps agent, and Amazon Software Builder Experience. I specialize in coding agents and developer automation, and have led launches of frontier agents and agentic systems that move from research to durable, high-adoption products. I build and scale global teams and deliver measurable business impact from large-scale deployments. I am located in Seattle.
 
+Focus areas: agentic AI, developer tools, cloud ops automation, benchmarking, reliability/safety.
 
+## Links
 
-I am employed as a [Principal Applied Scientist and Senior Manager](https://www.amazon.science/author/laurent-callot) at AWS AI Labs. I am the scientific lead for AI agents for software development and operations in [Kiro Autonomous Agent](https://aws.amazon.com/ai/frontier-agents/). I am located in Seattle.
-
-
-
-Since joining Amazon in 2016, I have led and managed multiple teams of scientists and engineers. My teams have launched or contributed to several AWS AI services and internal products. Most of my work has been on AI agents for coding and operations, interpretable AI, causality, forecasting, anomaly detection, and policy design.
-
-
-## Previous experience and education. 
-
-I earned my PhD in 2012 from Aarhus University in Denmark. I hold a Masters in Economics from the University of Aarhus, a Bachelor in Economics from Paris Nanterre University and a Bachelor in Mathematics and Computer Science from Paris-Sorbonne University.  
-
-I was a post-doctoral researcher in high-dimensional time-series econometrics at the Free University in Amsterdam and a research fellow at the Tinbergen Institute from 2012 to 2015. In parallel, I worked as a consultant for an energy trading firm and advised early-stage start-ups. 
-
-
-## CV
-
-Here's a [link to my CV](https://lcallot.github.io/cv/cv_lcallot.pdf).
-
-
-
-## Research
-
-Check my [Google Scholar](https://scholar.google.com/citations?hl=en&user=bkrcSq0AAAAJ) page for a complete list of publications. 
+- [CV](https://lcallot.github.io/cv/cv_lcallot.pdf)
+- [Google Scholar](https://scholar.google.com/citations?hl=en&user=bkrcSq0AAAAJ)
+- [Amazon Science profile](https://www.amazon.science/author/laurent-callot)

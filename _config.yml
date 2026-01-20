@@ -31,11 +31,5 @@ social:
 # og_image: /assets/images/laurent-callot.jpg  # Uncomment and add image if desired
 og_locale: en_US
 
-# Structured Data
-author:
-  name: Laurent Callot
-  url: https://lcallot.github.io
-  email: l.callot@gmail.com
-
 # Analytics
 google_analytics: UA-45972660-1

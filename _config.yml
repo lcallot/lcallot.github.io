@@ -1,9 +1,11 @@
-title: Laurent Callot
+title: "Laurent Callot | AI Research Leader"
 email: l.callot@gmail.com
-description: Laurent Callot's minimal page
+description: "Principal Applied Scientist and Senior Manager at AWS specializing in agentic AI and developer automation"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lcallot.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: 
+twitter:
+  username: lcallot
+  card: summary_large_image
 github_username:  lcallot
 linkedin_username: lcallot
 google_scholar: bkrcSq0AAAAJ
@@ -15,5 +17,25 @@ minima:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
+# SEO and Social Media
+social:
+  name: Laurent Callot
+  links:
+    - https://twitter.com/lcallot
+    - https://www.linkedin.com/in/lcallot
+    - https://scholar.google.com/citations?user=bkrcSq0AAAAJ
+
+# Open Graph / Social Media Meta Tags
+# og_image: /assets/images/laurent-callot.jpg  # Uncomment and add image if desired
+og_locale: en_US
+
+# Structured Data
+author:
+  name: Laurent Callot
+  url: https://lcallot.github.io
+  email: l.callot@gmail.com
+
+# Analytics
 google_analytics: UA-45972660-1
